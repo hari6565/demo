@@ -12,9 +12,9 @@ import Image from "next/image";
 
 export default function Topbar() {
   return (
-    <Navbar className=" bg-gray-700">
-      <NavbarBrand className=" ml-0">
-        <Image className=" w-11 h-11 mr-5" src={logo} alt=""></Image>
+    <Navbar isBordered className="ml-0 pl-0">
+      <NavbarBrand>
+        <Image className=" w-11 h-11" src={logo} alt=""></Image>
         <p className="font-bold text-inherit">Torus</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
