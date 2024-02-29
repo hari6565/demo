@@ -8,6 +8,7 @@ import {
   Button,
   Tooltip,
 } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
 import logo from "../assets/logo.ico";
 import Image from "next/image";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
@@ -22,18 +23,16 @@ import { RiShareBoxFill } from "react-icons/ri";
 
 export default function Topbar() {
   return (
-    <Navbar isBordered className=" h-12 ">
-      <NavbarBrand className=" -ml-40">
-        <Image className=" w-8 h-8 mr-5" src={logo} alt=""></Image>
-        <p className="font-bold text-inherit -ml-4">Torus</p>
+    <Navbar className=" bg-gray-700">
+      <NavbarBrand className=" ml-0">
+        <Image className=" w-11 h-11 mr-5" src={logo} alt=""></Image>
+        <p className="font-bold text-inherit">Torus</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Tooltip placement={"bottom"} content={"Help Menu"} color="secondary">
-            <Link color="foreground" href="#">
-              <AiOutlineQuestionCircle className="w-6 h-6" />
-            </Link>
-          </Tooltip>
+          <Link color="foreground" href="#">
+            Features
+          </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="#" color="foreground">
