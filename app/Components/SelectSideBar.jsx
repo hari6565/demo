@@ -101,7 +101,7 @@ export default function SelectSideBar({ state }) {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
   return (
-    <div className="w-[98%] h-[50%]">
+    <div className="w-[300px] h-[50%]">
       {state == "Elements" ? (
         <Accordion variant="bordered" className="bg-slate-100">
           {Elements.map((item, id) => (
