@@ -53,7 +53,6 @@ const Elements = [
       RxButton,
       MdCheckBoxOutlineBlank,
       TfiLayoutTab,
-      TfiLayoutLineSolid,
     ],
   },
   {

@@ -12,6 +12,7 @@ import { GrMultimedia } from "react-icons/gr";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LiaElementor } from "react-icons/lia";
 import { Listbox, ListboxItem, cn } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
 
 const Icons = [
   {
@@ -90,10 +91,26 @@ export default function SideBar({ state, setState, setToggle }: any) {
           <ListboxItem
             // className="bg-red-200"
             key={item.tooltip}
-            startContent={React.createElement(item.icon, {
-              size: 20,
-            })}
-          />
+            // startContent={
+            //   <Tooltip
+            //     content={item.tooltip}
+            //     key={item.id}
+            //     placement="right-end"
+            //   >
+            //     {React.createElement(item.icon, {
+            //       size: 20,
+            //     })}
+            //   </Tooltip>
+            // }
+          >
+            <Tooltip content={item.tooltip} key={item.id} placement="right-end">
+              <div>
+                {React.createElement(item.icon, {
+                  size: 20,
+                })}
+              </div>
+            </Tooltip>
+          </ListboxItem>
         ))}
       </Listbox>
     </div>

@@ -7,6 +7,7 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
 import logo from "../assets/logo.ico";
 import Image from "next/image";
 
@@ -19,9 +20,9 @@ export default function Topbar() {
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
+          <Tooltip content="I am a tooltip" placement="right-end">
+            <Button>Hover me</Button>
+          </Tooltip>
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="#" aria-current="page">
