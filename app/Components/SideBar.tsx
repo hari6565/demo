@@ -77,7 +77,9 @@ export default function SideBar({ state, setState, setToggle }: any) {
         onAction={(e) => {
           setState(e);
           {
-            state !== e ? null : setToggle((pre: any) => !pre);
+            state !== e
+              ? setToggle((pre: any) => pre)
+              : setToggle((pre: any) => !pre);
           }
         }}
         variant="faded"
