@@ -67,17 +67,22 @@ const Icons = [
   },
 ];
 
-export default function SideBar({ setState }: any) {
+export default function SideBar({ state, setState, setToggle }: any) {
   const iconClasses =
     "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
   return (
     <div>
       <Listbox
-        onAction={setState}
+        onAction={(e) => {
+          setState(e);
+          {
+            state !== e ? null : setToggle((pre: any) => !pre);
+          }
+        }}
         variant="faded"
         aria-label="Listbox menu with icons"
-        className="flex flex-col justify-between gap-9 h-screen bg-slate-100"
+        className="flex flex-col justify-between gap-9 h-[100%] bg-slate-100"
       >
         {Icons.map((item: any) => (
           <ListboxItem

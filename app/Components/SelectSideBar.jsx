@@ -101,27 +101,40 @@ export default function SelectSideBar({ state }) {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
   return (
-    <div className="w-[98%]">
-      <Accordion variant="bordered" className="bg-slate-100">
-        {Elements.map((item, id) => (
+    <div className="w-[98%] h-[50%]">
+      {state == "Elements" ? (
+        <Accordion variant="bordered" className="bg-slate-100">
+          {Elements.map((item, id) => (
+            <AccordionItem
+              key={id}
+              aria-label="Accordion 1"
+              title={item.title}
+              className=" text-sm"
+            >
+              <div className="grid grid-cols-3 gap-4 text-black">
+                {item.arr.map((Icon, id) => {
+                  return (
+                    <div key={id} className="">
+                      {React.createElement(Icon, { size: 30 })}
+                    </div>
+                  );
+                })}
+              </div>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      ) : (
+        <Accordion variant="bordered" className="bg-slate-100">
           <AccordionItem
-            key={id}
+            key="1"
             aria-label="Accordion 1"
-            title={item.title}
+            title="sfcdsfg"
             className=" text-sm"
           >
-            <div className="grid grid-cols-3 gap-4 text-black">
-              {item.arr.map((Icon, id) => {
-                return (
-                  <div key={id} className="">
-                    {React.createElement(Icon, { size: 30 })}
-                  </div>
-                );
-              })}
-            </div>
+            <div className=" text-black">ghjfghjfgh</div>
           </AccordionItem>
-        ))}
-      </Accordion>
+        </Accordion>
+      )}
     </div>
   );
 }
