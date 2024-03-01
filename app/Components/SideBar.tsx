@@ -13,6 +13,15 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { LiaElementor } from "react-icons/lia";
 import { Listbox, ListboxItem, cn } from "@nextui-org/react";
 import { Tooltip } from "@nextui-org/react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
 
 const Icons = [
   {
@@ -68,7 +77,14 @@ const Icons = [
   },
 ];
 
-export default function SideBar({ state, setState, setToggle }: any) {
+export default function SideBar({
+  state,
+  setState,
+  setToggle,
+  setViewtable,
+}: any) {
+  const [isOpen, onOpenChange] = useState(false);
+
   const iconClasses =
     "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
@@ -76,11 +92,18 @@ export default function SideBar({ state, setState, setToggle }: any) {
     <div className="h-[86vh]">
       <Listbox
         onAction={(e) => {
-          setState(e);
           {
-            state !== e
-              ? setToggle((pre: any) => pre)
-              : setToggle((pre: any) => !pre);
+            e == state
+              ? setState("")
+              : e == "settings"
+              ? null
+              : (setState(e), setViewtable(false));
+          }
+          {
+            e == "settings" ? onOpenChange(true) : null;
+          }
+          {
+            e == "firestore" ? setViewtable(true) : null;
           }
         }}
         variant="faded"
@@ -113,6 +136,18 @@ export default function SideBar({ state, setState, setToggle }: any) {
           </ListboxItem>
         ))}
       </Listbox>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent className="w-[100vh] h-[50%]">
+          <>
+            <ModalHeader className="flex justify-center bg-slate-500 text-white">
+              Settings
+            </ModalHeader>
+            <ModalBody className="flex justify-center items-center bg-slate-200 text-md">
+              ...settings
+            </ModalBody>
+          </>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
