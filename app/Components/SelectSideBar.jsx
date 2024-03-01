@@ -33,6 +33,10 @@ import { LuListTree } from "react-icons/lu";
 import { IoMdUnlock } from "react-icons/io";
 import { TbFolderCog } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
+import { MdExpand } from "react-icons/md";
+import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { CiCircleAlert } from "react-icons/ci";
+
 const Elements = [
   {
     id: 1,
@@ -106,15 +110,9 @@ const Elements = [
     ],
   },
 ];
-import { MdExpand } from "react-icons/md";
-import { HiOutlineMenuAlt4 } from "react-icons/hi";
-import { CiCircleAlert } from "react-icons/ci";
 export default function SelectSideBar({ state }) {
-  const defaultContent =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-
   return (
-    <div className="w-[300px] h-[89vh] bg-slate-200 rounded-lg overflow-x-auto">
+    <div className="w-[300px] h-full bg-slate-200 overflow-x-auto">
       {(() => {
         switch (state) {
           case "Elements":
@@ -308,7 +306,11 @@ export default function SelectSideBar({ state }) {
               </div>
             );
           default:
-            return <div>fasdfasdfsadfa</div>;
+            return (
+              <div className="flex justify-center items-center h-full w-full">
+                ...on Process {state}
+              </div>
+            );
         }
       })()}
     </div>
