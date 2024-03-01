@@ -31,6 +31,8 @@ import { TiTick } from "react-icons/ti";
 import { CiMenuKebab } from "react-icons/ci";
 import { LuListTree } from "react-icons/lu";
 import { IoMdUnlock } from "react-icons/io";
+import { TbFolderCog } from "react-icons/tb";
+import { IoSettingsOutline } from "react-icons/io5";
 const Elements = [
   {
     id: 1,
@@ -112,7 +114,7 @@ export default function SelectSideBar({ state }) {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
   return (
-    <div className="w-[300px] h-[89vh] bg-slate-200 rounded-lg">
+    <div className="w-[300px] h-[89vh] bg-slate-200 rounded-lg overflow-x-auto">
       {(() => {
         switch (state) {
           case "Elements":
@@ -285,18 +287,23 @@ export default function SelectSideBar({ state }) {
                 </div>
               </div>
             );
-          case "storyboard":
+          case "firestore":
             return (
-              <div className="flex flex-col">
-                <div className="flex justify-between">
-                  <LuListTree size={30} />
-                  <Button>Widget Tress </Button>
-                  <IoMdUnlock size={30} />
-                  <HiOutlineMenuAlt4 size={30} />
-                  <MdExpand size={30} />
+              <div className="flex flex-col gap-4 p-2">
+                <div className="flex justify-between bg-slate-300 p-2 rounded-md">
+                  <div className="flex gap-2">
+                    <TbFolderCog size={30} />
+                    <IoSettingsOutline size={30} />
+                  </div>
+                  <div className="flex gap-2">
+                    <Button className="">FireBase</Button>
+                    <Button>+</Button>
+                  </div>
                 </div>
                 <div>
-                  <Input placeholder="sdfsadf"></Input>
+                  <Button className="w-full flex justify-start">
+                    ...TABLE NAME
+                  </Button>
                 </div>
               </div>
             );

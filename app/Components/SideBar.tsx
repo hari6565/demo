@@ -77,7 +77,12 @@ const Icons = [
   },
 ];
 
-export default function SideBar({ state, setState, setToggle }: any) {
+export default function SideBar({
+  state,
+  setState,
+  setToggle,
+  setViewtable,
+}: any) {
   const [isOpen, onOpenChange] = useState(false);
 
   const iconClasses =
@@ -88,17 +93,18 @@ export default function SideBar({ state, setState, setToggle }: any) {
       <Listbox
         onAction={(e) => {
           {
-            e == state ? setState("") : setState(e);
+            e == state
+              ? setState("")
+              : e == "settings"
+              ? null
+              : (setState(e), setViewtable(false));
           }
           {
             e == "settings" ? onOpenChange(true) : null;
           }
-
-          // {
-          //   state !== e
-          //     ? setToggle((pre: any) => pre)
-          //     : setToggle((pre: any) => !pre);
-          // }
+          {
+            e == "firestore" ? setViewtable(true) : null;
+          }
         }}
         variant="faded"
         aria-label="Listbox menu with icons"
