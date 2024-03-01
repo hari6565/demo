@@ -6,7 +6,7 @@ import Topbar from "./Topbar";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Main = () => {
-  const [state, setState] = useState("");
+  const [state, setState] = useState("Elements");
   const [toggle, setToggle] = useState(false);
   return (
     <div className="h-full">
@@ -31,7 +31,7 @@ const Main = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center bg-black text-white">
+      <div className="flex justify-center items-center bg-slate-300 text-black">
         <div>@footer</div>
       </div>
     </div>
