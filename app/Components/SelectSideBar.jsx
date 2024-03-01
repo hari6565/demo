@@ -29,7 +29,8 @@ import { PiFilesLight } from "react-icons/pi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { TiTick } from "react-icons/ti";
 import { CiMenuKebab } from "react-icons/ci";
-
+import { LuListTree } from "react-icons/lu";
+import { IoMdUnlock } from "react-icons/io";
 const Elements = [
   {
     id: 1,
@@ -103,7 +104,9 @@ const Elements = [
     ],
   },
 ];
-
+import { MdExpand } from "react-icons/md";
+import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { CiCircleAlert } from "react-icons/ci";
 export default function SelectSideBar({ state }) {
   const defaultContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
@@ -152,8 +155,52 @@ export default function SelectSideBar({ state }) {
             );
           case "tree":
             return (
-              <div>
-                <div className="p-2">
+              <div className="flex flex-col p-2 gap-2">
+                <div className="flex justify-between">
+                  <Button
+                    isIconOnly
+                    color="default"
+                    variant="faded"
+                    aria-label="Take a photo"
+                  >
+                    <LuListTree size={20} />
+                  </Button>
+                  <Button
+                    isIconOnly
+                    color="default"
+                    variant="faded"
+                    aria-label="Take a photo"
+                    className="w-[120px] flex justify-between p-2"
+                  >
+                    <h2>Widget Tree</h2>
+                    <CiCircleAlert />
+                  </Button>
+                  <Button
+                    isIconOnly
+                    color="default"
+                    variant="faded"
+                    aria-label="Take a photo"
+                  >
+                    <IoMdUnlock size={20} />
+                  </Button>
+                  <Button
+                    isIconOnly
+                    color="default"
+                    variant="faded"
+                    aria-label="Take a photo"
+                  >
+                    <HiOutlineMenuAlt4 size={20} />
+                  </Button>
+                  <Button
+                    isIconOnly
+                    color="default"
+                    variant="faded"
+                    aria-label="Take a photo"
+                  >
+                    <MdExpand size={20} />
+                  </Button>
+                </div>
+                <div>
                   <Input
                     type="text"
                     placeholder="Search"
@@ -162,18 +209,6 @@ export default function SelectSideBar({ state }) {
                     startContent={<CiSearch />}
                   />
                 </div>
-                <Accordion variant="splitted" className="bg-slate-200">
-                  <AccordionItem
-                    key="1"
-                    aria-label="Accordion 1"
-                    title={state}
-                    className=" text-sm"
-                  >
-                    <div className=" text-black bg-slate-300 p-4 rounded-lg">
-                      {state}
-                    </div>
-                  </AccordionItem>
-                </Accordion>
               </div>
             );
           case "page selector":
@@ -181,13 +216,48 @@ export default function SelectSideBar({ state }) {
               <div className="flex flex-col">
                 <div className="flex gap-3 justify-between p-4">
                   <div className="flex gap-3">
-                    <FaRegNewspaper size={20} />
-                    <IoDiamondOutline size={20} />
+                    <Button
+                      isIconOnly
+                      color="default"
+                      variant="faded"
+                      aria-label="Take a photo"
+                    >
+                      <FaRegNewspaper size={20} />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      color="default"
+                      variant="faded"
+                      aria-label="Take a photo"
+                    >
+                      <IoDiamondOutline size={20} />
+                    </Button>
                   </div>
                   <div className="flex gap-3">
-                    <ImDelicious size={20} />
-                    <FaFileMedical size={20} />
-                    <PiFilesLight size={20} />
+                    <Button
+                      isIconOnly
+                      color="default"
+                      variant="faded"
+                      aria-label="Take a photo"
+                    >
+                      <ImDelicious size={20} />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      color="default"
+                      variant="faded"
+                      aria-label="Take a photo"
+                    >
+                      <FaFileMedical size={20} />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      color="default"
+                      variant="faded"
+                      aria-label="Take a photo"
+                    >
+                      <PiFilesLight size={20} />
+                    </Button>
                   </div>
                 </div>
                 <div className="p-2">
@@ -212,6 +282,21 @@ export default function SelectSideBar({ state }) {
                       <TiTick size={20} /> <CiMenuKebab size={20} />
                     </div>
                   </Button>
+                </div>
+              </div>
+            );
+          case "storyboard":
+            return (
+              <div className="flex flex-col">
+                <div className="flex justify-between">
+                  <LuListTree size={30} />
+                  <Button>Widget Tress </Button>
+                  <IoMdUnlock size={30} />
+                  <HiOutlineMenuAlt4 size={30} />
+                  <MdExpand size={30} />
+                </div>
+                <div>
+                  <Input placeholder="sdfsadf"></Input>
                 </div>
               </div>
             );

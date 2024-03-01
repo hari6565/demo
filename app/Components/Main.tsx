@@ -4,10 +4,10 @@ import SideBar from "./SideBar";
 import SelectSideBar from "./SelectSideBar";
 import Topbar from "./Topbar";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Properties from './Properties'
+import Properties from "./Properties";
 
 const Main = () => {
-  const [state, setState] = useState("Elements");
+  const [state, setState] = useState("tree");
   const [toggle, setToggle] = useState(false);
   return (
     <div className="h-full">
@@ -31,7 +31,7 @@ const Main = () => {
           <div>WorkSpace</div>
         </div>
         <div>
-          <Properties/>
+          <Properties />
         </div>
       </div>
 
