@@ -3,7 +3,7 @@ import Main from "./Components/Main";
 
 const page = () => {
   return (
-    <div className="flex gap-3 items-center">
+    <div>
       <Main />
     </div>
   );
