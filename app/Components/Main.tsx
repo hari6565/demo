@@ -19,13 +19,13 @@ const Main = () => {
             <GiHamburgerMenu
               size={20}
               onClick={() => {
-                setToggle(!toggle);
+                setState("");
               }}
             />
           </div>
           <SideBar state={state} setState={setState} setToggle={setToggle} />
         </div>
-        <div>{toggle && <SelectSideBar state={state} />}</div>
+        <div>{state && <SelectSideBar state={state} />}</div>
         <div className="flex justify-center items-center h-[50vh] w-full">
           <div>WorkSpace</div>
         </div>

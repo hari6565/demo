@@ -76,12 +76,15 @@ export default function SideBar({ state, setState, setToggle }: any) {
     <div className="h-[86vh]">
       <Listbox
         onAction={(e) => {
-          setState(e);
           {
-            state !== e
-              ? setToggle((pre: any) => pre)
-              : setToggle((pre: any) => !pre);
+            e == state ? setState("") : setState(e);
           }
+
+          // {
+          //   state !== e
+          //     ? setToggle((pre: any) => pre)
+          //     : setToggle((pre: any) => !pre);
+          // }
         }}
         variant="faded"
         aria-label="Listbox menu with icons"

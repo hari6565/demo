@@ -113,7 +113,10 @@ export default function SelectSideBar({ state }) {
               <div className="grid grid-cols-3 gap-4 text-black bg-slate-300 p-4 rounded-lg">
                 {item.arr.map((Icon, id) => {
                   return (
-                    <div key={id} className="">
+                    <div
+                      key={id}
+                      className=" border-2 border-white rounded-md p-2 flex justify-center items-center"
+                    >
                       {React.createElement(Icon, { size: 30 })}
                     </div>
                   );
