@@ -7,6 +7,7 @@ import {
   Link,
   Button,
   Tooltip,
+  Divider,
 } from "@nextui-org/react";
 import logo from "../assets/logo.ico";
 import Image from "next/image";
@@ -19,74 +20,89 @@ import { LiaComments } from "react-icons/lia";
 import { GrBug } from "react-icons/gr";
 import { FaCode } from "react-icons/fa6";
 import { RiShareBoxFill } from "react-icons/ri";
+import { MdPreview } from "react-icons/md";
+import { AiFillThunderbolt } from "react-icons/ai";
+import { IoIosArrowDown } from "react-icons/io";
 
 export default function Topbar() {
   return (
-    <Navbar className=" bg-gray-700">
-      <NavbarBrand className=" ml-0">
-        <Image className=" w-11 h-11 mr-5" src={logo} alt=""></Image>
-        <p className="font-bold text-inherit">Torus</p>
+    <Navbar isBordered className="h-11">
+      <NavbarBrand className=" -ml-44">
+        <Image className=" w-8 h-8 " src={logo} alt=""></Image>
+        <p className="font-bold text-inherit text-black">Torus</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
+          <Link href="#">
+            <AiOutlineQuestionCircle className="w-6 h-6 text-black" />
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" color="foreground">
-            <MdOutlineKeyboardCommandKey className="w-6 h-6" />
+          <Link href="#">
+            <MdOutlineKeyboardCommandKey className="w-6 h-6  text-black" />
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            <IoSearchSharp className="w-6 h-6" />
+          <Link href="#">
+            <IoSearchSharp className="w-6 h-6  text-black" />
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end">
+      <NavbarContent justify="end" className=" -mr-10">
         <div className="hover:border-1 hover:rounded-xl ">
           <NavbarItem>
-            <Link color="foreground" href="#">
-              <FcAlarmClock className="w-6 h-6" />
+            <Link className=" text-black" href="#">
+              <FcAlarmClock className="w-6 h-6 " />
               v1
             </Link>
           </NavbarItem>
         </div>
         <div className="hover:border-1 hover:rounded-xl ">
           <NavbarItem>
-            <Link color="foreground" href="#">
-              <FcOk className="w-6 h-6" />
-              <LiaComments className="w-6 h-6" />
+            <Link href="#">
+              <FcOk className="w-6 h-6 " />
+              <LiaComments className="w-6 h-6  text-black" />
             </Link>
           </NavbarItem>
         </div>
         <div className="hover:border-1 hover:rounded-xl ">
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link href="#">
               <FcOk className="w-6 h-6" />
-              <GrBug className="w-5 h-5" />
+              <GrBug className="w-5 h-5  text-black" />
             </Link>
           </NavbarItem>
         </div>
         <div className="hover:border-1 hover:rounded-md ">
           <NavbarItem>
-            <Link color="foreground" href="#">
-              <FaCode className="w-6 h-6" />
+            <Link href="#">
+              <FaCode className="w-6 h-6  text-black" />
             </Link>
           </NavbarItem>
         </div>
         <div className="hover:border-1 hover:rounded-md ">
           <NavbarItem>
-            <Link color="foreground" href="#">
-              <RiShareBoxFill className="w-6 h-6" />
+            <Link href="#">
+              <RiShareBoxFill className="w-6 h-6  text-black" />
             </Link>
           </NavbarItem>
         </div>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
+          <div className="">
+            <Button className=" bg-white ">
+              <MdPreview className="w-8 h-8 text-orange-600 " />
+            </Button>
+          </div>
+        </NavbarItem>
+
+        <NavbarItem>
+          <div className="w-9">
+            <Button color="primary" href="#">
+              <AiFillThunderbolt className="w-5 h-5 text-white" />
+              <Divider orientation="vertical" />
+              <IoIosArrowDown className="w-5 h-5 text-white" />
+            </Button>
+          </div>
         </NavbarItem>
       </NavbarContent>
     </Navbar>
