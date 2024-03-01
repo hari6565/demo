@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Accordion, AccordionItem, Input } from "@nextui-org/react";
+import { Accordion, AccordionItem, Input, Button } from "@nextui-org/react";
 import { CiText } from "react-icons/ci";
 import { BsLayoutThreeColumns } from "react-icons/bs";
 import { MdOutlineTableRows } from "react-icons/md";
@@ -26,6 +26,10 @@ import { FaRegNewspaper } from "react-icons/fa6";
 import { ImDelicious } from "react-icons/im";
 import { FaFileMedical } from "react-icons/fa6";
 import { PiFilesLight } from "react-icons/pi";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { TiTick } from "react-icons/ti";
+import { CiMenuKebab } from "react-icons/ci";
+
 const Elements = [
   {
     id: 1,
@@ -195,7 +199,20 @@ export default function SelectSideBar({ state }) {
                     startContent={<CiSearch />}
                   />
                 </div>
-                <div>homecard</div>
+                <div className="p-2">
+                  <Button
+                    // color=""
+                    variant="faded"
+                    className="w-full flex justify-between text-black"
+                  >
+                    <div className="flex gap-2">
+                      <GiHamburgerMenu size={20} /> <h2>HomePage</h2>
+                    </div>
+                    <div className="flex gap-2">
+                      <TiTick size={20} /> <CiMenuKebab size={20} />
+                    </div>
+                  </Button>
+                </div>
               </div>
             );
           default:
