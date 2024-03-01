@@ -4,6 +4,7 @@ import SideBar from "./SideBar";
 import SelectSideBar from "./SelectSideBar";
 import Topbar from "./Topbar";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Properties from './Properties'
 
 const Main = () => {
   const [state, setState] = useState("Elements");
@@ -28,6 +29,9 @@ const Main = () => {
         <div>{state && <SelectSideBar state={state} />}</div>
         <div className="flex justify-center items-center h-[50vh] w-full">
           <div>WorkSpace</div>
+        </div>
+        <div>
+          <Properties/>
         </div>
       </div>
 
