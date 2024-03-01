@@ -8,7 +8,6 @@ import {
   Button,
   Tooltip,
 } from "@nextui-org/react";
-import { Tooltip } from "@nextui-org/react";
 import logo from "../assets/logo.ico";
 import Image from "next/image";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
