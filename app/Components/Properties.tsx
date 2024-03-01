@@ -78,19 +78,19 @@ export default function App() {
       <AccordionItem key="1" aria-label="Page(Scaffold)Properties" subtitle="" title="Page(Scaffold)Properties">
         <h2>Background color</h2>
         <Input type="text" placeholder="Primarybackground"/>
-        <div className="flex items-center">
+        <div className="flex justify-between">
   <h3 className="text-gray-500 text-sm my-3">Safearea</h3>
   <Switch defaultSelected aria-label="Automatic updates" className="ml-2" />
 </div>
 
-<div className="flex items-center">
+<div className="flex justify-between">
   <h4 className=" text-gray-500 text-sm my-3">High Keyboard on tap</h4>
-  <Switch className="mx-16 ml-2" defaultSelected aria-label="Automatic updates"  />
+  <Switch className=" ml-2" defaultSelected aria-label="Automatic updates"  />
 </div>
 
-<div className="flex items-center">
+<div className="flex justify-between">
   <h5 className=" text-gray-500 text-sm my-3">Disable Android back button</h5>
-  <Switch className=" mx-16" defaultSelected color="default"></Switch> 
+  <Switch  defaultSelected color="default"></Switch> 
 </div>
         
       </AccordionItem>
@@ -99,13 +99,14 @@ export default function App() {
       <div>
       <Accordion className="text-gray-500">
       <AccordionItem  key="1" aria-label="NavBar Item Properties" subtitle="" title="NavBar Item Properties">
-        <div className="flex items-center text-gray-500 text-sm my-3">
+
+        <div className="flex justify-between ">
         <h6>Show on NavBar</h6>
-        <Switch className="mx-16"  defaultSelected color="default"></Switch>
+        <Switch className="ml-2 my-3" defaultSelected color="default"></Switch>
         </div>
-        <div className="flex items-center text-gray-500 text-sm my-3">
+        <div className="flex justify-between">
         <p>Always show Navbar on page</p>
-        <Switch className="mx-16" defaultSelected color="default"></Switch>
+        <Switch className="ml-2" defaultSelected color="default"></Switch>
         </div>
         
         
