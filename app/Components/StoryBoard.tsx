@@ -13,7 +13,7 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Checkbox, use
 
 
 
-const Properties1 = () => {
+const StoryBoard  = () => {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -113,7 +113,7 @@ const Properties1 = () => {
   )
 }
 
-export default Properties1
+export default StoryBoard
 
 
 

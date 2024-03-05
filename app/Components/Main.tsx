@@ -6,7 +6,7 @@ import Topbar from "./Topbar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Properties from "./Properties";
 import DataTable from "./DataTable";
-import Properties1 from "./Properties1";
+import StoryBoard from "./StoryBoard";
 import { FaSearchPlus } from "react-icons/fa";
 import { Avatar, AvatarGroup } from "@nextui-org/react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
@@ -58,7 +58,7 @@ const Main = () => {
         </div>
         <div>
           {viewTable ? null : state === "storyboard" ? (
-            <Properties1 />
+            <StoryBoard/>
           ) : (
             <Properties />
           )}
