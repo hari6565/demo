@@ -6,11 +6,27 @@ import Topbar from "./Topbar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Properties from "./Properties";
 import DataTable from "./DataTable";
+import Properties1 from "./Properties1";
+import { FaSearchPlus } from "react-icons/fa";
+import { Avatar, AvatarGroup } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  Button,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from "@nextui-org/react";
 
 const Main = () => {
   const [state, setState] = useState("tree");
   const [toggle, setToggle] = useState(false);
   const [viewTable, setViewtable] = useState(false);
+  const [props, setProps] = useState(false);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <div className="h-full">
       <div className="">
@@ -33,11 +49,25 @@ const Main = () => {
             setViewtable={setViewtable}
           />
         </div>
-        <div>{state && <SelectSideBar state={state} />}</div>
-        <div className="flex justify-center items-center h-[50vh] w-full">
-          <div>{viewTable ? <DataTable /> : <h2>WorkSpace</h2>}</div>
+        <div>
+          {state === "storyboard" ? null : <SelectSideBar state={state} />}
         </div>
-        <div>{viewTable ? null : <Properties />}</div>
+        <div className="flex justify-center items-center h-[50vh] w-full">
+          <div>
+            {viewTable ? (
+              <DataTable />
+            ) : state === "storyboard" ? null : (
+              <h3>workspace</h3>
+            )}
+          </div>
+        </div>
+        <div>
+          {viewTable ? null : state === "storyboard" ? (
+            <Properties1 />
+          ) : (
+            <Properties />
+          )}
+        </div>
       </div>
 
       <div className="flex justify-center items-center bg-slate-300 text-black">
