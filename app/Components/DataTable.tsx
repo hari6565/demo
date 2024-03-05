@@ -142,7 +142,7 @@ export default function DataTable() {
   }, []);
 
   return (
-    <div className="mt-[200px]">
+    <div className="flex justify-center items-center p-32">
       <Table aria-label="Example table with custom cells">
         <TableHeader columns={columns}>
           {(column) => (

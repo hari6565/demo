@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { RiExpandLeftFill } from "react-icons/ri";
 import { RiExpandRightFill } from "react-icons/ri";
 import { FaMinus } from "react-icons/fa";
@@ -9,8 +9,9 @@ import { MdOutlineTextFields } from "react-icons/md";
 import { Button } from "@nextui-org/react";
 
 const Workpage = ({ toggle, setToggle }: any) => {
+  const [disSize, setDisSize] = useState(80);
   return (
-    <div className={`h-[50vh] ${!toggle ? "w-[48vw]" : "w-[70vw]"}`}>
+    <div className={`h-[80vh] ${!toggle ? "w-[48vw]" : "w-[70vw]"}`}>
       <div className="flex justify-between w-[99%] h-[15%] pl-2 pt-2">
         <div className="flex gap-2">
           <Button
@@ -19,16 +20,29 @@ const Workpage = ({ toggle, setToggle }: any) => {
             className="hover:bg-orange-300"
             onClick={() => setToggle((pre: any) => !pre)}
           >
-            {toggle ? (
+            {!toggle ? (
               <RiExpandLeftFill size={20} />
             ) : (
               <RiExpandRightFill size={20} />
             )}
           </Button>
-          <Button size="sm" variant="bordered" className="hover:bg-orange-300">
+          <Button
+            size="sm"
+            variant="bordered"
+            className="hover:bg-orange-300"
+            onClick={() => setDisSize((pre) => (pre <= 50 ? 50 : pre - 10))}
+          >
             <FaMinus size={20} />
           </Button>
-          <Button size="sm" variant="bordered" className="hover:bg-orange-300">
+          <Button size="sm" variant="bordered">
+            {disSize + 20}%
+          </Button>
+          <Button
+            size="sm"
+            variant="bordered"
+            className="hover:bg-orange-300"
+            onClick={() => setDisSize((pre) => (pre >= 80 ? 80 : pre + 10))}
+          >
             <FaPlus size={20} />
           </Button>
         </div>
@@ -45,7 +59,12 @@ const Workpage = ({ toggle, setToggle }: any) => {
         </div>
       </div>
       <div className="flex justify-center items-center w-full h-full">
-        <h3>workspace</h3>
+        <div
+          // className={`flex justify-center items-center w-[50%] h-[55%] bg-slate-100`}
+          className={`flex justify-center items-center w-[${String(
+            disSize
+          )}%] h-[${String(disSize + 5)}%] bg-slate-100`}
+        ></div>
       </div>
     </div>
   );
