@@ -18,6 +18,12 @@ import {
   ModalHeader,
   ModalBody,
   Kbd,
+  Tabs,
+  Tab,
+  Card,
+  CardBody,
+  Accordion,
+  AccordionItem,
 } from "@nextui-org/react";
 
 import logo from "../assets/logo.ico";
@@ -41,6 +47,7 @@ import { LiaYoutubeSquare } from "react-icons/lia";
 export default function Topbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [open, setopen] = useState(false);
+  const [veropen, versetopen] = useState(false);
   return (
     <Navbar isBordered className="h-11">
       <NavbarBrand as={Link} href="https://www.gsstvl.com" className=" -ml-44">
@@ -56,7 +63,7 @@ export default function Topbar() {
           </Tooltip>
           <Modal size={"sm"} isOpen={open} onOpenChange={setopen}>
             <ModalContent>
-              <div>
+              <div className="p-3">
                 <h1 className="font-bold">Need Help?</h1>
                 <h1 className="text-sm">
                   We value user feedback and want to help.
@@ -148,11 +155,64 @@ export default function Topbar() {
               content={"It's been 28 days since you last saved a new version."}
               color="secondary"
             >
-              <Link className=" text-black" href="#">
+              <Link
+                className=" text-black"
+                href="#"
+                onPress={() => versetopen(true)}
+              >
                 <FcAlarmClock className="w-6 h-6 " />
                 v1
               </Link>
             </Tooltip>
+            <Modal size={"md"} isOpen={veropen} onOpenChange={versetopen}>
+              <ModalContent>
+                <ModalHeader>Project History</ModalHeader>
+                <ModalBody>
+                  <div className="justify-center">
+                    <Tabs aria-label="Options">
+                      <Tab
+                        key="photos"
+                        title="Versions"
+                        style={{ width: "250px" }}
+                      >
+                        <Card className=" w-96 bg-slate-200">
+                          <CardBody>
+                            <div className="flex justify-between">
+                              <p>
+                                Below are the project versions you saved. In
+                                order to create a new version, press:
+                                <br></br>
+                                Ctrl + shift + S
+                              </p>
+                              <Button color="secondary">Save</Button>
+                            </div>
+                            <Accordion variant="splitted">
+                              <AccordionItem title="Tuesday Mar 5,2024 (1 version)">
+                                <div className="flex justify-between">
+                                  <h1>V1 a moment ago</h1>
+                                  <Button color="default">Current</Button>
+                                </div>
+                              </AccordionItem>
+                            </Accordion>
+                          </CardBody>
+                        </Card>
+                      </Tab>
+                      <Tab key="music" title="Snapshots">
+                        <Card>
+                          <CardBody>
+                            Ut enim ad minim veniam, quis nostrud exercitation
+                            ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur.
+                          </CardBody>
+                        </Card>
+                      </Tab>
+                    </Tabs>
+                  </div>
+                </ModalBody>
+              </ModalContent>
+            </Modal>
           </NavbarItem>
         </div>
         <div className="hover:border-1 hover:rounded-xl ">
