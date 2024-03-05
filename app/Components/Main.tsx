@@ -19,6 +19,7 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react";
+import Workpage from "./Workpage";
 
 const Main = () => {
   const [state, setState] = useState("tree");
@@ -34,14 +35,6 @@ const Main = () => {
       </div>
       <div className="flex bg-slate-400">
         <div className="flex flex-col">
-          <div className="flex justify-center bg-slate-100 pt-1">
-            <GiHamburgerMenu
-              size={20}
-              onClick={() => {
-                setState("");
-              }}
-            />
-          </div>
           <SideBar
             state={state}
             setState={setState}
@@ -50,14 +43,16 @@ const Main = () => {
           />
         </div>
         <div>
-          {state === "storyboard" ? null : <SelectSideBar state={state} />}
+          {state === "storyboard"
+            ? null
+            : !toggle && <SelectSideBar state={state} />}
         </div>
-        <div className="flex justify-center items-center h-[50vh] w-full">
+        <div className="flex h-[50vh] w-full">
           <div>
             {viewTable ? (
               <DataTable />
             ) : state === "storyboard" ? null : (
-              <h3>workspace</h3>
+              <Workpage toggle={toggle} setToggle={setToggle} />
             )}
           </div>
         </div>

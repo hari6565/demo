@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <div className=" border-[2px]">
-      <div className=" bg-gray-200  w-[350px] h-[90vh] overflow-x-auto ">
+      <div className=" bg-gray-200  w-[350px] h-[88vh] overflow-x-auto ">
         <Input
           label=""
           variant="bordered"
