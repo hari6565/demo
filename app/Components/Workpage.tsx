@@ -60,7 +60,6 @@ const Workpage = ({ toggle, setToggle }: any) => {
       </div>
       <div className="flex justify-center items-center w-full h-full">
         <div
-          // className={`flex justify-center items-center w-[50%] h-[55%] bg-slate-100`}
           className={`flex justify-center items-center w-[${String(
             disSize
           )}%] h-[${String(disSize + 5)}%] bg-slate-100`}
