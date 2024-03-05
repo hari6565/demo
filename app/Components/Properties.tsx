@@ -14,6 +14,7 @@ import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { FaLocationArrow } from "react-icons/fa6";
 import { Progress } from "@nextui-org/react";
 import { Switch } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 
 export default function App() {
   const defaultContent = <input type="text" placeholder="HomePage" />;
@@ -45,11 +46,19 @@ export default function App() {
             </AccordionItem>
           </Accordion>
         </div>
-        <div className="flex items-center my-3">
-          <TiCalculator className="mr-2" />
-          <h1>Scaffold</h1>
-          <AiTwotoneSwitcher className="ml-10 mx-10" />
-          <RiDeleteBinLine className="ml-10 mx-5" />
+        <div className="flex justify-between my-3">
+          <div className="flex gap-2">
+            <TiCalculator className="mr-2" />
+            <h1>Scaffold</h1>
+          </div>
+          <div className="flex gap-2">
+            <Button isIconOnly>
+              <AiTwotoneSwitcher className="" />
+            </Button>
+            <Button isIconOnly>
+              <RiDeleteBinLine className="" />
+            </Button>
+          </div>
         </div>
         <div>
           <Input
@@ -59,12 +68,22 @@ export default function App() {
           />
         </div>
 
-        <div className="flex items-center">
-          <AiFillDatabase className="mr-5 mx-4" />
-          <AiFillCaretRight className="mr-5 mx-4" />
-          <AiFillDiff className="mr-5 mx-4" />
-          <FaArrowUpRightFromSquare className="mr-5 mx-6" />
-          <FaLocationArrow className="mr-5 mx-7" />
+        <div className="flex items-center gap-8 ">
+          <Button isIconOnly>
+            <AiFillDatabase className="" />
+          </Button>
+          <Button isIconOnly>
+            <AiFillCaretRight className="" />
+          </Button>
+          <Button isIconOnly>
+            <AiFillDiff className="" />
+          </Button>
+          <Button isIconOnly>
+            <FaArrowUpRightFromSquare className="" />
+          </Button>
+          <Button isIconOnly>
+            <FaLocationArrow className="" />
+          </Button>
         </div>
         <div className="border-none rounded-none my-4">
           <Accordion>
