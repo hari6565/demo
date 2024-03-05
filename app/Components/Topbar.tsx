@@ -36,14 +36,15 @@ import { AiFillThunderbolt } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaPlay } from "react-icons/fa6";
 import { RiFeedbackLine } from "react-icons/ri";
+import { LiaYoutubeSquare } from "react-icons/lia";
 
 export default function Topbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [open, setopen] = useState(false);
   return (
     <Navbar isBordered className="h-11">
-      <NavbarBrand className=" -ml-44">
-        <Image className=" w-8 h-8 " src={logo} alt=""></Image>
+      <NavbarBrand as={Link} href="https://www.gsstvl.com" className=" -ml-44">
+        <Image className=" w-8 h-8  transition-all" src={logo} alt=""></Image>
         <p className="font-bold text-inherit text-black">Torus</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -62,9 +63,25 @@ export default function Topbar() {
                 </h1>
                 <Divider className="my-2" />
                 <h1>Torus Community</h1>
-                <div className="flex gap-2">
+                <div className="flex justify-start gap-7">
                   <RiFeedbackLine className="w-6 h-6" />
                   <h1>Feedback</h1>
+                </div>
+                <div className="flex justify-start gap-7 my-4">
+                  <GrBug className="w-6 h-6" />
+                  <h1>Bug Report</h1>
+                </div>
+                <div className="flex justify-start gap-7 my-4">
+                  <LiaYoutubeSquare className="w-6 h-6" />
+                  <h1>Tutorials</h1>
+                </div>
+                <div className="flex justify-start gap-7 my-4">
+                  <AiOutlineQuestionCircle className="w-6 h-6" />
+                  <h1>FAQs & Docs</h1>
+                </div>
+                <div className="flex justify-start gap-7 my-4">
+                  <AiOutlineQuestionCircle className="w-6 h-6" />
+                  <h1>Current status/ Known issues</h1>
                 </div>
               </div>
             </ModalContent>
@@ -243,7 +260,7 @@ export default function Topbar() {
                 <div className=" w-full gap-2">
                   <h1 className="font-bold">Project Run Versions</h1>
                   <h1>
-                    Below are the versions of your post builda or run modes.
+                    Below are the versions of your post build or run modes.
                     <br></br> you can copy and share links.
                   </h1>
                   <Code className="my-5">
