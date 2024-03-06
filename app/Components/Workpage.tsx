@@ -35,7 +35,13 @@ const Workpage = ({ toggle, setToggle }: any) => {
             <FaMinus size={20} />
           </Button>
           <Button size="sm" variant="bordered">
-            {disSize + 20}%
+            {disSize == 80
+              ? "100%"
+              : disSize == 70
+              ? "75%"
+              : disSize == 60
+              ? "50%"
+              : "25%"}
           </Button>
           <Button
             size="sm"
@@ -60,9 +66,20 @@ const Workpage = ({ toggle, setToggle }: any) => {
       </div>
       <div className="flex justify-center items-center w-full h-full">
         <div
-          className={`flex justify-center items-center w-[${String(
-            disSize
-          )}%] h-[${String(disSize + 5)}%] bg-slate-100`}
+          className={`flex bg-slate-100 border-2 border-slate-600 ${
+            disSize == 80
+              ? "w-[80%] h-[90%]"
+              : disSize == 70
+              ? "w-[70%] h-[80%]"
+              : disSize == 60
+              ? "w-[60%] h-[70%]"
+              : "w-[50%] h-[60%]"
+          }`}
+          // className={`flex justify-center items-center w-[${String(
+          //   disSize
+          // )}%] h-[${String(
+          //   disSize + 10
+          // )}%] bg-slate-100 border-2 border-slate-600`}
         ></div>
       </div>
     </div>
