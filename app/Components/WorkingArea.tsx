@@ -9,21 +9,37 @@ const WorkingArea = ({
   keyboard,
   preView,
   setKeyboard,
+  setpreView,
 }: any) => {
   return (
     <div
-      className={`flex justify-center items-center ${
-        preView ? " absolute left-0 top-2 w-full h-full z-40" : "w-full h-full"
+      className={` ${
+        preView
+          ? "flex flex-col absolute left-0 top-0 right-0 bottom-0 w-screen h-screen z-40"
+          : "flex justify-center items-center w-full h-full"
       } `}
     >
+      {preView && (
+        <div className="flex justify-end items-end bg-black">
+          <Button onClick={() => setpreView(false)}>X</Button>
+        </div>
+      )}
       <div
         className={`flex justify-center items-end bg-white border-2 border-slate-600 opacity-${opacity} ${
           disSize == 80
-            ? "w-[80%] h-[90%]"
+            ? preView
+              ? "w-full h-full"
+              : "w-[80%] h-[90%]"
             : disSize == 70
-            ? "w-[70%] h-[80%]"
+            ? preView
+              ? "w-full h-full"
+              : "w-[70%] h-[80%]"
             : disSize == 60
-            ? "w-[60%] h-[70%]"
+            ? preView
+              ? "w-full h-full"
+              : "w-[60%] h-[70%]"
+            : preView
+            ? "w-full h-full"
             : "w-[50%] h-[60%]"
         }`}
       >
