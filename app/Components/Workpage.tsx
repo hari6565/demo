@@ -148,7 +148,7 @@ const Workpage = ({ toggle, setToggle, opacity }: any) => {
       </div>
       <div className="flex justify-center items-center w-full h-full">
         <div
-          className={`flex justify-center items-end bg-white border-2 border-slate-600 opacity-[${opacity}] ${
+          className={`flex justify-center items-end bg-white border-2 border-slate-600 opacity-${opacity} ${
             disSize == 80
               ? "w-[80%] h-[90%]"
               : disSize == 70
@@ -157,13 +157,7 @@ const Workpage = ({ toggle, setToggle, opacity }: any) => {
               ? "w-[60%] h-[70%]"
               : "w-[50%] h-[60%]"
           }`}
-          // className={`flex justify-center items-center w-[${String(
-          //   disSize
-          // )}%] h-[${String(
-          //   disSize + 10
-          // )}%] bg-slate-100 border-2 border-slate-600`}
         >
-          {/* <Image className="w-10 h-96" src={keyBoard} alt=""></Image> */}
           {keyboard && (
             <div className="flex items-end">
               <Image className="  " src={picture} alt=""></Image>

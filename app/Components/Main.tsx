@@ -29,7 +29,7 @@ const Main = () => {
   const [table, setTable] = useState<Boolean>(false);
   const [preView, setpreView] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [opacity, setopacity] = useState(0.5);
+  const [opacity, setopacity] = useState(50);
   return (
     <div className="h-full">
       <div className="">
