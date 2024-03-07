@@ -23,6 +23,7 @@ import picture from "../assets/keyboard.png";
 
 const Workpage = ({ toggle, setToggle }: any) => {
   const [disSize, setDisSize] = useState(80);
+  const [keyboard, setKeyboard] = useState(false);
 
   return (
     <div className={`h-[80vh] ${!toggle ? "w-[48vw]" : "w-[70vw]"}`}>
@@ -67,22 +68,14 @@ const Workpage = ({ toggle, setToggle }: any) => {
           </Button>
         </div>
         <div className="flex gap-2">
-          <Popover className=" -ml-52 w-[133%] my-16 h-72">
-            <PopoverTrigger>
-              <Button
-                size="sm"
-                variant="bordered"
-                className="hover:bg-orange-300"
-              >
-                <FaRegKeyboard size={20} />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <div>
-                <Image className="  " src={picture} alt=""></Image>
-              </div>
-            </PopoverContent>
-          </Popover>
+          <Button
+            onClick={() => setKeyboard((pre) => !pre)}
+            size="sm"
+            variant="bordered"
+            className="hover:bg-orange-300"
+          >
+            <FaRegKeyboard size={20} />
+          </Button>
           <Popover>
             <PopoverTrigger>
               <Button
@@ -171,9 +164,11 @@ const Workpage = ({ toggle, setToggle }: any) => {
           // )}%] bg-slate-100 border-2 border-slate-600`}
         >
           {/* <Image className="w-10 h-96" src={keyBoard} alt=""></Image> */}
-          {/* <div className=" flex items-end">
-            <Image className="  " src={picture} alt=""></Image>
-          </div> */}
+          {keyboard && (
+            <div className=" flex items-end">
+              <Image className="  " src={picture} alt=""></Image>
+            </div>
+          )}
         </div>
       </div>
     </div>
