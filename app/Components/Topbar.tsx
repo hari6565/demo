@@ -43,6 +43,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaPlay } from "react-icons/fa6";
 import { RiFeedbackLine } from "react-icons/ri";
 import { LiaYoutubeSquare } from "react-icons/lia";
+import { CgRedo } from "react-icons/cg";
 
 export default function Topbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -160,7 +161,7 @@ export default function Topbar() {
                 href="#"
                 onPress={() => versetopen(true)}
               >
-                <FcAlarmClock className="w-6 h-6 " />
+                <CgRedo className="w-7 h-7 " />
                 v1
               </Link>
             </Tooltip>
