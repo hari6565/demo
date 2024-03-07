@@ -172,6 +172,7 @@ const Workpage = ({ toggle, setToggle, opacity, preView, setpreView }: any) => {
         keyboard={keyboard}
         preView={preView}
         setpreView={setpreView}
+        setKeyboard={setKeyboard}
       />
     </div>
   );
