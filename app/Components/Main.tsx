@@ -131,7 +131,7 @@ const Main = () => {
       </div>
 
       <div className="flex justify-center items-center bg-slate-300 text-black">
-        <div>@2024Copyrights </div>
+        <div>&2024Copyrights</div>
       </div>
     </div>
   );
