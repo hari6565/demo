@@ -34,7 +34,7 @@ import {
 } from "@nextui-org/react";
 import { ScrollShadow, Slider } from "@nextui-org/react";
 
-export default function App() {
+export default function App({ setopacity }: any) {
   const defaultContent = <input type="text" placeholder="HomePage" />;
   const [isTextBoxVisible, setIsTextBoxVisible] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -74,7 +74,7 @@ export default function App() {
         </div>
         <div className="flex justify-between my-3">
           <div className="flex gap-2">
-            <TiCalculator className="mr-2" />
+            <TiCalculator className="mr-2 my-1" />
             <h1>Scaffold</h1>
           </div>
 
@@ -95,7 +95,7 @@ export default function App() {
           <Input
             type="Homepage"
             label="HomePage"
-            className="text-white bg-gray-200 flex items-center w-13 my-3 ml-4 "
+            className="text-white bg-gray-200 flex items-center w-13 my-3 mr-5 "
           />
           {/* <Button className="">
           <BiPencil />
@@ -267,11 +267,12 @@ export default function App() {
               <Slider
                 size="sm"
                 label="Opacity"
-                step={0.01}
+                step={0.25}
                 maxValue={1}
-                minValue={0}
-                defaultValue={0.4}
+                minValue={0.25}
+                defaultValue={0.5}
                 className="max-w-md"
+                onChange={(e: any) => setopacity(e)}
               />
               <Input type="text" placeholder="1" />
             </AccordionItem>

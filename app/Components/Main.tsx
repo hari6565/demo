@@ -29,7 +29,7 @@ const Main = () => {
   const [table, setTable] = useState<Boolean>(false);
   const [preView, setpreView] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
+  const [opacity, setopacity] = useState(0.5);
   return (
     <div className="h-full">
       <div className="">
@@ -54,7 +54,11 @@ const Main = () => {
             {viewTable ? (
               <DataTable table={table} />
             ) : state === "storyboard" ? null : (
-              <Workpage toggle={toggle} setToggle={setToggle} />
+              <Workpage
+                toggle={toggle}
+                setToggle={setToggle}
+                opacity={opacity}
+              />
             )}
           </div>
         </div>
@@ -62,7 +66,7 @@ const Main = () => {
           {viewTable ? null : state === "storyboard" ? (
             <StoryBoard />
           ) : (
-            <Properties />
+            <Properties setopacity={setopacity} />
           )}
         </div>
       </div>

@@ -21,7 +21,7 @@ import {
 import Image from "next/image";
 import picture from "../assets/keyboard.png";
 
-const Workpage = ({ toggle, setToggle }: any) => {
+const Workpage = ({ toggle, setToggle, opacity }: any) => {
   const [disSize, setDisSize] = useState(80);
   const [keyboard, setKeyboard] = useState(false);
 
@@ -148,7 +148,7 @@ const Workpage = ({ toggle, setToggle }: any) => {
       </div>
       <div className="flex justify-center items-center w-full h-full">
         <div
-          className={`flex justify-center items-end bg-white border-2 border-slate-600 ${
+          className={`flex justify-center items-end bg-white border-2 border-slate-600 opacity-[${opacity}] ${
             disSize == 80
               ? "w-[80%] h-[90%]"
               : disSize == 70
