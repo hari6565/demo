@@ -29,7 +29,7 @@ const Main = () => {
   const [table, setTable] = useState<Boolean>(false);
   const [preView, setpreView] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [opacity, setopacity] = useState(50);
+  const [opacity, setopacity] = useState(100);
   return (
     <div className="h-full">
       <div className="">
@@ -59,6 +59,7 @@ const Main = () => {
                 setToggle={setToggle}
                 opacity={opacity}
                 preView={preView}
+                setpreView={setpreView}
               />
             )}
           </div>

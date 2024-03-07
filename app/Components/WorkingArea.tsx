@@ -1,7 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import picture from "../assets/keyboard.png";
-const WorkingArea = ({ opacity, disSize, keyboard, preView }: any) => {
+import { Button } from "@nextui-org/react";
+import { IoCloseSharp } from "react-icons/io5";
+const WorkingArea = ({
+  opacity,
+  disSize,
+  keyboard,
+  preView,
+  setKeyboard,
+}: any) => {
   return (
     <div
       className={`flex justify-center items-center ${
@@ -20,7 +28,16 @@ const WorkingArea = ({ opacity, disSize, keyboard, preView }: any) => {
         }`}
       >
         {keyboard && (
-          <div className="flex items-end">
+          <div className="bg-black">
+            <div className="flex items-end justify-end bg-black">
+              <Button
+                isIconOnly
+                variant="light"
+                onClick={() => setKeyboard(false)}
+              >
+                <IoCloseSharp className="text-white" />
+              </Button>
+            </div>
             <Image className="  " src={picture} alt=""></Image>
           </div>
         )}
