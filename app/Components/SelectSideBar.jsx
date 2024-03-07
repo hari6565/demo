@@ -110,9 +110,9 @@ const Elements = [
     ],
   },
 ];
-export default function SelectSideBar({ state }) {
+export default function SelectSideBar({ state, setTable }) {
   return (
-    <div className="w-[300px] h-full bg-slate-200 overflow-x-auto">
+    <div className="w-[300px] h-full bg-slate-200">
       {(() => {
         switch (state) {
           case "Elements":
@@ -127,30 +127,31 @@ export default function SelectSideBar({ state }) {
                     startContent={<CiSearch />}
                   />
                 </div>
-
-                <Accordion variant="splitted" className="bg-slate-200">
-                  {Elements.map((item, id) => (
-                    <AccordionItem
-                      key={id}
-                      aria-label="Accordion 1"
-                      title={item.title}
-                      className=" text-sm bg-"
-                    >
-                      <div className="grid grid-cols-3 gap-4 text-black bg-slate-300 p-4 rounded-lg">
-                        {item.arr.map((Icon, id) => {
-                          return (
-                            <div
-                              key={id}
-                              className=" border-2 border-white rounded-md p-2 flex justify-center items-center"
-                            >
-                              {React.createElement(Icon, { size: 30 })}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+                <div className="flex h-[80vh] bg-slate-200 overflow-y-auto ">
+                  <Accordion variant="splitted" className=" bg-slate-200  ">
+                    {Elements.map((item, id) => (
+                      <AccordionItem
+                        key={id}
+                        aria-label="Accordion 1"
+                        title={item.title}
+                        className=" text-sm bg-"
+                      >
+                        <div className="grid grid-cols-3 gap-4 text-black bg-slate-300 p-4 rounded-lg">
+                          {item.arr.map((Icon, id) => {
+                            return (
+                              <div
+                                key={id}
+                                className=" border-2 border-white rounded-md p-2 flex justify-center items-center"
+                              >
+                                {React.createElement(Icon, { size: 30 })}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
               </div>
             );
           case "tree":
@@ -298,9 +299,18 @@ export default function SelectSideBar({ state }) {
                     <Button>+</Button>
                   </div>
                 </div>
-                <div>
-                  <Button className="w-full flex justify-start">
-                    ...TABLE NAME
+                <div className="flex flex-col gap-2 p-5">
+                  <Button
+                    className="w-full flex justify-start"
+                    onClick={() => setTable(false)}
+                  >
+                    Normal
+                  </Button>
+                  <Button
+                    className="w-full flex justify-start"
+                    onClick={() => setTable(true)}
+                  >
+                    Advanced
                   </Button>
                 </div>
               </div>

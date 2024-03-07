@@ -89,7 +89,7 @@ export default function SideBar({
     "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
   return (
-    <div className="h-[86vh]">
+    <div className="h-[89vh]">
       <Listbox
         onAction={(e) => {
           {
@@ -108,7 +108,7 @@ export default function SideBar({
         }}
         variant="faded"
         aria-label="Listbox menu with icons"
-        className="flex flex-col justify-between gap-9 h-full bg-slate-100"
+        className="flex flex-col justify-between gap-9 h-full bg-slate-100 pt-2"
       >
         {Icons.map((item: any) => (
           <ListboxItem
