@@ -58,6 +58,7 @@ const Main = () => {
                 toggle={toggle}
                 setToggle={setToggle}
                 opacity={opacity}
+                preView={preView}
               />
             )}
           </div>

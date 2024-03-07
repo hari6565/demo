@@ -20,8 +20,9 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import picture from "../assets/keyboard.png";
+import WorkingArea from "./WorkingArea";
 
-const Workpage = ({ toggle, setToggle, opacity }: any) => {
+const Workpage = ({ toggle, setToggle, opacity, preView }: any) => {
   const [disSize, setDisSize] = useState(80);
   const [keyboard, setKeyboard] = useState(false);
 
@@ -146,7 +147,7 @@ const Workpage = ({ toggle, setToggle, opacity }: any) => {
           </Popover>
         </div>
       </div>
-      <div className="flex justify-center items-center w-full h-full">
+      {/* <div className="flex justify-center items-center w-full h-full">
         <div
           className={`flex justify-center items-end bg-white border-2 border-slate-600 opacity-${opacity} ${
             disSize == 80
@@ -164,7 +165,13 @@ const Workpage = ({ toggle, setToggle, opacity }: any) => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
+      <WorkingArea
+        opacity={opacity}
+        disSize={disSize}
+        keyboard={keyboard}
+        preView={preView}
+      />
     </div>
   );
 };
