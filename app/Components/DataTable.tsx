@@ -81,7 +81,7 @@ const statusColorMap: any = {
   vacation: "warning",
 };
 
-export default function DataTable() {
+export default function DataTable({ table }: any) {
   const renderCell = React.useCallback((user: any, columnKey: any) => {
     const cellValue = user[columnKey];
 
@@ -142,28 +142,60 @@ export default function DataTable() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center p-32">
-      <Table aria-label="Example table with custom cells">
-        <TableHeader columns={columns}>
-          {(column) => (
-            <TableColumn
-              key={column.uid}
-              align={column.uid === "actions" ? "center" : "start"}
-            >
-              {column.name}
-            </TableColumn>
-          )}
-        </TableHeader>
-        <TableBody items={users}>
-          {(item) => (
-            <TableRow key={item.id}>
-              {(columnKey) => (
-                <TableCell>{renderCell(item, columnKey)}</TableCell>
-              )}
+    <div className="flex justify-center items-center h-[80vh] w-[70vw] pl-8">
+      {table ? (
+        <Table aria-label="Example table with custom cells">
+          <TableHeader columns={columns}>
+            {(column) => (
+              <TableColumn
+                key={column.uid}
+                align={column.uid === "actions" ? "center" : "start"}
+              >
+                {column.name}
+              </TableColumn>
+            )}
+          </TableHeader>
+          <TableBody items={users}>
+            {(item) => (
+              <TableRow key={item.id}>
+                {(columnKey) => (
+                  <TableCell>{renderCell(item, columnKey)}</TableCell>
+                )}
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      ) : (
+        <Table isStriped aria-label="Example static collection table">
+          <TableHeader>
+            <TableColumn>NAME</TableColumn>
+            <TableColumn>ROLE</TableColumn>
+            <TableColumn>STATUS</TableColumn>
+          </TableHeader>
+          <TableBody>
+            <TableRow key="1">
+              <TableCell>Tony Reichert</TableCell>
+              <TableCell>CEO</TableCell>
+              <TableCell>Active</TableCell>
             </TableRow>
-          )}
-        </TableBody>
-      </Table>
+            <TableRow key="2">
+              <TableCell>Zoey Lang</TableCell>
+              <TableCell>Technical Lead</TableCell>
+              <TableCell>Paused</TableCell>
+            </TableRow>
+            <TableRow key="3">
+              <TableCell>Jane Fisher</TableCell>
+              <TableCell>Senior Developer</TableCell>
+              <TableCell>Active</TableCell>
+            </TableRow>
+            <TableRow key="4">
+              <TableCell>William Howard</TableCell>
+              <TableCell>Community Manager</TableCell>
+              <TableCell>Vacation</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      )}
     </div>
   );
 }

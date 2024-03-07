@@ -10,7 +10,6 @@ import StoryBoard from "./StoryBoard";
 import { FaSearchPlus } from "react-icons/fa";
 import { Avatar, AvatarGroup } from "@nextui-org/react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
-import { BiSearchAlt } from "react-icons/bi";
 import {
   Modal,
   ModalContent,
@@ -21,11 +20,13 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import Workpage from "./Workpage";
+import { BiSearchAlt } from "react-icons/bi";
 
 const Main = () => {
   const [state, setState] = useState("tree");
   const [toggle, setToggle] = useState(false);
   const [viewTable, setViewtable] = useState(false);
+  const [table, setTable] = useState<Boolean>(false);
   const [props, setProps] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -46,12 +47,12 @@ const Main = () => {
         <div>
           {state === "storyboard"
             ? null
-            : !toggle && <SelectSideBar state={state} />}
+            : !toggle && <SelectSideBar state={state} setTable={setTable} />}
         </div>
         <div className="flex h-[50vh] w-full">
           <div>
             {viewTable ? (
-              <DataTable />
+              <DataTable table={table} />
             ) : state === "storyboard" ? null : (
               <Workpage toggle={toggle} setToggle={setToggle} />
             )}
@@ -67,9 +68,9 @@ const Main = () => {
       </div>
       <div className="flex justify-end">
         <Button
-          isIconOnly
-          className=" fixed bottom-0 right-0 z-10 "
+          className=" fixed bottom-0 right-0 z-10"
           onPress={onOpen}
+          isIconOnly
           color="secondary"
         >
           <BiSearchAlt className="w-7 h-7" />
@@ -124,7 +125,7 @@ const Main = () => {
       </div>
 
       <div className="flex justify-center items-center bg-slate-300 text-black">
-        <div>@Copyrights 2024</div>
+        <div>@footer</div>
       </div>
     </div>
   );

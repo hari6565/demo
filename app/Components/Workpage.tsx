@@ -148,7 +148,7 @@ const Workpage = ({ toggle, setToggle }: any) => {
       </div>
       <div className="flex justify-center items-center w-full h-full">
         <div
-          className={`flex items-end bg-white border-2 border-slate-600 ${
+          className={`flex justify-center items-end bg-white border-2 border-slate-600 ${
             disSize == 80
               ? "w-[80%] h-[90%]"
               : disSize == 70

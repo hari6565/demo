@@ -110,7 +110,7 @@ const Elements = [
     ],
   },
 ];
-export default function SelectSideBar({ state }) {
+export default function SelectSideBar({ state, setTable }) {
   return (
     <div className="w-[300px] h-full bg-slate-200">
       {(() => {
@@ -299,9 +299,18 @@ export default function SelectSideBar({ state }) {
                     <Button>+</Button>
                   </div>
                 </div>
-                <div>
-                  <Button className="w-full flex justify-start">
-                    ...TABLE NAME
+                <div className="flex flex-col gap-2 p-5">
+                  <Button
+                    className="w-full flex justify-start"
+                    onClick={() => setTable(false)}
+                  >
+                    Normal
+                  </Button>
+                  <Button
+                    className="w-full flex justify-start"
+                    onClick={() => setTable(true)}
+                  >
+                    Advanced
                   </Button>
                 </div>
               </div>
