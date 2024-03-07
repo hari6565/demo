@@ -22,7 +22,7 @@ import Image from "next/image";
 import picture from "../assets/keyboard.png";
 import WorkingArea from "./WorkingArea";
 
-const Workpage = ({ toggle, setToggle, opacity, preView }: any) => {
+const Workpage = ({ toggle, setToggle, opacity, preView, setpreView }: any) => {
   const [disSize, setDisSize] = useState(80);
   const [keyboard, setKeyboard] = useState(false);
 
@@ -171,6 +171,7 @@ const Workpage = ({ toggle, setToggle, opacity, preView }: any) => {
         disSize={disSize}
         keyboard={keyboard}
         preView={preView}
+        setpreView={setpreView}
       />
     </div>
   );
