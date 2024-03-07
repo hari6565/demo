@@ -45,7 +45,7 @@ import { RiFeedbackLine } from "react-icons/ri";
 import { LiaYoutubeSquare } from "react-icons/lia";
 import { CgRedo } from "react-icons/cg";
 
-export default function Topbar() {
+export default function Topbar({ setpreView }: any) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [open, setopen] = useState(false);
   const [veropen, versetopen] = useState(false);
@@ -271,12 +271,11 @@ export default function Topbar() {
           </NavbarItem>
         </div>
         <NavbarItem>
-          <Tooltip
-            placement={"bottom"}
-            content={"Preview App"}
-            color="secondary"
-          >
-            <Button className=" bg-white ">
+          <Tooltip placement="bottom" content="Preview App" color="secondary">
+            <Button
+              className=" bg-white "
+              onClick={() => setpreView((pre: any) => !pre)}
+            >
               <MdPreview className="w-8 h-8 text-orange-600 " />
             </Button>
           </Tooltip>

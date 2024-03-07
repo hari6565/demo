@@ -26,7 +26,7 @@ const Workpage = ({ toggle, setToggle }: any) => {
   const [keyboard, setKeyboard] = useState(false);
 
   return (
-    <div className={`h-[80vh] ${!toggle ? "w-[48vw]" : "w-[70vw]"}`}>
+    <div className={`h-[80vh] ${toggle ? "w-[50vw]" : "w-[72vw]"}`}>
       <div className="flex justify-between w-[99%] h-[15%] pl-2 pt-2">
         <div className="flex gap-2">
           <Button
@@ -35,7 +35,7 @@ const Workpage = ({ toggle, setToggle }: any) => {
             className="hover:bg-orange-300"
             onClick={() => setToggle((pre: any) => !pre)}
           >
-            {!toggle ? (
+            {toggle ? (
               <RiExpandLeftFill size={20} />
             ) : (
               <RiExpandRightFill size={20} />
@@ -165,7 +165,7 @@ const Workpage = ({ toggle, setToggle }: any) => {
         >
           {/* <Image className="w-10 h-96" src={keyBoard} alt=""></Image> */}
           {keyboard && (
-            <div className=" flex items-end">
+            <div className="flex items-end">
               <Image className="  " src={picture} alt=""></Image>
             </div>
           )}

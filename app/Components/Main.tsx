@@ -24,16 +24,16 @@ import { BiSearchAlt } from "react-icons/bi";
 
 const Main = () => {
   const [state, setState] = useState("tree");
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const [viewTable, setViewtable] = useState(false);
   const [table, setTable] = useState<Boolean>(false);
-  const [props, setProps] = useState(false);
+  const [preView, setpreView] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <div className="h-full">
       <div className="">
-        <Topbar />
+        <Topbar setpreView={setpreView} />
       </div>
       <div className="flex bg-slate-400">
         <div className="flex flex-col">
@@ -47,7 +47,7 @@ const Main = () => {
         <div>
           {state === "storyboard"
             ? null
-            : !toggle && <SelectSideBar state={state} setTable={setTable} />}
+            : toggle && <SelectSideBar state={state} setTable={setTable} />}
         </div>
         <div className="flex h-[50vh] w-full">
           <div>
