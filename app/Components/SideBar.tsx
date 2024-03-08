@@ -112,6 +112,7 @@ export default function SideBar({
       >
         {Icons.map((item: any) => (
           <ListboxItem
+            textValue={item.tooltip}
             // className="bg-red-200"
             key={item.tooltip}
             // startContent={
