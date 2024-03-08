@@ -29,11 +29,11 @@ const Main = () => {
   const [table, setTable] = useState<Boolean>(false);
   const [preView, setpreView] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [opacity, setopacity] = useState(0.5);
+  const [opacity, setopacity] = useState(100);
   return (
     <div className="h-full">
       <div className="">
-        <Topbar setpreView={setpreView} />
+        <Topbar setpreView={setpreView} state={state} />
       </div>
       <div className="flex bg-slate-400">
         <div className="flex flex-col">
@@ -58,6 +58,8 @@ const Main = () => {
                 toggle={toggle}
                 setToggle={setToggle}
                 opacity={opacity}
+                preView={preView}
+                setpreView={setpreView}
               />
             )}
           </div>
@@ -129,7 +131,7 @@ const Main = () => {
       </div>
 
       <div className="flex justify-center items-center bg-slate-300 text-black">
-        <div>@footer</div>
+        <div>@2024Copyrights</div>
       </div>
     </div>
   );
