@@ -33,7 +33,7 @@ const Main = () => {
   return (
     <div className="h-full">
       <div className="">
-        <Topbar setpreView={setpreView} />
+        <Topbar setpreView={setpreView} state={state} />
       </div>
       <div className="flex bg-slate-400">
         <div className="flex flex-col">

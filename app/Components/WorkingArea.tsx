@@ -20,8 +20,10 @@ const WorkingArea = ({
       } `}
     >
       {preView && (
-        <div className="flex justify-end items-end bg-black">
-          <Button onClick={() => setpreView(false)}>X</Button>
+        <div className="flex justify-end items-end bg-black z-40">
+          <Button onClick={() => setpreView(false)} size="sm">
+            <IoCloseSharp />
+          </Button>
         </div>
       )}
       <div

@@ -45,7 +45,7 @@ import { RiFeedbackLine } from "react-icons/ri";
 import { LiaYoutubeSquare } from "react-icons/lia";
 import { CgRedo } from "react-icons/cg";
 
-export default function Topbar({ setpreView }: any) {
+export default function Topbar({ setpreView, state }: any) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [open, setopen] = useState(false);
   const [veropen, versetopen] = useState(false);
@@ -275,6 +275,9 @@ export default function Topbar({ setpreView }: any) {
             <Button
               className=" bg-white "
               onClick={() => setpreView((pre: any) => !pre)}
+              isDisabled={
+                state == "firestore" || state == "storyboard" ? true : false
+              }
             >
               <MdPreview className="w-8 h-8 text-orange-600 " />
             </Button>
