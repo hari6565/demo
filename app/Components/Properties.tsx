@@ -109,7 +109,6 @@ export default function App({ setopacity }: any) {
               key=""
               title={<AiFillDatabase className="w-5" />}
             ></Tab>
-
             <Tab key="music" title={<AiFillCaretRight className="w-10" />}>
               <Card>
                 <CardBody>
@@ -267,12 +266,13 @@ export default function App({ setopacity }: any) {
               <Slider
                 size="sm"
                 label="Opacity"
-                step={0.25}
-                maxValue={1}
-                minValue={0.25}
-                defaultValue={0.5}
-                className="max-w-md"
-                onChange={(e: any) => setopacity(e)}
+                step={25}
+                maxValue={100}
+                minValue={0}
+                defaultValue={50}
+                onChange={(e: any) =>
+                  setopacity((pre: any) => (pre == e ? pre : e))
+                }
               />
               <Input type="text" placeholder="1" />
             </AccordionItem>
