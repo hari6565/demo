@@ -1,51 +1,67 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface NextUIState {
-  sideState:string,
-  toggle:boolean,
-  viewTable:boolean,
-  table:boolean,
-  preView:boolean,
-  opacity:number,
+  sideState: string;
+  isExpand: boolean;
+  isViewTable: boolean;
+  isTableOpen: boolean;
+  isPreView: boolean;
+  opacity: number;
+  workspaceSize: number;
+  tableType: string;
 }
 
 const initialState: NextUIState = {
-  sideState:"",
-  toggle:false,
-  viewTable:false,
-  table:false,
-  preView:false,
-  opacity:100,
+  sideState: "Elements",
+  isExpand: true,
+  isViewTable: false,
+  isTableOpen: false,
+  isPreView: true,
+  opacity: 100,
+  workspaceSize: 100,
+  tableType: "normal",
 };
 
 const NextUISlice = createSlice({
   name: "Counter",
   initialState,
   reducers: {
-    setState:(state,action: PayloadAction<string>)=>{
-      state.sideState=action.payload
-    }
-
-
-    increment: (state) => {
-      state.value += 1;
+    setState: (state, action: PayloadAction<string>) => {
+      state.sideState = action.payload;
     },
-    decrement: (state) => {
-      state.value -= 1;
+    setExpand: (state) => {
+      state.isExpand = !state.isExpand;
     },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+    setViewTable: (state, action: PayloadAction<boolean>) => {
+      state.isViewTable = action.payload;
     },
-    getName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
+    setTableOpen: (state) => {
+      state.isTableOpen = !state.isTableOpen;
     },
-    getServer: (state, action: PayloadAction<[]>) => {
-      state.serverData = action.payload;
+    setPreView: (state) => {
+      state.isPreView = !state.isPreView;
+    },
+    setOpacity: (state, action: PayloadAction<number>) => {
+      state.opacity = action.payload;
+    },
+    setWorkspaceSize: (state, action: PayloadAction<number>) => {
+      state.workspaceSize = action.payload;
+    },
+    setTableType: (state, action: PayloadAction<string>) => {
+      state.tableType = action.payload;
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount, getName, getServer } =
-  NextUISlice.actions;
+export const {
+  setState,
+  setExpand,
+  setViewTable,
+  setTableOpen,
+  setPreView,
+  setOpacity,
+  setWorkspaceSize,
+  setTableType,
+} = NextUISlice.actions;
 
 export default NextUISlice.reducer;

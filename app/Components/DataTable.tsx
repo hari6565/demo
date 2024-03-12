@@ -15,6 +15,16 @@ import {
 import { CiEdit } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
 
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setState,
+  setExpand,
+  setViewTable,
+  setTableOpen,
+  setPreView,
+  setOpacity,
+} from "../StateManage/NextUISlice";
+
 const columns = [
   { name: "NAME", uid: "name" },
   { name: "ROLE", uid: "role" },
@@ -81,7 +91,9 @@ const statusColorMap: any = {
   vacation: "warning",
 };
 
-export default function DataTable({ table }: any) {
+export default function DataTable() {
+  const tableType = useSelector((state: any) => state.counter.tableType);
+
   const renderCell = React.useCallback((user: any, columnKey: any) => {
     const cellValue = user[columnKey];
 
@@ -143,7 +155,7 @@ export default function DataTable({ table }: any) {
 
   return (
     <div className="flex justify-center items-center h-[80vh] w-[70vw] pl-8">
-      {table ? (
+      {tableType == "normal" ? (
         <Table aria-label="Example table with custom cells">
           <TableHeader columns={columns}>
             {(column) => (

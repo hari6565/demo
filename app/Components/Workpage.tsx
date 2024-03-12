@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import ReactFlow from "reactflow";
+
+import "reactflow/dist/style.css";
 import { RiExpandLeftFill } from "react-icons/ri";
 import { RiExpandRightFill } from "react-icons/ri";
 import { FaMinus } from "react-icons/fa";
@@ -8,9 +11,6 @@ import { MdOutlinePermDataSetting } from "react-icons/md";
 import { MdOutlineTextFields } from "react-icons/md";
 import {
   Button,
-  Card,
-  CardBody,
-  Kbd,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -18,162 +18,153 @@ import {
   Switch,
   Input,
 } from "@nextui-org/react";
-import Image from "next/image";
-import picture from "../assets/keyboard.png";
 import WorkingArea from "./WorkingArea";
+import { useDispatch, useSelector } from "react-redux";
+import { setExpand, setWorkspaceSize } from "../StateManage/NextUISlice";
 
-const Workpage = ({ toggle, setToggle, opacity, preView, setpreView }: any) => {
-  const [disSize, setDisSize] = useState(80);
+const Workpage = () => {
+  const isPreView = useSelector((state: any) => state.counter.isPreView);
+  const isExpand = useSelector((state: any) => state.counter.isExpand);
+
+  const workspaceSize = useSelector(
+    (state: any) => state.counter.workspaceSize
+  );
+  const disPatch = useDispatch();
+
   const [keyboard, setKeyboard] = useState(false);
 
   return (
-    <div className={`h-[80vh] ${toggle ? "w-[50vw]" : "w-[72vw]"}`}>
-      <div className="flex justify-between w-[99%] h-[15%] pl-2 pt-2">
-        <div className="flex gap-2">
-          <Button
-            size="sm"
-            variant="bordered"
-            className="hover:bg-orange-300"
-            onClick={() => setToggle((pre: any) => !pre)}
-          >
-            {toggle ? (
-              <RiExpandLeftFill size={20} />
-            ) : (
-              <RiExpandRightFill size={20} />
-            )}
-          </Button>
-          <Button
-            size="sm"
-            variant="bordered"
-            className="hover:bg-orange-300"
-            onClick={() => setDisSize((pre) => (pre <= 50 ? 50 : pre - 10))}
-          >
-            <FaMinus size={20} />
-          </Button>
-          <Button size="sm" variant="bordered">
-            {disSize == 80
-              ? "100%"
-              : disSize == 70
-              ? "75%"
-              : disSize == 60
-              ? "50%"
-              : "25%"}
-          </Button>
-          <Button
-            size="sm"
-            variant="bordered"
-            className="hover:bg-orange-300"
-            onClick={() => setDisSize((pre) => (pre >= 80 ? 80 : pre + 10))}
-          >
-            <FaPlus size={20} />
-          </Button>
-        </div>
-        <div className="flex gap-2">
-          <Button
-            onClick={() => setKeyboard((pre) => !pre)}
-            size="sm"
-            variant="bordered"
-            className="hover:bg-orange-300"
-          >
-            <FaRegKeyboard size={20} />
-          </Button>
-          <Popover>
-            <PopoverTrigger>
-              <Button
-                size="sm"
-                variant="bordered"
-                className="hover:bg-orange-300"
-              >
-                <MdOutlinePermDataSetting size={20} />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <div className="  ">
-                <div className="flex justify-between ">
-                  <h1>Safe Area</h1>
-                  <Switch defaultSelected aria-label="Automatic updates" />
-                </div>
-                <div className="flex justify-between my-2">
-                  <h1>Resize Snapping</h1>
-                  <Switch defaultSelected aria-label="Automatic updates" />
-                </div>
-                <div className="flex justify-between gap-2">
-                  <Input
-                    className="w-24"
-                    type="email"
-                    label="Width px%"
-                    labelPlacement="outside"
-                  />
-                  <Input
-                    className="w-24"
-                    type="email"
-                    label="Height px%"
-                    labelPlacement="outside"
-                  />
-                </div>
-              </div>
-            </PopoverContent>
-          </Popover>
-          <Popover placement="bottom-end">
-            <PopoverTrigger>
-              <Button
-                size="sm"
-                variant="bordered"
-                className="hover:bg-orange-300"
-              >
-                <MdOutlineTextFields size={20} />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <div>
-                <Slider
+    <div className={`relative h-[80vh] ${isExpand ? "w-[50vw]" : "w-[72vw]"}`}>
+      {isPreView && (
+        <div className="flex justify-between z-40 w-[99%] h-[15%] pl-2 pt-2">
+          <div className="flex gap-2 z-40">
+            <Button
+              size="sm"
+              variant="bordered"
+              className="hover:bg-orange-300"
+              onClick={() => disPatch(setExpand())}
+            >
+              {isExpand ? (
+                <RiExpandLeftFill size={20} />
+              ) : (
+                <RiExpandRightFill size={20} />
+              )}
+            </Button>
+            <Button
+              size="sm"
+              variant="bordered"
+              className="hover:bg-orange-300"
+              onClick={() =>
+                disPatch(
+                  setWorkspaceSize(
+                    workspaceSize <= 50 ? 50 : workspaceSize - 10
+                  )
+                )
+              }
+            >
+              <FaMinus size={20} />
+            </Button>
+            <Button size="sm" variant="bordered">
+              {workspaceSize}
+            </Button>
+            <Button
+              size="sm"
+              variant="bordered"
+              className="hover:bg-orange-300"
+              onClick={() =>
+                disPatch(
+                  setWorkspaceSize(
+                    workspaceSize >= 100 ? 100 : workspaceSize + 10
+                  )
+                )
+              }
+            >
+              <FaPlus size={20} />
+            </Button>
+          </div>
+          <div className="flex gap-2 z-40">
+            <Button
+              onClick={() => setKeyboard((pre) => !pre)}
+              size="sm"
+              variant="bordered"
+              className="hover:bg-orange-300"
+            >
+              <FaRegKeyboard size={20} />
+            </Button>
+            <Popover>
+              <PopoverTrigger>
+                <Button
                   size="sm"
-                  step={0.1}
-                  color="foreground"
-                  label="Text Scale"
-                  showSteps={true}
-                  maxValue={1}
-                  minValue={0}
-                  defaultValue={0.2}
-                  className=" w-48"
-                />
-                <div className="flex justify-between">
-                  <h1>Smaller</h1>
-                  <h1>Default</h1>
-                  <h1>Larger</h1>
+                  variant="bordered"
+                  className="hover:bg-orange-300"
+                >
+                  <MdOutlinePermDataSetting size={20} />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <div className="  ">
+                  <div className="flex justify-between ">
+                    <h1>Safe Area</h1>
+                    <Switch defaultSelected aria-label="Automatic updates" />
+                  </div>
+                  <div className="flex justify-between my-2">
+                    <h1>Resize Snapping</h1>
+                    <Switch defaultSelected aria-label="Automatic updates" />
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <Input
+                      className="w-24"
+                      type="email"
+                      label="Width px%"
+                      labelPlacement="outside"
+                    />
+                    <Input
+                      className="w-24"
+                      type="email"
+                      label="Height px%"
+                      labelPlacement="outside"
+                    />
+                  </div>
                 </div>
-              </div>
-            </PopoverContent>
-          </Popover>
+              </PopoverContent>
+            </Popover>
+            <Popover placement="bottom-end">
+              <PopoverTrigger>
+                <Button
+                  size="sm"
+                  variant="bordered"
+                  className="hover:bg-orange-300"
+                >
+                  <MdOutlineTextFields size={20} />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <div>
+                  <Slider
+                    size="sm"
+                    step={0.1}
+                    color="foreground"
+                    label="Text Scale"
+                    showSteps={true}
+                    maxValue={1}
+                    minValue={0}
+                    defaultValue={0.2}
+                    className=" w-48"
+                  />
+                  <div className="flex justify-between">
+                    <h1>Smaller</h1>
+                    <h1>Default</h1>
+                    <h1>Larger</h1>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
         </div>
+      )}
+      <div className="absolute top-0 left-0 w-full h-full z-0">
+        <WorkingArea keyboard={keyboard} setKeyboard={setKeyboard} />
       </div>
-      {/* <div className="flex justify-center items-center w-full h-full">
-        <div
-          className={`flex justify-center items-end bg-white border-2 border-slate-600 opacity-${opacity} ${
-            disSize == 80
-              ? "w-[80%] h-[90%]"
-              : disSize == 70
-              ? "w-[70%] h-[80%]"
-              : disSize == 60
-              ? "w-[60%] h-[70%]"
-              : "w-[50%] h-[60%]"
-          }`}
-        >
-          {keyboard && (
-            <div className="flex items-end">
-              <Image className="  " src={picture} alt=""></Image>
-            </div>
-          )}
-        </div>
-      </div> */}
-      <WorkingArea
-        opacity={opacity}
-        disSize={disSize}
-        keyboard={keyboard}
-        preView={preView}
-        setpreView={setpreView}
-        setKeyboard={setKeyboard}
-      />
     </div>
   );
 };

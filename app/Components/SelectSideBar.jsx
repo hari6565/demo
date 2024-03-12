@@ -36,6 +36,16 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { MdExpand } from "react-icons/md";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { CiCircleAlert } from "react-icons/ci";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setState,
+  setExpand,
+  setViewTable,
+  setTableOpen,
+  setPreView,
+  setOpacity,
+  setTableType,
+} from "../StateManage/NextUISlice";
 
 const Elements = [
   {
@@ -110,11 +120,12 @@ const Elements = [
     ],
   },
 ];
-export default function SelectSideBar({ state, setTable }) {
+export default function SelectSideBar({ sideState }) {
+  const disPatch = useDispatch();
   return (
     <div className="w-[300px] h-full bg-slate-200">
       {(() => {
-        switch (state) {
+        switch (sideState) {
           case "Elements":
             return (
               <div>
@@ -302,13 +313,13 @@ export default function SelectSideBar({ state, setTable }) {
                 <div className="flex flex-col gap-2 p-5">
                   <Button
                     className="w-full flex justify-start"
-                    onClick={() => setTable(false)}
+                    onClick={() => disPatch(setTableType("normal"))}
                   >
                     Normal
                   </Button>
                   <Button
                     className="w-full flex justify-start"
-                    onClick={() => setTable(true)}
+                    onClick={() => disPatch(setTableType("advanced"))}
                   >
                     Advanced
                   </Button>
@@ -318,7 +329,7 @@ export default function SelectSideBar({ state, setTable }) {
           default:
             return (
               <div className="flex justify-center items-center h-full w-full">
-                ...on Process {state}
+                ...on Process {sideState}
               </div>
             );
         }
