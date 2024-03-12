@@ -32,9 +32,14 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react";
-import { ScrollShadow, Slider } from "@nextui-org/react";
+import { Slider } from "@nextui-org/react";
 
-export default function App({ setopacity }: any) {
+import { useDispatch } from "react-redux";
+import { setOpacity } from "../StateManage/NextUISlice";
+
+export default function Properties() {
+  const disPatch = useDispatch();
+
   const defaultContent = <input type="text" placeholder="HomePage" />;
   const [isTextBoxVisible, setIsTextBoxVisible] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -43,8 +48,6 @@ export default function App({ setopacity }: any) {
     // Toggle the visibility of the textbox
     setIsTextBoxVisible(!isTextBoxVisible);
   };
-
-  const defaultContents = "opacity";
 
   return (
     <div className=" border-[2px]">
@@ -84,11 +87,37 @@ export default function App({ setopacity }: any) {
                 <AiTwotoneSwitcher className="" />
               </Button>
             </Tooltip>
-            <Tooltip content="Delete this page">
-              <Button isIconOnly>
-                <RiDeleteBinLine className="" />
-              </Button>
-            </Tooltip>
+            <>
+              <Tooltip content="Delete this page">
+                <Button isIconOnly onPress={onOpen}>
+                  <RiDeleteBinLine className="" />
+                </Button>
+              </Tooltip>
+              <Modal
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                placement="top-center"
+              >
+                <ModalContent>
+                  {(onClose) => (
+                    <>
+                      <ModalHeader className="flex flex-col gap-1">
+                        Delete HO
+                      </ModalHeader>
+                      <ModalBody></ModalBody>
+                      <ModalFooter>
+                        <Button color="danger" variant="flat" onPress={onClose}>
+                          YES
+                        </Button>
+                        <Button color="primary" onPress={onClose}>
+                          NO
+                        </Button>
+                      </ModalFooter>
+                    </>
+                  )}
+                </ModalContent>
+              </Modal>
+            </>
           </div>
         </div>
         <div>
@@ -104,11 +133,104 @@ export default function App({ setopacity }: any) {
 
         <div className="flex w-full flex-col">
           <Tabs aria-label="Options">
-            <Tab
-              className=""
-              key=""
-              title={<AiFillDatabase className="w-5" />}
-            ></Tab>
+            <Tab className="" key="" title={<AiFillDatabase className="w-5" />}>
+              <Card>
+                <CardBody>
+                  <div className="border-none rounded-none my-4">
+                    <Accordion variant="splitted">
+                      <AccordionItem
+                        key="1"
+                        aria-label="Visibility"
+                        subtitle=""
+                        title="Visibility"
+                      >
+                        <Slider
+                          size="sm"
+                          label="Opacity"
+                          step={25}
+                          maxValue={100}
+                          minValue={0}
+                          defaultValue={50}
+                          onChange={(e: any) => {
+                            disPatch(setOpacity(e as number));
+                          }}
+                        />
+                        <Input type="text" placeholder="" min={1} max={100} />
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                  <div className="border-none rounded-none my-4">
+                    <Accordion variant="splitted">
+                      <AccordionItem
+                        key="1"
+                        aria-label="Page(Scaffold)Properties"
+                        subtitle=""
+                        title="Page(Scaff)Properties"
+                      >
+                        <h2>Background color</h2>
+                        <Input type="text" placeholder="Primarybackground" />
+                        <div className="flex justify-between">
+                          <h3 className="text-gray-500 text-sm my-3">
+                            Safearea
+                          </h3>
+                          <Switch
+                            defaultSelected
+                            aria-label="Automatic updates"
+                            className="ml-2"
+                          />
+                        </div>
+
+                        <div className="flex justify-between">
+                          <h4 className=" text-gray-500 text-sm my-3">
+                            High Keyboard on tap
+                          </h4>
+                          <Switch
+                            className=" ml-2"
+                            defaultSelected
+                            aria-label="Automatic updates"
+                          />
+                        </div>
+
+                        <div className="flex justify-between">
+                          <h5 className=" text-gray-500 text-sm my-3">
+                            Disable Android back button
+                          </h5>
+                          <Switch defaultSelected color="default"></Switch>
+                        </div>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+
+                  <div>
+                    <Accordion className="text-gray-500" variant="splitted">
+                      <AccordionItem
+                        key="1"
+                        aria-label="NavBar Item Properties"
+                        subtitle=""
+                        title="NavBar Item Properties"
+                      >
+                        <div className="flex justify-between ">
+                          <h6>Show on NavBar</h6>
+                          <Switch
+                            className="ml-2 my-3"
+                            defaultSelected
+                            color="default"
+                          ></Switch>
+                        </div>
+                        <div className="flex justify-between">
+                          <p>Always show Navbar on page</p>
+                          <Switch
+                            className="ml-2"
+                            defaultSelected
+                            color="default"
+                          ></Switch>
+                        </div>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </CardBody>
+              </Card>
+            </Tab>
             <Tab key="music" title={<AiFillCaretRight className="w-10" />}>
               <Card>
                 <CardBody>
@@ -255,7 +377,7 @@ export default function App({ setopacity }: any) {
           </Tabs>
         </div>
 
-        <div className="border-none rounded-none my-4">
+        {/* <div className="border-none rounded-none my-4">
           <Accordion variant="splitted">
             <AccordionItem
               key="1"
@@ -274,11 +396,12 @@ export default function App({ setopacity }: any) {
                   setopacity((pre: any) => (pre == e ? pre : e))
                 }
               />
-              <Input type="text" placeholder="1" />
+               <Input type="text" placeholder="" min={1} max={100} />
+              
             </AccordionItem>
           </Accordion>
-        </div>
-        <div className="border-none rounded-none my-4">
+        </div> */}
+        {/* <div className="border-none rounded-none my-4">
           <Accordion variant="splitted">
             <AccordionItem
               key="1"
@@ -316,8 +439,8 @@ export default function App({ setopacity }: any) {
               </div>
             </AccordionItem>
           </Accordion>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <Accordion className="text-gray-500" variant="splitted">
             <AccordionItem
               key="1"
@@ -343,7 +466,7 @@ export default function App({ setopacity }: any) {
               </div>
             </AccordionItem>
           </Accordion>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -45,7 +45,12 @@ import { RiFeedbackLine } from "react-icons/ri";
 import { LiaYoutubeSquare } from "react-icons/lia";
 import { CgRedo } from "react-icons/cg";
 
-export default function Topbar({ setpreView, state }: any) {
+import { useDispatch } from "react-redux";
+import { setPreView } from "../StateManage/NextUISlice";
+
+export default function Topbar({ sideState }: any) {
+  const disPatch = useDispatch();
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [open, setopen] = useState(false);
   const [veropen, versetopen] = useState(false);
@@ -142,7 +147,7 @@ export default function Topbar({ setpreView, state }: any) {
             content={"Command Palette"}
             color="secondary"
           >
-            <Link href="#">
+            <Link>
               <IoSearchSharp className="w-6 h-6  text-black" />
             </Link>
           </Tooltip>
@@ -156,11 +161,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"It's been 28 days since you last saved a new version."}
               color="secondary"
             >
-              <Link
-                className=" text-black"
-                href="#"
-                onPress={() => versetopen(true)}
-              >
+              <Link className=" text-black" onPress={() => versetopen(true)}>
                 <CgRedo className="w-7 h-7 " />
                 v1
               </Link>
@@ -223,7 +224,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"Comments"}
               color="secondary"
             >
-              <Link href="#">
+              <Link>
                 <FcOk className="w-6 h-6 " />
                 <LiaComments className="w-6 h-6  text-black" />
               </Link>
@@ -237,7 +238,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"Project Issues"}
               color="secondary"
             >
-              <Link href="#">
+              <Link>
                 <FcOk className="w-6 h-6" />
                 <GrBug className="w-5 h-5  text-black" />
               </Link>
@@ -251,7 +252,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"Dveloper Menu"}
               color="secondary"
             >
-              <Link href="#">
+              <Link>
                 <FaCode className="w-6 h-6  text-black" />
               </Link>
             </Tooltip>
@@ -264,7 +265,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"Project Share"}
               color="secondary"
             >
-              <Link href="#">
+              <Link>
                 <RiShareBoxFill className="w-6 h-6  text-black" />
               </Link>
             </Tooltip>
@@ -274,9 +275,11 @@ export default function Topbar({ setpreView, state }: any) {
           <Tooltip placement="bottom" content="Preview App" color="secondary">
             <Button
               className=" bg-white "
-              onClick={() => setpreView((pre: any) => !pre)}
+              onClick={() => disPatch(setPreView())}
               isDisabled={
-                state == "firestore" || state == "storyboard" ? true : false
+                sideState == "firestore" || sideState == "storyboard"
+                  ? true
+                  : false
               }
             >
               <MdPreview className="w-8 h-8 text-orange-600 " />
