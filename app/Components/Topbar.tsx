@@ -142,7 +142,7 @@ export default function Topbar({ setpreView, state }: any) {
             content={"Command Palette"}
             color="secondary"
           >
-            <Link href="#">
+            <Link>
               <IoSearchSharp className="w-6 h-6  text-black" />
             </Link>
           </Tooltip>
@@ -156,11 +156,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"It's been 28 days since you last saved a new version."}
               color="secondary"
             >
-              <Link
-                className=" text-black"
-                href="#"
-                onPress={() => versetopen(true)}
-              >
+              <Link className=" text-black" onPress={() => versetopen(true)}>
                 <CgRedo className="w-7 h-7 " />
                 v1
               </Link>
@@ -223,7 +219,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"Comments"}
               color="secondary"
             >
-              <Link href="#">
+              <Link>
                 <FcOk className="w-6 h-6 " />
                 <LiaComments className="w-6 h-6  text-black" />
               </Link>
@@ -237,7 +233,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"Project Issues"}
               color="secondary"
             >
-              <Link href="#">
+              <Link>
                 <FcOk className="w-6 h-6" />
                 <GrBug className="w-5 h-5  text-black" />
               </Link>
@@ -251,7 +247,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"Dveloper Menu"}
               color="secondary"
             >
-              <Link href="#">
+              <Link>
                 <FaCode className="w-6 h-6  text-black" />
               </Link>
             </Tooltip>
@@ -264,7 +260,7 @@ export default function Topbar({ setpreView, state }: any) {
               content={"Project Share"}
               color="secondary"
             >
-              <Link href="#">
+              <Link>
                 <RiShareBoxFill className="w-6 h-6  text-black" />
               </Link>
             </Tooltip>
