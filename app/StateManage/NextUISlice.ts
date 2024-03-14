@@ -29,7 +29,7 @@ const initialState: NextUIState = {
   stateTrack: false,
   isPropsOpen: false,
   editComponents: [],
-  topBarData: {},
+  topBarData: { Brand: "..Logo", Items: ["home", "contact", "settings"] },
 };
 
 const NextUISlice = createSlice({

@@ -11,20 +11,11 @@ import {
 import Logbutton from "./button";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setTopBarData } from "../../../StateManage/NextUISlice";
 
 const NavigationBar = ({ height }) => {
   const disPatch = useDispatch();
-  const LoGo = "L O G O";
-  const navbarItems = ["Home", "ContactUs", "About us", "Services", "More"];
-
-  useEffect(() => {
-    disPatch(setTopBarData({ Brand: LoGo, Items: navbarItems }));
-  }, []);
-  // console.log(height, "navheight");
+  const [navBarItem, setNavbarItem] = useState({ Brand: "", Items: [] });
   const topBarData = useSelector((state) => state.counter.topBarData);
-  const [navBarItem, setNavbarItem] = useState(topBarData);
-  console.log(navBarItem);
   return (
     <React.Fragment>
       <div
@@ -36,14 +27,17 @@ const NavigationBar = ({ height }) => {
           className="flex justify-center items-center bg-indigo-500 rounded-md shadow-lg shadow-indigo-500/50"
         >
           <NavbarBrand className="text-white font-bold">
-            <span>{navBarItem.Brand}</span>
+            <span>{topBarData.Brand}</span>
           </NavbarBrand>
 
           <NavbarContent className="flex justify-center items-center">
-            {navbarItems.map((item) => (
+            {topBarData.Items.map((item, id) => (
               <NavbarItem className="list-none flex justify-center items-center">
-                <Link className="px-2 py-5 text-white font-semibold" href="#">
-                  {item}
+                <Link
+                  className="px-2 py-5 text-white font-semibold gap-3"
+                  href="#"
+                >
+                  <div>{item}</div>
                 </Link>
               </NavbarItem>
             ))}

@@ -93,38 +93,38 @@ const UIFabric = () => {
                 })}
                 <p>{item.label}</p>
 
-                {/* <div className="text-white w-[70%] ">
-    {clickToEdit === index ? (
-      <Input
-        style={{
-          outline: "none",
-          border: "none",
-          boxShadow: "none",
-        }}
-        className="text-white text-sm "
-        variant={"bordered"}
-        label={index ? " " : "Click to add name"}
-        defaultValue={item.label}
-        size="sm"
-        onChange={(e) => {
-          item.label = e.target.value;
-        }}
-        onKeyDown={(e) => {
-          console.log("event", e.key);
-          if (e.key === "Enter") {
-            e.preventDefault();
-            e.stopPropagation();
+                <div className="text-white w-[70%] ">
+                  {clickToEdit === index ? (
+                    <Input
+                      style={{
+                        outline: "none",
+                        border: "none",
+                        boxShadow: "none",
+                      }}
+                      className="text-white text-sm "
+                      variant={"bordered"}
+                      label={index ? " " : "Click to add name"}
+                      defaultValue={item.label}
+                      size="sm"
+                      onChange={(e) => {
+                        item.label = e.target.value;
+                      }}
+                      onKeyDown={(e) => {
+                        console.log("event", e.key);
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          e.stopPropagation();
 
-            setClickToEdit(null);
-          }
-        }}
-      />
-    ) : (
-      <label onClick={() => setClickToEdit(index)}>
-        {item.label || "click to add name"}
-      </label>
-    )}
-  </div> */}
+                          setClickToEdit(null);
+                        }
+                      }}
+                    />
+                  ) : (
+                    <label onClick={() => setClickToEdit(index)}>
+                      {item.label || "click to add name"}
+                    </label>
+                  )}
+                </div>
               </div>
               <div className="flex justify-center items-center">
                 <CardFooter

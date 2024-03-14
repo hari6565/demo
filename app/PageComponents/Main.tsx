@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import SideNav from "../Components/SideNav";
+import SideNav from "./SideNav";
 import SelectSideBar from "./SelectSideBar";
 import Topbar from "./Topbar";
 import Properties from "./Properties";
-import DataTable from "../Components/DataTable";
-import StoryBoard from "../Components/StoryBoard";
+import DataTable from "./DataTable";
+import StoryBoard from "./StoryBoard";
 import { Avatar } from "@nextui-org/react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import {
@@ -17,7 +17,7 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react";
-import Workpage from "../Components/Workpage";
+import Workpage from "./Workpage";
 import { BiSearchAlt } from "react-icons/bi";
 
 import { useSelector } from "react-redux";
@@ -125,8 +125,8 @@ const Main = () => {
       </div>
 
       {isPreView && (
-        <div className="flex justify-center items-center bg-slate-300 text-black">
-          <div>@2024Copyrights</div>
+        <div className="flex justify-center items-center bg-slate-300 text-black h-6 my-1">
+          <div className="text-sm">@2024Copyrights</div>
         </div>
       )}
     </div>

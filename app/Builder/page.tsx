@@ -1,14 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
 // import { useLocation, useNavigate } from "react-router-dom";
-import JsonUiLayout from "./../Components/components/jsonUiLayout";
+import JsonUiLayout from "../ReactFlowComponents/UFComponents/components/jsonUiLayout";
 // import { Button } from "primereact/button";
 import { TiArrowBackOutline } from "react-icons/ti";
-import { renderUiJson } from "./../Components/components/utils";
+import { renderUiJson } from "../ReactFlowComponents/UFComponents/components/utils";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setPreView, setNode } from "../StateManage/NextUISlice";
 import {
+  setPreView,
+  setNode,
   setExpand,
   setWorkspaceSize,
   setStateTrack,
@@ -31,14 +32,16 @@ const Builder = () => {
   const [width, setWidth] = useState(null);
 
   useEffect(() => {
-    let newjs = Nodes.nodes.map((item: any) => {
-      const { id, type, position, width, height } = item;
-      return { id, type, position, width, height };
-    });
-    setJson(newjs);
+    if (Nodes) {
+      let newjs = Nodes.nodes.map((item: any) => {
+        const { id, type, position, width, height } = item;
+        return { id, type, position, width, height };
+      });
+      setJson(newjs);
 
-    setHeight(Nodes.height);
-    setWidth(Nodes.width);
+      setHeight(Nodes.height);
+      setWidth(Nodes.width);
+    }
   }, []);
   console.log(json, "bbb");
 
