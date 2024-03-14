@@ -11,7 +11,7 @@ import { TbApiApp } from "react-icons/tb";
 import { GrMultimedia } from "react-icons/gr";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LiaElementor } from "react-icons/lia";
-import { Listbox, ListboxItem, cn } from "@nextui-org/react";
+import { Input, Listbox, ListboxItem, cn } from "@nextui-org/react";
 import { Tooltip } from "@nextui-org/react";
 import { Modal, ModalContent, ModalHeader, ModalBody } from "@nextui-org/react";
 import { useDispatch } from "react-redux";
