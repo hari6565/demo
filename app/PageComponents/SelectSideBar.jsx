@@ -127,35 +127,28 @@ export default function SelectSideBar({ sideState }) {
   const disPatch = useDispatch();
 
   const itemClasses = {
-    base: "py-0 w-40",
+    base: "py-0 w-52  ",
     title: "font-light text-small",
-    trigger: "px-2 py-0   h-9 flex items-center",
+    trigger: " py-0   h-9 flex items-center",
     indicator: "text-medium",
     content: "text-small px-2",
   };
 
   return (
-    <div className="w-[200px] h-[580px] bg-slate-200">
+    <div className="w-[250px] h-[580px] bg-slate-200 overflow-x-auto">
       {(() => {
         switch (sideState) {
           case "Elements":
             return (
               <div>
-                <div className="p-2">
-                  <Input
-                    size="sm"
-                    type="text"
-                    placeholder="Search"
-                    labelPlacement="outside"
-                    className="w-[160px] h-7 text-sm"
-                    startContent={<CiSearch />}
-                  />
-                </div>
-                <div className="flex flex-col bg-slate-200 my-3 ">
+                
+                 
+                
+                <div className="flex flex-col bg-slate-200  ">
                   <Accordion
                     size="sm"
                     variant="splitted"
-                    className=" text-xs"
+                    className=" text-xs my-2"
                     itemClasses={itemClasses}
                   >
                     <AccordionItem
@@ -163,6 +156,7 @@ export default function SelectSideBar({ sideState }) {
                       size="sm"
                       aria-label="UI fabric"
                       title="UI fabric"
+                      color="default"
                     >
                       <UIFabric />
                     </AccordionItem>

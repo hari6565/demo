@@ -15,7 +15,7 @@ const data = [
     icons: TbLayoutNavbar,
     name: "navbar",
     type: "NavBar",
-    description: "NavBar",
+    description: "It a horizontal menu positioned at the top of a webpage or application sections or pages.",
   },
 
   {
@@ -23,28 +23,28 @@ const data = [
     label: "Table",
     name: "Table",
     type: "Table",
-    description: "Table",
+    description: "Table is a structured arrangement of data organized in to rows and columns for easy reference and analysis.",
   },
   {
     icons: FaWpforms,
     label: "Form",
     name: "Form",
     type: "Form",
-    description: "Form",
+    description: "A form is a user interface component used to collect and submit data typically containing input fields checkboxes and buttons.",
   },
   {
     icons: PiSidebarDuotone,
     label: "Sidebarnav",
     name: "Sidebarnav",
     type: "Sidebarnav",
-    description: "Sidebarnav",
+    description: "Providing navigation or supplementory content.",
   },
   {
     icons: PiSidebarDuotone,
     label: "Sidebarnav",
     name: "TextUpdaterNode",
     type: "TextUpdaterNode",
-    description: "Sidebarnav",
+    description: "Providing navigation or supplementory content",
   },
 ];
 
@@ -64,7 +64,7 @@ const UIFabric = () => {
     event.dataTransfer.effectAllowed = "move";
   };
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <Input
         style={{
           outline: "none",
@@ -72,17 +72,17 @@ const UIFabric = () => {
           boxShadow: "none",
         }}
         classNames={{
-          base: " mb-3 w-[80%] h-10 bg-gray-800  ",
-          mainWrapper: "h-full bg-gray-800 ",
+          base: " mb-3 w-[100%] h-8   ",
+          mainWrapper: "h-full  ",
           input: "text-small text-gray-200 ",
 
           inputWrapper:
-            "h-full font-normal focus:bg-gray-700 active:bg-gray-700 rounded-2xl text-gray-300 bg-gray-700 hover:bg-gray-600 ",
+            "h-full font-normal focus: active: rounded-lg text-gray-300  hover:bg-gray-600 ",
         }}
         className="text-gray-300    "
-        placeholder="Type to search..."
+        placeholder="search..."
         size="sm"
-        startContent={<FiSearch size={16} color="#ccc" />}
+        startContent={<FiSearch size={16} className="text-gray-500" />}
         isClearable={false}
         type="search"
         onChange={(e) => {
@@ -111,7 +111,7 @@ const UIFabric = () => {
                 draggable
                 isFooterBlurred
                 radius="lg"
-                className=" flex flex-col items-start  gap-2 bg-white border-2 border-gray-600/40 "
+                className=" flex flex-col items-start  gap-2 bg-white border-2 border-gray-600/40 w-40"
               >
                 <div className="flex flex-row justify-center items-center gap-2  ">
                   {React.createElement(item.icons, {
