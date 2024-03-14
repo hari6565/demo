@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "./Components/Main";
+import Main from "./PageComponents/Main";
 //  import Dt from './Components/Dt'
 
 const page = () => {

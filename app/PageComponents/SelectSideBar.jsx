@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { Accordion, AccordionItem, Input, Button } from "@nextui-org/react";
+import React, { useState } from "react";
+import { Accordion, AccordionItem, Input } from "@nextui-org/react";
 import { CiText } from "react-icons/ci";
 import { BsLayoutThreeColumns } from "react-icons/bs";
 import { MdOutlineTableRows } from "react-icons/md";
@@ -37,16 +37,18 @@ import { MdExpand } from "react-icons/md";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { CiCircleAlert } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setState,
-  setExpand,
-  setViewTable,
-  setTableOpen,
-  setPreView,
-  setOpacity,
-  setTableType,
-} from "../StateManage/NextUISlice";
+import { ScrollShadow } from "@nextui-org/react";
+import { setTableType } from "../StateManage/NextUISlice";
+import { VscCode } from "react-icons/vsc";
+import { TbLayoutNavbar } from "react-icons/tb";
+import { TbBoxModel } from "react-icons/tb";
+import { CiViewTable } from "react-icons/ci";
+import { Card, CardFooter, Image, Button } from "@nextui-org/react";
+import { FaPlus } from "react-icons/fa6";
+import { FaWpforms } from "react-icons/fa";
+import { PiSidebarDuotone } from "react-icons/pi";
 
+import UIFabric from "../Components/UIFabric";
 const Elements = [
   {
     id: 1,
@@ -120,10 +122,12 @@ const Elements = [
     ],
   },
 ];
+
 export default function SelectSideBar({ sideState }) {
   const disPatch = useDispatch();
+
   return (
-    <div className="w-[300px] h-full bg-slate-200">
+    <div className="w-[200px] h-full bg-slate-200">
       {(() => {
         switch (sideState) {
           case "Elements":
@@ -134,33 +138,25 @@ export default function SelectSideBar({ sideState }) {
                     type="text"
                     placeholder="Search"
                     labelPlacement="outside"
-                    className="w-[283px]"
+                    className="w-[200px]"
                     startContent={<CiSearch />}
                   />
                 </div>
-                <div className="flex h-[80vh] bg-slate-200 overflow-y-auto ">
-                  <Accordion variant="splitted" className=" bg-slate-200  ">
-                    {Elements.map((item, id) => (
-                      <AccordionItem
-                        key={id}
-                        aria-label="Accordion 1"
-                        title={item.title}
-                        className=" text-sm bg-"
-                      >
-                        <div className="grid grid-cols-3 gap-4 text-black bg-slate-300 p-4 rounded-lg">
-                          {item.arr.map((Icon, id) => {
-                            return (
-                              <div
-                                key={id}
-                                className=" border-2 border-white rounded-md p-2 flex justify-center items-center"
-                              >
-                                {React.createElement(Icon, { size: 30 })}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </AccordionItem>
-                    ))}
+                <div className="flex flex-col h-full bg-slate-200 overflow-y-auto ">
+                  <Accordion
+                    size="sm"
+                    variant="splitted"
+                    className=" bg-slate-600 text-sm"
+                  >
+                    <AccordionItem
+                      key="main"
+                      size="sm"
+                      aria-label="UI fabric"
+                      title="UI fabric"
+                      className=" text-sm"
+                    >
+                      <UIFabric />
+                    </AccordionItem>
                   </Accordion>
                 </div>
               </div>

@@ -71,7 +71,7 @@ const Icons = [
   },
 ];
 
-export default function SideBar() {
+export default function SideNav() {
   const disPatch = useDispatch();
 
   const [isOpen, onOpenChange] = useState(false);
@@ -80,15 +80,7 @@ export default function SideBar() {
     <div className="h-[89vh]">
       <Listbox
         onAction={(e) => {
-          {
-            disPatch(setState(e as string)), disPatch(setViewTable(false));
-          }
-          {
-            e == "settings" ? onOpenChange(true) : null;
-          }
-          {
-            e == "firestore" ? disPatch(setViewTable(true)) : null;
-          }
+          disPatch(setState(e as string));
         }}
         variant="faded"
         aria-label="Listbox menu with icons"

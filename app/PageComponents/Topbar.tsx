@@ -55,7 +55,7 @@ export default function Topbar({ sideState }: any) {
   const [open, setopen] = useState(false);
   const [veropen, versetopen] = useState(false);
   return (
-    <Navbar isBordered className="h-11">
+    <Navbar isBordered className="h-12">
       <NavbarBrand as={Link} href="https://www.gsstvl.com" className=" -ml-44">
         <Image className=" w-8 h-8  transition-all" src={logo} alt=""></Image>
         <p className="font-bold text-inherit text-black">Torus</p>

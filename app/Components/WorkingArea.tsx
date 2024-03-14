@@ -14,7 +14,7 @@ const initialNodes = [
 ];
 const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
 
-const WorkingArea = ({ keyboard, setKeyboard }: any) => {
+const WorkingArea = () => {
   const isPreView = useSelector((state: any) => state.counter.isPreView);
   const opacity = useSelector((state: any) => state.counter.opacity);
   const workspaceSize = useSelector(
@@ -84,20 +84,6 @@ const WorkingArea = ({ keyboard, setKeyboard }: any) => {
         <ReactFlow nodes={initialNodes} edges={initialEdges}>
           <Background variant={"lines"} gap={12} size={1} />
         </ReactFlow>
-        {keyboard && (
-          <div className="bg-black">
-            <div className="flex  items-end justify-end bg-black">
-              <Button
-                isIconOnly
-                variant="light"
-                onClick={() => setKeyboard(false)}
-              >
-                <IoCloseSharp className="text-white" />
-              </Button>
-            </div>
-            <Image className="  " src={picture} alt=""></Image>
-          </div>
-        )}
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import SideBar from "./SideBar";
+import SideNav from "../Components/SideNav";
 import SelectSideBar from "./SelectSideBar";
 import Topbar from "./Topbar";
 import Properties from "./Properties";
-import DataTable from "./DataTable";
-import StoryBoard from "./StoryBoard";
+import DataTable from "../Components/DataTable";
+import StoryBoard from "../Components/StoryBoard";
 import { Avatar } from "@nextui-org/react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import {
@@ -17,7 +17,7 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react";
-import Workpage from "./Workpage";
+import Workpage from "../Components/Workpage";
 import { BiSearchAlt } from "react-icons/bi";
 
 import { useSelector } from "react-redux";
@@ -25,7 +25,7 @@ import { useSelector } from "react-redux";
 const Main = () => {
   const sideState = useSelector((state: any) => state.counter.sideState);
   const isExpand = useSelector((state: any) => state.counter.isExpand);
-  const isViewTable = useSelector((state: any) => state.counter.isViewTable);
+  const isPropsOpen = useSelector((state: any) => state.counter.isPropsOpen);
   const isPreView = useSelector((state: any) => state.counter.isPreView);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
@@ -35,33 +35,34 @@ const Main = () => {
           <Topbar sideState={sideState} />
         </div>
       )}
-      <div className="flex bg-slate-400">
+      <div className="flex h-[88%] w-full">
         {isPreView && (
           <div className="flex flex-col">
-            <SideBar />
+            <SideNav />
           </div>
         )}
-        {isPreView && (
+
+        {isExpand && isPreView && (
           <div>
-            {sideState === "storyboard"
-              ? null
-              : isExpand && <SelectSideBar sideState={sideState} />}
+            <SelectSideBar sideState={sideState} />
           </div>
         )}
-        <div className="flex h-[50vh] w-full">
-          {isViewTable ? (
-            <DataTable />
-          ) : sideState === "storyboard" ? null : (
-            <Workpage />
-          )}
+
+        <div className="flex h-full w-full">
+          <Workpage />
         </div>
-        {isPreView && (
+        {/* {isPreView && (
           <div>
             {isViewTable ? null : sideState === "storyboard" ? (
               <StoryBoard />
             ) : (
               isExpand && <Properties />
             )}
+          </div>
+        )} */}
+        {isPropsOpen && isPreView && (
+          <div className="">
+            <Properties />
           </div>
         )}
       </div>
@@ -122,9 +123,12 @@ const Main = () => {
         </Modal>
         {/* </div>  */}
       </div>
-      <div className="flex justify-center items-center bg-slate-300 text-black">
-        <div>@2024Copyrights</div>
-      </div>
+
+      {isPreView && (
+        <div className="flex justify-center items-center bg-slate-300 text-black">
+          <div>@2024Copyrights</div>
+        </div>
+      )}
     </div>
   );
 };
