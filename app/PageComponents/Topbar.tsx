@@ -45,12 +45,17 @@ import { RiFeedbackLine } from "react-icons/ri";
 import { LiaYoutubeSquare } from "react-icons/lia";
 import { CgRedo } from "react-icons/cg";
 
-export default function Topbar({ setpreView, state }: any) {
+import { useDispatch } from "react-redux";
+import { setPreView } from "../StateManage/NextUISlice";
+
+export default function Topbar({ sideState }: any) {
+  const disPatch = useDispatch();
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [open, setopen] = useState(false);
   const [veropen, versetopen] = useState(false);
   return (
-    <Navbar isBordered className="h-11">
+    <Navbar isBordered className="h-12">
       <NavbarBrand as={Link} href="https://www.gsstvl.com" className=" -ml-44">
         <Image className=" w-8 h-8  transition-all" src={logo} alt=""></Image>
         <p className="font-bold text-inherit text-black">Torus</p>
@@ -270,9 +275,11 @@ export default function Topbar({ setpreView, state }: any) {
           <Tooltip placement="bottom" content="Preview App" color="secondary">
             <Button
               className=" bg-white "
-              onClick={() => setpreView((pre: any) => !pre)}
+              onClick={() => disPatch(setPreView())}
               isDisabled={
-                state == "firestore" || state == "storyboard" ? true : false
+                sideState == "firestore" || sideState == "storyboard"
+                  ? true
+                  : false
               }
             >
               <MdPreview className="w-8 h-8 text-orange-600 " />

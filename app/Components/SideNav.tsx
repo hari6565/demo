@@ -13,15 +13,9 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { LiaElementor } from "react-icons/lia";
 import { Listbox, ListboxItem, cn } from "@nextui-org/react";
 import { Tooltip } from "@nextui-org/react";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody } from "@nextui-org/react";
+import { useDispatch } from "react-redux";
+import { setState, setViewTable } from "../StateManage/NextUISlice";
 
 const Icons = [
   {
@@ -77,34 +71,16 @@ const Icons = [
   },
 ];
 
-export default function SideBar({
-  state,
-  setState,
-  setToggle,
-  setViewtable,
-}: any) {
-  const [isOpen, onOpenChange] = useState(false);
+export default function SideNav() {
+  const disPatch = useDispatch();
 
-  const iconClasses =
-    "text-xl text-default-500 pointer-events-none flex-shrink-0";
+  const [isOpen, onOpenChange] = useState(false);
 
   return (
     <div className="h-[89vh]">
       <Listbox
         onAction={(e) => {
-          {
-            e == state
-              ? setState("")
-              : e == "settings"
-              ? null
-              : (setState(e), setViewtable(false));
-          }
-          {
-            e == "settings" ? onOpenChange(true) : null;
-          }
-          {
-            e == "firestore" ? setViewtable(true) : null;
-          }
+          disPatch(setState(e as string));
         }}
         variant="faded"
         aria-label="Listbox menu with icons"
