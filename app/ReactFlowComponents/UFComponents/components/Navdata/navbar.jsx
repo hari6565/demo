@@ -41,13 +41,14 @@ const NavigationBar = ({ height }) => {
                 </Link>
               </NavbarItem>
             ))}
+            <NavbarItem className="list-none flex justify-center items-center">
+              <div className="profile_tag">
+                <div className="flex justify-center items-center">
+                  <Logbutton />
+                </div>
+              </div>
+            </NavbarItem>
           </NavbarContent>
-
-          <div className="profile_tag">
-            <div className="flex justify-center items-center">
-              <Logbutton />
-            </div>
-          </div>
         </Navbar>
       </div>
       {/* </div> */}

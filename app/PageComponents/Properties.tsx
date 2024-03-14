@@ -8,15 +8,16 @@ import { FaChevronCircleUp } from "react-icons/fa";
 import { FaChevronCircleDown } from "react-icons/fa";
 import { TiDeleteOutline } from "react-icons/ti";
 export default function Properties() {
-  const disPatch = useDispatch();
   const selNodes = useSelector((state: any) => state.counter.editComponents);
   const topBarData = useSelector((state: any) => state.counter.topBarData);
+  const [newElementToggle, setNewElementToggle] = useState(false);
+  const [newItem, setNewItem] = useState("");
+
+  const disPatch = useDispatch();
 
   function handleChange(e: any) {
     disPatch(setTopBarData({ ...topBarData, [e.name]: e.value }));
   }
-
-  const [arrLength, setArrLength] = useState(0);
 
   function changePosition(array, fromIndex, toIndex) {
     if (
@@ -40,6 +41,7 @@ export default function Properties() {
 
     disPatch(setTopBarData({ ...topBarData, Items: newArray }));
   }
+
   function deletePosition(array, delIndex) {
     if (delIndex < 0 || delIndex >= array.length) {
       console.error("Index out of bounds");
@@ -54,6 +56,7 @@ export default function Properties() {
 
     disPatch(setTopBarData({ ...topBarData, Items: newArray }));
   }
+
   function changeName(array, Index, ele) {
     if (Index < 0 || Index >= array.length) {
       console.error("Index out of bounds");
@@ -67,12 +70,22 @@ export default function Properties() {
     disPatch(setTopBarData({ ...topBarData, Items: newArray }));
   }
 
+  function addItems() {
+    const newArray = topBarData.Items.slice();
+
+    newArray.splice(newArray.length, 0, newItem);
+
+    disPatch(setTopBarData({ ...topBarData, Items: newArray }));
+  }
+
   return (
     <div className=" border-[2px]">
       {selNodes[0].type == "NavBar" ? (
-        <div className="flex flex-col bg-gray-200  w-[310px] h-[88vh] overflow-x-auto p-2">
-          <div>Node : {selNodes[0].type}</div>
-          <div className="h-8">
+        <div className="flex flex-col bg-gray-200  w-[310px] h-[88vh] overflow-x-auto p-2 gap-3">
+          <div className="w-full h-9 bg-blue-500 flex justify-center items-center text-slate-200 text-[32px] rounded-lg">
+            {selNodes[0].type}
+          </div>
+          <div className="h-8 my-2">
             <Input
               // rounded
               // bordered
@@ -84,8 +97,7 @@ export default function Properties() {
               value={topBarData.Brand}
             />
           </div>
-          <div className=" flex flex-col gap-2">
-            <div>Items</div>
+          <div className=" flex flex-col gap-2 py-2">
             {topBarData.Items.map((ele: any, id: any) => (
               <div key={id} className="flex">
                 <Input
@@ -118,6 +130,21 @@ export default function Properties() {
                 </div>
               </div>
             ))}
+            {newElementToggle && (
+              <div>
+                <Input
+                  type="email"
+                  placeholder=""
+                  labelPlacement="outside"
+                  className="w-[200px]"
+                  onChange={(e) => setNewItem(e.target.value)}
+                />
+                <Button onClick={() => addItems()}>Save</Button>
+              </div>
+            )}
+            <div>
+              <Button onClick={() => setNewElementToggle(true)}>add</Button>
+            </div>
           </div>
 
           {/* <div>

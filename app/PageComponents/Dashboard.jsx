@@ -274,7 +274,8 @@ export const Dashboard = () => {
       )
     );
     if (!isPropsOpen) disPatch(setPropsOpen());
-    console.log(node);
+    // console.log(node);
+    setMenu(null);
   }
   return (
     <div
@@ -337,7 +338,7 @@ export const Dashboard = () => {
           >
             <div className="flex flex-row ">
               <div
-                className=" absolute right-4 top-5  py-3 px-3 bg-gray-400  hover:bg-gray-600
+                className=" absolute right-[70px] top-1 mt-1 p-1 bg-gray-400  hover:bg-gray-600
                   border-2 border-gray-400 text-white rounded w-15 text-center cursor-pointer z-50"
                 onClick={settoggle}
               >

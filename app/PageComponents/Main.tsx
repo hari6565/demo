@@ -4,8 +4,8 @@ import SideNav from "./SideNav";
 import SelectSideBar from "./SelectSideBar";
 import Topbar from "./Topbar";
 import Properties from "./Properties";
-import DataTable from "./DataTable";
-import StoryBoard from "./StoryBoard";
+// import DataTable from "./DataTable";
+// import StoryBoard from "./StoryBoard";
 import { Avatar } from "@nextui-org/react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import {
