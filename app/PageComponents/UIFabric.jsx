@@ -7,7 +7,8 @@ import { TbBoxModel } from "react-icons/tb";
 import { CiViewTable } from "react-icons/ci";
 import { ScrollShadow } from "@nextui-org/react";
 import { Card, CardFooter, Image, Button } from "@nextui-org/react";
-
+import { Input } from "@nextui-org/react";
+import { FiSearch } from "react-icons/fi";
 const data = [
   {
     label: "navbar",
@@ -63,38 +64,64 @@ const UIFabric = () => {
     event.dataTransfer.effectAllowed = "move";
   };
   return (
-    <ScrollShadow
-      size={20}
-      color="black"
-      // className="w-[220px] h-[380px]"
-    >
-      {data
-        .filter(
-          (item) =>
-            item.label.includes(search) ||
-            item.label.toLowerCase().includes(search)
-        )
-        .map((item, index) => {
-          return (
-            <Card
-              key={index}
-              onDragStart={(event) => {
-                onDragStart(event, item.type, item.name);
-              }}
-              draggable
-              isFooterBlurred
-              radius="lg"
-              className=" flex flex-col items-start  gap-2 bg-white border-2 border-gray-600/40 "
-            >
-              <div className="flex flex-row justify-center items-center gap-2  ">
-                {React.createElement(item.icons, {
-                  size: 30,
-                  color: "gray",
-                })}
-                <p>{item.label}</p>
+    <div>
+      <Input
+        style={{
+          outline: "none",
+          border: "none",
+          boxShadow: "none",
+        }}
+        classNames={{
+          base: " mb-3 w-[80%] h-10 bg-gray-800  ",
+          mainWrapper: "h-full bg-gray-800 ",
+          input: "text-small text-gray-200 ",
 
-                <div className="text-white w-[70%] ">
-                  {clickToEdit === index ? (
+          inputWrapper:
+            "h-full font-normal focus:bg-gray-700 active:bg-gray-700 rounded-2xl text-gray-300 bg-gray-700 hover:bg-gray-600 ",
+        }}
+        className="text-gray-300    "
+        placeholder="Type to search..."
+        size="sm"
+        startContent={<FiSearch size={16} color="#ccc" />}
+        isClearable={false}
+        type="search"
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+      />
+
+      <ScrollShadow
+        size={20}
+        color="black"
+        // className="w-[220px] h-[380px]"
+      >
+        {data
+          .filter(
+            (item) =>
+              item.label.includes(search) ||
+              item.label.toLowerCase().includes(search)
+          )
+          .map((item, index) => {
+            return (
+              <Card
+                key={index}
+                onDragStart={(event) => {
+                  onDragStart(event, item.type, item.name);
+                }}
+                draggable
+                isFooterBlurred
+                radius="lg"
+                className=" flex flex-col items-start  gap-2 bg-white border-2 border-gray-600/40 "
+              >
+                <div className="flex flex-row justify-center items-center gap-2  ">
+                  {React.createElement(item.icons, {
+                    size: 30,
+                    color: "gray",
+                  })}
+                  <p>{item.label}</p>
+
+                  <div className="text-white w-[70%] ">
+                    {/* {clickToEdit === index ? (
                     <Input
                       style={{
                         outline: "none",
@@ -123,23 +150,24 @@ const UIFabric = () => {
                     <label onClick={() => setClickToEdit(index)}>
                       {item.label || "click to add name"}
                     </label>
-                  )}
+                  )} */}
+                  </div>
                 </div>
-              </div>
-              <div className="flex justify-center items-center">
-                <CardFooter
-                  className=" text-gray-700/80 text-sm justify-between before:bg-white/10
+                <div className="flex justify-center items-center">
+                  <CardFooter
+                    className=" text-gray-700/80 text-sm justify-between before:bg-white/10
 border-gray-600/30 border-1 overflow-hidden  
 rounded-lg bottom-1
 shadow-small   "
-                >
-                  <p>{item.description}</p>
-                </CardFooter>
-              </div>
-            </Card>
-          );
-        })}
-    </ScrollShadow>
+                  >
+                    <p>{item.description}</p>
+                  </CardFooter>
+                </div>
+              </Card>
+            );
+          })}
+      </ScrollShadow>
+    </div>
   );
 };
 
