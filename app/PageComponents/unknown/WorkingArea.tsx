@@ -6,7 +6,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import ReactFlow, { Background } from "reactflow";
 import "reactflow/dist/style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setPreView } from "../StateManage/NextUISlice";
+import { setPreView } from "@/app/StateManage/NextUISlice";
 
 const initialNodes = [
   { id: "1", position: { x: 0, y: 0 }, data: { label: "1" } },
