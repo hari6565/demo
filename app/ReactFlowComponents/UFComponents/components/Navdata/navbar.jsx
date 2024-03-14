@@ -11,7 +11,6 @@ import {
 import Logbutton from "./button";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setTopBarData } from "../../../StateManage/NextUISlice";
 
 const NavigationBar = ({ height }) => {
   const disPatch = useDispatch();

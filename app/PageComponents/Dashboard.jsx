@@ -14,7 +14,7 @@ import {
   updateEdge,
   MarkerType,
 } from "reactflow";
-import { ContextMenu } from "./context/ContextMenu";
+import { ContextMenu } from "../ReactFlowComponents/UFComponents/context/ContextMenu";
 
 import {
   NavBar,
@@ -22,7 +22,7 @@ import {
   Form,
   Sidebarnav,
   TextUpdaterNode,
-} from "./CustomNode/CustomNode";
+} from "../ReactFlowComponents/UFComponents/CustomNode/CustomNode";
 // import MenuDetailsComponent from "./layout/ProcessFolwMenuDetails";
 import { useRef } from "react";
 import { useState } from "react";
@@ -33,13 +33,12 @@ import "reactflow/dist/style.css";
 import { VscPreview } from "react-icons/vsc";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   setPreView,
   setNode,
   setPropsOpen,
   setEditComponents,
-} from "../StateManage/NextUISlice";
-import {
   setExpand,
   setWorkspaceSize,
   setStateTrack,

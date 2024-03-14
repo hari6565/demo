@@ -69,60 +69,67 @@ export default function Properties() {
 
   return (
     <div className=" border-[2px]">
-      <div className="flex flex-col bg-gray-200  w-[310px] h-[88vh] overflow-x-auto p-2">
-        <div>Node : {selNodes[0].type}</div>
-        <div className="h-8">
-          <Input
-            rounded
-            bordered
-            label="Brand"
-            placeholder="Primary"
-            color="primary"
-            name="Brand"
-            onChange={(e) => handleChange(e.target)}
-            value={topBarData.Brand}
-          />
-        </div>
-        <div className=" flex flex-col gap-2">
-          <div>Items</div>
-          {topBarData.Items.map((ele: any, id: any) => (
-            <div key={id} className="flex">
-              <Input
-                type="email"
-                placeholder=""
-                labelPlacement="outside"
-                className="w-[200px]"
-                value={ele}
-                onChange={() => {
-                  changeName(topBarData.Items, id, ele);
-                }}
-                // startContent={
-                //   ele + "sdfgsdfgsdfg"
-                //   // <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                // }
-              />
-              <div className="flex justify-between items-center gap-2">
-                <FaChevronCircleUp
-                  size={20}
-                  onClick={() => changePosition(topBarData.Items, id, id - 1)}
+      {selNodes[0].type == "NavBar" ? (
+        <div className="flex flex-col bg-gray-200  w-[310px] h-[88vh] overflow-x-auto p-2">
+          <div>Node : {selNodes[0].type}</div>
+          <div className="h-8">
+            <Input
+              // rounded
+              // bordered
+              label="Brand"
+              placeholder="Primary"
+              color="primary"
+              name="Brand"
+              onChange={(e) => handleChange(e.target)}
+              value={topBarData.Brand}
+            />
+          </div>
+          <div className=" flex flex-col gap-2">
+            <div>Items</div>
+            {topBarData.Items.map((ele: any, id: any) => (
+              <div key={id} className="flex">
+                <Input
+                  type="email"
+                  placeholder=""
+                  labelPlacement="outside"
+                  className="w-[200px]"
+                  value={ele}
+                  onChange={() => {
+                    changeName(topBarData.Items, id, ele);
+                  }}
+                  // startContent={
+                  //   ele + "sdfgsdfgsdfg"
+                  //   // <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                  // }
                 />
-                <FaChevronCircleDown
-                  size={20}
-                  onClick={() => changePosition(topBarData.Items, id, id + 1)}
-                />
-                <TiDeleteOutline
-                  size={20}
-                  onClick={() => deletePosition(topBarData.Items, id)}
-                />
+                <div className="flex justify-between items-center gap-2">
+                  <FaChevronCircleUp
+                    size={20}
+                    onClick={() => changePosition(topBarData.Items, id, id - 1)}
+                  />
+                  <FaChevronCircleDown
+                    size={20}
+                    onClick={() => changePosition(topBarData.Items, id, id + 1)}
+                  />
+                  <TiDeleteOutline
+                    size={20}
+                    onClick={() => deletePosition(topBarData.Items, id)}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* <div>
+          {/* <div>
           <Button onClick={() => handleSubmit()}>Submit</Button>
         </div> */}
-      </div>
+        </div>
+      ) : (
+        <div className="flex flex-col bg-gray-200  w-[310px] h-[88vh] overflow-x-auto p-2">
+          <div>Node : {selNodes[0].type}</div>
+          <div>Process</div>
+        </div>
+      )}
     </div>
   );
 }

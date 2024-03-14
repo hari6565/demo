@@ -48,7 +48,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaWpforms } from "react-icons/fa";
 import { PiSidebarDuotone } from "react-icons/pi";
 
-import UIFabric from "../Components/UIFabric";
+import UIFabric from "./UIFabric";
 const Elements = [
   {
     id: 1,
@@ -125,6 +125,14 @@ const Elements = [
 
 export default function SelectSideBar({ sideState }) {
   const disPatch = useDispatch();
+
+  const itemClasses = {
+    base: "py-0 w-40",
+    title: "font-light text-small",
+    trigger: "px-2 py-0   h-9 flex items-center",
+    indicator: "text-medium",
+    content: "text-small px-2",
+  };
 
   return (
     <div className="w-[200px] h-full bg-slate-200">
