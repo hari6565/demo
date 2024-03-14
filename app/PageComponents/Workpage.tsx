@@ -44,6 +44,7 @@ const Workpage = () => {
         <div className="flex justify-between z-40 w-full h-[15%] pl-2 pt-2">
           <div className="flex gap-2 z-40">
             <Button
+              isIconOnly
               size="sm"
               variant="bordered"
               className="hover:bg-orange-300"

@@ -77,7 +77,7 @@ export default function SideNav() {
   const [isOpen, onOpenChange] = useState(false);
 
   return (
-    <div className="h-[89vh]">
+    <div className="h-[90vh]">
       <Listbox
         onAction={(e) => {
           disPatch(setState(e as string));
