@@ -14,8 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 const NavigationBar = ({ height }) => {
   const disPatch = useDispatch();
-  const [navBarItem, setNavbarItem] = useState({ Brand: "", Items: [] });
-  const topBarData = useSelector((state) => state.counter.topBarData);
+  const topBarData = useSelector((state) => state.UFNodes.topBarData);
+
   return (
     <React.Fragment>
       <div

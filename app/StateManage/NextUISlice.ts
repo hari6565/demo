@@ -9,11 +9,7 @@ interface NextUIState {
   opacity: number;
   workspaceSize: number;
   tableType: string;
-  node: any;
-  stateTrack: boolean;
   isPropsOpen: boolean;
-  editComponents: [];
-  topBarData: {};
 }
 
 const initialState: NextUIState = {
@@ -25,11 +21,7 @@ const initialState: NextUIState = {
   opacity: 100,
   workspaceSize: 100,
   tableType: "normal",
-  node: "",
-  stateTrack: false,
   isPropsOpen: false,
-  editComponents: [],
-  topBarData: { Brand: "..Logo", Items: ["home", "contact", "settings"] },
 };
 
 const NextUISlice = createSlice({
@@ -60,20 +52,8 @@ const NextUISlice = createSlice({
     setTableType: (state, action: PayloadAction<string>) => {
       state.tableType = action.payload;
     },
-    setNode: (state, action: PayloadAction<any>) => {
-      state.node = action.payload;
-    },
-    setStateTrack: (state) => {
-      state.stateTrack = !state.stateTrack;
-    },
     setPropsOpen: (state) => {
       state.isPropsOpen = !state.isPropsOpen;
-    },
-    setEditComponents: (state, action: PayloadAction<[]>) => {
-      state.editComponents = action.payload;
-    },
-    setTopBarData: (state, action: PayloadAction<{}>) => {
-      state.topBarData = action.payload;
     },
   },
 });
@@ -87,11 +67,7 @@ export const {
   setOpacity,
   setWorkspaceSize,
   setTableType,
-  setNode,
-  setStateTrack,
   setPropsOpen,
-  setEditComponents,
-  setTopBarData,
 } = NextUISlice.actions;
 
 export default NextUISlice.reducer;

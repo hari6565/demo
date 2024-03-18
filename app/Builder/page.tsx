@@ -7,14 +7,8 @@ import { TiArrowBackOutline } from "react-icons/ti";
 import { renderUiJson } from "../ReactFlowComponents/UFComponents/components/utils";
 
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setPreView,
-  setNode,
-  setExpand,
-  setWorkspaceSize,
-  setStateTrack,
-} from "../StateManage/NextUISlice";
 import { useRouter } from "next/navigation";
+import { setStateTrack } from "../StateManage/UINodeSlice";
 
 const Builder = () => {
   const disPatch = useDispatch();
@@ -23,7 +17,7 @@ const Builder = () => {
     disPatch(setStateTrack());
   }
 
-  const Nodes = useSelector((state: any) => state.counter.node);
+  const Nodes = useSelector((state: any) => state.UFNodes.node);
   console.log(Nodes, "state");
   const navigate = useRouter();
 

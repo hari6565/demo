@@ -33,16 +33,12 @@ import "reactflow/dist/style.css";
 import { VscPreview } from "react-icons/vsc";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-
 import {
-  setPreView,
-  setNode,
-  setPropsOpen,
   setEditComponents,
-  setExpand,
-  setWorkspaceSize,
+  setNode,
   setStateTrack,
-} from "../StateManage/NextUISlice";
+} from "../StateManage/UINodeSlice";
+import { setPreView, setPropsOpen } from "../StateManage/NextUISlice";
 
 export const Dashboard = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
@@ -145,6 +141,7 @@ export const Dashboard = () => {
       };
 
       setNodes((nds) => nds.concat(newNode));
+      // disPatch(setNode(newNode));
     },
     [reactFlowInstance, nodes]
   );
@@ -210,6 +207,7 @@ export const Dashboard = () => {
       return element;
     });
     setNodes(updatedElements);
+    // disPatch(setNode(updatedElements));
   };
 
   useEffect(() => {
@@ -260,7 +258,7 @@ export const Dashboard = () => {
   console.log(nodes, "aaa");
 
   const isPreView = useSelector((state) => state.counter.isPreView);
-  const isPropsOpen = useSelector((state) => state.counter.isPropsOpen);
+  const isPropsOpen = useSelector((state) => state.UFNodes.isPropsOpen);
   const disPatch = useDispatch();
 
   function editNode(id, node) {
