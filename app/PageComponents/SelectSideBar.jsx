@@ -127,7 +127,7 @@ export default function SelectSideBar({ sideState }) {
   const disPatch = useDispatch();
 
   const itemClasses = {
-    base: "py-0 w-52  ",
+    base: "py-0   ",
     title: "font-light text-small",
     trigger: " py-0   h-9 flex items-center",
     indicator: "text-medium",
@@ -135,7 +135,8 @@ export default function SelectSideBar({ sideState }) {
   };
 
   return (
-    <div className="w-[250px] h-[580px] bg-slate-200 overflow-x-auto">
+    <ScrollShadow >
+    <div className="w-[15vw] h-[89vh] bg-slate-600 saturate-200  ">
       {(() => {
         switch (sideState) {
           case "Elements":
@@ -144,7 +145,7 @@ export default function SelectSideBar({ sideState }) {
                 
                  
                 
-                <div className="flex flex-col bg-slate-200  ">
+                <div className="flex flex-col bg-slate-600 hover:translate-y-2 ">
                   <Accordion
                     size="sm"
                     variant="splitted"
@@ -334,5 +335,6 @@ export default function SelectSideBar({ sideState }) {
         }
       })()}
     </div>
+    </ScrollShadow>
   );
 }

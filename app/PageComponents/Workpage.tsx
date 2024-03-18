@@ -9,6 +9,8 @@ import { FaPlus } from "react-icons/fa";
 import { FaRegKeyboard } from "react-icons/fa6";
 import { MdOutlinePermDataSetting } from "react-icons/md";
 import { MdOutlineTextFields } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import {
   Button,
   Popover,
@@ -46,9 +48,9 @@ const Workpage = () => {
               onClick={() => disPatch(setExpand())}
             >
               {isExpand ? (
-                <RiExpandLeftFill size={20} />
+                <MdKeyboardArrowLeft size={23} />
               ) : (
-                <RiExpandRightFill size={20} />
+                <MdKeyboardArrowRight size={23} />
               )}
             </Button>
           </div>
@@ -62,9 +64,9 @@ const Workpage = () => {
                 onClick={() => disPatch(setPropsOpen())}
               >
                 {isExpand ? (
-                  <RiExpandRightFill size={20} />
+                  <MdKeyboardArrowRight size={23} />
                 ) : (
-                  <RiExpandLeftFill size={20} />
+                  <MdKeyboardArrowLeft size={23} />
                 )}
               </Button>
             </div>

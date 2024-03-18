@@ -16,7 +16,7 @@ const data = [
     name: "navbar",
     type: "NavBar",
     description:
-      "It a horizontal menu positioned at the top of a webpage or application sections or pages.",
+      "Typically containing links to different sections or pages.",
   },
 
   {
@@ -25,7 +25,7 @@ const data = [
     name: "Table",
     type: "Table",
     description:
-      "Table is a structured arrangement of data organized in to rows and columns for easy reference and analysis.",
+      "Data organized in to rows and columns for easy reference and analysis.",
   },
   {
     icons: FaWpforms,
@@ -33,7 +33,7 @@ const data = [
     name: "Form",
     type: "Form",
     description:
-      "A form is a user interface component used to collect and submit data typically containing input fields checkboxes and buttons.",
+      "A form is a user interface component used to collect and submit data.",
   },
   {
     icons: PiSidebarDuotone,
@@ -96,7 +96,7 @@ const UIFabric = () => {
       <ScrollShadow
         size={20}
         color="black"
-        // className="w-[220px] h-[380px]"
+         className="flex flex-col gap-2"
       >
         {data
           .filter(
@@ -114,7 +114,7 @@ const UIFabric = () => {
                 draggable
                 isFooterBlurred
                 radius="lg"
-                className=" flex flex-col items-start  gap-2 bg-white border-2 border-gray-600/40 w-40"
+                className=" flex flex-col items-start  gap-2 bg-white border-2 border-gray-600/40 w-32 h-32"
               >
                 <div className="flex flex-row justify-center items-center gap-2  ">
                   {React.createElement(item.icons, {
@@ -161,7 +161,7 @@ const UIFabric = () => {
                     className=" text-gray-700/80 text-sm justify-between before:bg-white/10
 border-gray-600/30 border-1 overflow-hidden  
 rounded-lg bottom-1
-shadow-small   "
+shadow-small  gap-2 "
                   >
                     <p>{item.description}</p>
                   </CardFooter>

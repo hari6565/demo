@@ -91,6 +91,7 @@ export default function SideNav() {
             textValue={item.tooltip}
             // className="bg-red-200"
             key={item.tooltip}
+            className="hover:animate-pulse hover:bg-white hover:scale-125"
             // startContent={
             //   <Tooltip
             //     content={item.tooltip}

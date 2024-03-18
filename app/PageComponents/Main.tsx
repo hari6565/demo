@@ -125,7 +125,7 @@ const Main = () => {
       </div>
 
       {isPreView && (
-        <div className="flex justify-center items-center bg-slate-300 text-black h-6 my-1">
+        <div className="flex justify-center items-center bg-slate-200 text-black h-6 my-1">
           <div className="text-sm">@2024Copyrights</div>
         </div>
       )}
