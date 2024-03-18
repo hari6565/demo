@@ -9,6 +9,7 @@ import { renderUiJson } from "../ReactFlowComponents/UFComponents/components/uti
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { setStateTrack } from "../StateManage/UINodeSlice";
+import { readReddis } from "../utilsFunctions/apiCallUnit";
 
 const Builder = () => {
   const disPatch = useDispatch();
@@ -25,32 +26,32 @@ const Builder = () => {
   const [height, setHeight] = useState(null);
   const [width, setWidth] = useState(null);
 
-  useEffect(() => {
-    if (Nodes) {
-      let newjs = Nodes.nodes.map((item: any) => {
-        const { id, type, position, width, height } = item;
-        return { id, type, position, width, height };
-      });
-      setJson(newjs);
+  async function GetJson() {
+    try {
+      const res = await readReddis("testUI").then((res) => JSON.parse(res));
+      console.log(res);
 
-      setHeight(Nodes.height);
-      setWidth(Nodes.width);
+      if (res) {
+        let newjs = res.nodes.map((item: any) => {
+          const { id, type, position, width, height } = item;
+          return { id, type, position, width, height };
+        });
+        console.log(newjs);
+
+        setJson(newjs);
+
+        setHeight(res.height);
+        setWidth(res.width);
+      }
+    } catch (err) {
+      console.log("error");
     }
+  }
+
+  useEffect(() => {
+    GetJson();
   }, []);
   console.log(json, "bbb");
-
-  // const settoggle = () => {
-  //   stateTrack(true);
-  //   localStorage.setItem("nodes", JSON.stringify(nodes));
-
-  //   navigate("/builder", {
-  //     state: {
-  //       nodes: nodes,
-  //       width: window.innerWidth,
-  //       height: window.innerHeight,
-  //     },
-  //   });
-  // };
 
   const handleClick = () => {
     console.log("clicked");

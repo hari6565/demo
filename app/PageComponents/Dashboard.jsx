@@ -40,6 +40,8 @@ import {
 } from "../StateManage/UINodeSlice";
 import { setPreView, setPropsOpen } from "../StateManage/NextUISlice";
 
+import { readReddis, writeReddis } from "../utilsFunctions/apiCallUnit";
+
 export const Dashboard = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -166,10 +168,26 @@ export const Dashboard = () => {
   );
   const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
 
-  const settoggle = () => {
+  const settoggle = async () => {
     disPatch(setStateTrack());
+
     window.localStorage.setItem("nodes", JSON.stringify(nodes));
     window.localStorage.setItem("edges", JSON.stringify(edges));
+
+    try {
+      const Data = {
+        nodes,
+        edges,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+      console.log(JSON.stringify(Data));
+      const res = await writeReddis("testUI", Data);
+    } catch (err) {
+      alert("error");
+      return;
+    }
+    // return;
 
     disPatch(
       setNode({
@@ -210,14 +228,31 @@ export const Dashboard = () => {
     // disPatch(setNode(updatedElements));
   };
 
-  useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("nodes") || "[]");
-    const items2 = JSON.parse(localStorage.getItem("edges") || "[]");
-    if (items && items2) {
-      setNodes(items);
-      setEdges(items2);
+  async function GetJson() {
+    try {
+      const res = await readReddis("testUI").then((res) => JSON.parse(res));
+      console.log(res);
+      if (res) {
+        setNodes(res.nodes);
+        setEdges(res.edges);
+      }
+    } catch (err) {
+      console.log("error");
     }
-  }, [window.localStorage]);
+  }
+
+  useEffect(() => {
+    GetJson();
+  }, []);
+
+  // useEffect(() => {
+  //   const items = JSON.parse(localStorage.getItem("nodes") || "[]");
+  //   const items2 = JSON.parse(localStorage.getItem("edges") || "[]");
+  //   if (items && items2) {
+  //     setNodes(items);
+  //     setEdges(items2);
+  //   }
+  // }, [window.localStorage]);
 
   const deleteNode = useCallback(
     (id) => {
@@ -263,17 +298,18 @@ export const Dashboard = () => {
 
   function editNode(id, node) {
     disPatch(
-      setEditComponents(
-        nodes.filter((node) => {
-          if (node.id == id) {
-            return node.type;
-          }
-        })
-      )
+      // setEditComponents(
+      //   nodes.filter((node) => {
+      //     if (node.id == id) {
+      //       return node.type;
+      //     }
+      //   })
+      // )
+      setEditComponents(node)
     );
     if (!isPropsOpen) disPatch(setPropsOpen());
-    // console.log(node);
-    setMenu(null);
+    console.log(node);
+    // setMenu(null);
   }
   return (
     <div
