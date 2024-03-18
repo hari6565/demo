@@ -5,6 +5,7 @@ interface UINodeState {
   stateTrack: boolean;
   editComponents: [];
   topBarData: {};
+  AppNVersion: {};
 }
 
 const initialState: UINodeState = {
@@ -12,6 +13,7 @@ const initialState: UINodeState = {
   stateTrack: false,
   editComponents: [],
   topBarData: { Brand: "..Logo", Items: ["home", "contact", "settings"] },
+  AppNVersion: { appName: "", Version: "" },
 };
 
 const UINodeSlice = createSlice({
@@ -31,10 +33,24 @@ const UINodeSlice = createSlice({
     setTopBarData: (state, action: PayloadAction<{}>) => {
       state.topBarData = action.payload;
     },
+    setAppName: (state, action: PayloadAction<{}>) => {
+      state.AppNVersion = { ...state.AppNVersion, appName: action.payload };
+    },
+    setVersionName: (state, action: PayloadAction<{}>) => {
+      state.AppNVersion = { ...state.AppNVersion, Version: action.payload };
+    },
+    setAppAndVersion: (state, action: PayloadAction<{}>) => {
+      state.AppNVersion = { ...state.AppNVersion, ...action.payload };
+    },
   },
 });
 
-export const { setNode, setStateTrack, setEditComponents, setTopBarData } =
-  UINodeSlice.actions;
+export const {
+  setNode,
+  setStateTrack,
+  setEditComponents,
+  setTopBarData,
+  setAppAndVersion,
+} = UINodeSlice.actions;
 
 export default UINodeSlice.reducer;

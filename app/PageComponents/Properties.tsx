@@ -91,11 +91,11 @@ export default function Properties() {
 
   return (
     <div className=" border-[2px] flex flex-col">
-      {selNodes[0].type == "NavBar" ? (
+      {selNodes.type == "NavBar" ? (
         <div className="flex flex-col bg-gray-200  w-[310px] h-[88vh] overflow-x-auto p-2 gap-3">
-          <div>{selNodes[0].id}</div>
+          <div>{selNodes.id}</div>
           <div className="w-full h-9 bg-blue-500 flex justify-center items-center text-slate-200 text-[32px] rounded-lg">
-            {selNodes[0].type}
+            {selNodes.type}
           </div>
           <div className="h-8 my-2">
             <Input
@@ -165,7 +165,7 @@ export default function Properties() {
         </div>
       ) : (
         <div className="flex flex-col bg-gray-200  w-[310px] h-[88vh] overflow-x-auto p-2">
-          <div>Node : {selNodes[0].type}</div>
+          <div>Node : {selNodes.type}</div>
           <div>Process</div>
         </div>
       )}
