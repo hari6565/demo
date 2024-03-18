@@ -15,7 +15,8 @@ const data = [
     icons: TbLayoutNavbar,
     name: "navbar",
     type: "NavBar",
-    description: "It a horizontal menu positioned at the top of a webpage or application sections or pages.",
+    description:
+      "It a horizontal menu positioned at the top of a webpage or application sections or pages.",
   },
 
   {
@@ -23,14 +24,16 @@ const data = [
     label: "Table",
     name: "Table",
     type: "Table",
-    description: "Table is a structured arrangement of data organized in to rows and columns for easy reference and analysis.",
+    description:
+      "Table is a structured arrangement of data organized in to rows and columns for easy reference and analysis.",
   },
   {
     icons: FaWpforms,
     label: "Form",
     name: "Form",
     type: "Form",
-    description: "A form is a user interface component used to collect and submit data typically containing input fields checkboxes and buttons.",
+    description:
+      "A form is a user interface component used to collect and submit data typically containing input fields checkboxes and buttons.",
   },
   {
     icons: PiSidebarDuotone,
@@ -39,13 +42,13 @@ const data = [
     type: "Sidebarnav",
     description: "Providing navigation or supplementory content.",
   },
-  {
-    icons: PiSidebarDuotone,
-    label: "Sidebarnav",
-    name: "TextUpdaterNode",
-    type: "TextUpdaterNode",
-    description: "Providing navigation or supplementory content",
-  },
+  // {
+  //   icons: PiSidebarDuotone,
+  //   label: "Sidebarnav",
+  //   name: "TextUpdaterNode",
+  //   type: "TextUpdaterNode",
+  //   description: "Providing navigation or supplementory content",
+  // },
 ];
 
 const UIFabric = () => {

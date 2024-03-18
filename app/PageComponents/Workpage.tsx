@@ -19,14 +19,9 @@ import {
   Input,
 } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setExpand,
-  setWorkspaceSize,
-  setStateTrack,
-  setPropsOpen,
-} from "../StateManage/NextUISlice";
 
 import { Dashboard } from "./Dashboard";
+import { setExpand, setPropsOpen } from "../StateManage/NextUISlice";
 
 const Workpage = () => {
   const isPreView = useSelector((state: any) => state.counter.isPreView);

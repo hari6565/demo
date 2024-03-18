@@ -1,17 +1,28 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input, Modal } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
-import { setOpacity, setTopBarData } from "../StateManage/NextUISlice";
 import { FaChevronCircleUp } from "react-icons/fa";
 import { FaChevronCircleDown } from "react-icons/fa";
 import { TiDeleteOutline } from "react-icons/ti";
+import { setTopBarData } from "../StateManage/UINodeSlice";
+import { JSONTree } from "react-json-tree";
+import {
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from "@nextui-org/react";
 export default function Properties() {
-  const selNodes = useSelector((state: any) => state.counter.editComponents);
-  const topBarData = useSelector((state: any) => state.counter.topBarData);
+  const selNodes = useSelector((state: any) => state.UFNodes.editComponents);
+  const topBarData = useSelector((state: any) => state.UFNodes.topBarData);
   const [newElementToggle, setNewElementToggle] = useState(false);
   const [newItem, setNewItem] = useState("");
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  console.log(selNodes);
 
   const disPatch = useDispatch();
 
@@ -79,9 +90,10 @@ export default function Properties() {
   }
 
   return (
-    <div className=" border-[2px]">
+    <div className=" border-[2px] flex flex-col">
       {selNodes[0].type == "NavBar" ? (
         <div className="flex flex-col bg-gray-200  w-[310px] h-[88vh] overflow-x-auto p-2 gap-3">
+          <div>{selNodes[0].id}</div>
           <div className="w-full h-9 bg-blue-500 flex justify-center items-center text-slate-200 text-[32px] rounded-lg">
             {selNodes[0].type}
           </div>
@@ -157,6 +169,25 @@ export default function Properties() {
           <div>Process</div>
         </div>
       )}
+      <div>
+        <Button className="" onPress={onOpen} color="secondary">
+          showJson
+        </Button>
+      </div>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                HI Great
+              </ModalHeader>
+              <ModalBody>
+                <JSONTree data={selNodes} />
+              </ModalBody>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
