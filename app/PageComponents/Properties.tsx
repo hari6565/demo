@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { SketchPicker } from 'react-color';
 import { useState } from "react";
 import { Button, Input, Modal } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +22,9 @@ export default function Properties() {
   const [newElementToggle, setNewElementToggle] = useState(false);
   const [newItem, setNewItem] = useState("");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [color, setColor] = useState('#000000'); 
+  const [inputText, setInputText] = useState('');
+  const [showColorPicker, setShowColorPicker] = useState(false);
 
   console.log(selNodes);
 
@@ -88,6 +92,30 @@ export default function Properties() {
 
     disPatch(setTopBarData({ ...topBarData, Items: newArray }));
   }
+  const handleButtonClick = () => {
+    setShowColorPicker(!showColorPicker);
+  };
+  const handleColorPickerChange = (color) => {
+    setColor(color.hex);
+    setInputText(color.hex); 
+  };
+  const handleCloseColorPicker = () => {
+    setShowColorPicker(false);
+  };
+  const handleTextChange = (event) => {
+    setInputText(event.target.value);
+  };
+  const textStyle = {
+    backgroundColor: color,
+    color: 'white', // Or any other color for text contrast
+    padding: '5px 10px',
+    borderRadius: '4px',
+    border: 'none',
+    marginBottom: '10px'
+  };
+  const handleOkButtonClick = () => {
+    setShowColorPicker(false); 
+  };
 
   return (
     <div className=" border-[2px] flex flex-col">
@@ -158,6 +186,19 @@ export default function Properties() {
               <Button onClick={() => setNewElementToggle(true)}>add</Button>
             </div>
           </div>
+          <div>
+      <button onClick={handleButtonClick}>ChangeColor</button>
+      {showColorPicker && (
+        <div>
+          <SketchPicker color={color} onChange={handleColorPickerChange} onClose={handleCloseColorPicker} />
+          
+        </div>
+      )}
+      <p>{color}</p>
+      <input type="text" value={inputText} onChange={handleTextChange} style={textStyle} />
+     
+    </div>
+    <button className="mr-28" onClick={handleOkButtonClick}>OK</button>
 
           {/* <div>
           <Button onClick={() => handleSubmit()}>Submit</Button>
