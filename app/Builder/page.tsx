@@ -32,7 +32,7 @@ const Builder = () => {
       console.log(res);
 
       if (res) {
-        let newjs = res.nodes.map((item: any) => {
+        let newjs = res.text1.v1.nodes.map((item: any) => {
           const { id, type, position, width, height } = item;
           return { id, type, position, width, height };
         });
@@ -40,8 +40,8 @@ const Builder = () => {
 
         setJson(newjs);
 
-        setHeight(res.height);
-        setWidth(res.width);
+        setHeight(res.text1.v1.height);
+        setWidth(res.text1.v1.width);
       }
     } catch (err) {
       console.log("error");
