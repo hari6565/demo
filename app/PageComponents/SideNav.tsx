@@ -11,17 +11,11 @@ import { TbApiApp } from "react-icons/tb";
 import { GrMultimedia } from "react-icons/gr";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LiaElementor } from "react-icons/lia";
-import { Listbox, ListboxItem, cn } from "@nextui-org/react";
+import { Input, Listbox, ListboxItem, cn } from "@nextui-org/react";
 import { Tooltip } from "@nextui-org/react";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody } from "@nextui-org/react";
+import { useDispatch } from "react-redux";
+import { setState, setViewTable } from "../StateManage/NextUISlice";
 
 const Icons = [
   {
@@ -77,34 +71,16 @@ const Icons = [
   },
 ];
 
-export default function SideBar({
-  state,
-  setState,
-  setToggle,
-  setViewtable,
-}: any) {
+export default function SideNav() {
+  const disPatch = useDispatch();
+
   const [isOpen, onOpenChange] = useState(false);
 
-  const iconClasses =
-    "text-xl text-default-500 pointer-events-none flex-shrink-0";
-
   return (
-    <div className="h-[89vh]">
+    <div className="h-[90vh]">
       <Listbox
         onAction={(e) => {
-          {
-            e == state
-              ? setState("")
-              : e == "settings"
-              ? null
-              : (setState(e), setViewtable(false));
-          }
-          {
-            e == "settings" ? onOpenChange(true) : null;
-          }
-          {
-            e == "firestore" ? setViewtable(true) : null;
-          }
+          disPatch(setState(e as string));
         }}
         variant="faded"
         aria-label="Listbox menu with icons"
@@ -115,6 +91,7 @@ export default function SideBar({
             textValue={item.tooltip}
             // className="bg-red-200"
             key={item.tooltip}
+            className="hover:animate-pulse hover:bg-white hover:scale-125"
             // startContent={
             //   <Tooltip
             //     content={item.tooltip}

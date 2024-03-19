@@ -1,14 +1,12 @@
 "use client";
-import React, { useState } from "react";
-import SideBar from "./SideBar";
+import React from "react";
+import SideNav from "./SideNav";
 import SelectSideBar from "./SelectSideBar";
 import Topbar from "./Topbar";
-import { GiHamburgerMenu } from "react-icons/gi";
 import Properties from "./Properties";
-import DataTable from "./DataTable";
-import StoryBoard from "./StoryBoard";
-import { FaSearchPlus } from "react-icons/fa";
-import { Avatar, AvatarGroup } from "@nextui-org/react";
+// import DataTable from "./DataTable";
+// import StoryBoard from "./StoryBoard";
+import { Avatar } from "@nextui-org/react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import {
   Modal,
@@ -22,57 +20,53 @@ import {
 import Workpage from "./Workpage";
 import { BiSearchAlt } from "react-icons/bi";
 
+import { useSelector } from "react-redux";
+
 const Main = () => {
-  const [state, setState] = useState("tree");
-  const [toggle, setToggle] = useState(true);
-  const [viewTable, setViewtable] = useState(false);
-  const [table, setTable] = useState<Boolean>(false);
-  const [preView, setpreView] = useState(false);
+  const sideState = useSelector((state: any) => state.counter.sideState);
+  const isExpand = useSelector((state: any) => state.counter.isExpand);
+  const isPropsOpen = useSelector((state: any) => state.counter.isPropsOpen);
+  const isPreView = useSelector((state: any) => state.counter.isPreView);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [opacity, setopacity] = useState(100);
   return (
-    <div className="h-full">
-      <div className="">
-        <Topbar setpreView={setpreView} state={state} />
-      </div>
-      <div className="flex bg-slate-400">
-        <div className="flex flex-col">
-          <SideBar
-            state={state}
-            setState={setState}
-            setToggle={setToggle}
-            setViewtable={setViewtable}
-          />
+    <div className="h-[100vh] w-[100vw]">
+      {isPreView && (
+        <div className="">
+          <Topbar sideState={sideState} />
         </div>
-        <div>
-          {state === "storyboard"
-            ? null
-            : toggle && <SelectSideBar state={state} setTable={setTable} />}
-        </div>
-        <div className="flex h-[50vh] w-full">
+      )}
+      <div className="flex h-[88%] w-full">
+        {isPreView && (
+          <div className="flex flex-col">
+            <SideNav />
+          </div>
+        )}
+
+        {isExpand && isPreView && (
           <div>
-            {viewTable ? (
-              <DataTable table={table} />
-            ) : state === "storyboard" ? null : (
-              <Workpage
-                toggle={toggle}
-                setToggle={setToggle}
-                opacity={opacity}
-                preView={preView}
-                setpreView={setpreView}
-              />
+            <SelectSideBar sideState={sideState} />
+          </div>
+        )}
+
+        <div className="flex h-full w-full">
+          <Workpage />
+        </div>
+        {/* {isPreView && (
+          <div>
+            {isViewTable ? null : sideState === "storyboard" ? (
+              <StoryBoard />
+            ) : (
+              isExpand && <Properties />
             )}
           </div>
-        </div>
-        <div>
-          {viewTable ? null : state === "storyboard" ? (
-            <StoryBoard />
-          ) : (
-            <Properties setopacity={setopacity} />
-          )}
-        </div>
+        )} */}
+        {isPropsOpen && isPreView && (
+          <div className="">
+            <Properties />
+          </div>
+        )}
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-end z-40">
         <Button
           className=" fixed bottom-0 right-0 z-10"
           onPress={onOpen}
@@ -130,9 +124,11 @@ const Main = () => {
         {/* </div>  */}
       </div>
 
-      <div className="flex justify-center items-center bg-slate-300 text-black">
-        <div>@2024Copyrights</div>
-      </div>
+      {isPreView && (
+        <div className="flex justify-center items-center bg-slate-200 text-black h-6 my-1">
+          <div className="text-sm">@2024Copyrights</div>
+        </div>
+      )}
     </div>
   );
 };
