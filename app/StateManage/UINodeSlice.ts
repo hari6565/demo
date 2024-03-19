@@ -13,7 +13,7 @@ const initialState: UINodeState = {
   stateTrack: false,
   editComponents: [],
   topBarData: { Brand: "..Logo", Items: ["home", "contact", "settings"] },
-  AppNVersion: { appName: "", Version: "" },
+  AppNVersion: { appName: "text1", Version: "v1" },
 };
 
 const UINodeSlice = createSlice({
