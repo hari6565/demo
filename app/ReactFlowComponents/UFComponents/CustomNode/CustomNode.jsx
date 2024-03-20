@@ -11,6 +11,7 @@ import NavigationBar from "../components/Navdata/navbar";
 import TableItems from "../components/Tabledata/tableItem";
 import FormComponent from "../components/Form/FormComponent";
 import SideNavbar from "../components/SIdebar/SideNavbar";
+import Ttooltip from "../components/Tooltipdata/Ttooltip";
 
 export const NavBar = memo(({ id, data, isConnectable, selected }) => {
   return (
@@ -406,6 +407,74 @@ export const TextUpdaterNode = memo(({ data, isConnectable }) => {
         id="b"
         isConnectable={isConnectable}
       />
+    </div>
+  );
+});
+
+export const ToolTip = memo(({ id, data, isConnectable, selected }) => {
+  return (
+    <div className="custom-node-img" style={{ height: "100%" }}>
+      <NodeResizer
+        // lineStyle={{ border: "2px solid #ff0071" }}
+        color="#ff0071"
+        isVisible={selected}
+        minWidth={700}
+        minHeight={70}
+      />
+      <Ttooltip id={id} />
+      <Handle
+        type="source"
+        position={Position.Right}
+        isConnectable={isConnectable}
+        className="custom-node-handle"
+        style={{
+          // transform: "translate(0px,-1px) ",
+          position: "absolute",
+          // width: "1px",
+          // height: "40%",
+          borderRadius: "50%",
+          backgroundColor: "green",
+        }}
+      />
+
+      <Handle
+        type="target"
+        position={Position.Left}
+        id="a"
+        className="custom-node-handle"
+        style={{
+          // transform: "translate(0px,-1px) ",
+          position: "absolute",
+          // width: "1px",
+          // height: "40%",
+          borderRadius: "50%",
+          backgroundColor: "red",
+        }}
+        isConnectable={isConnectable}
+      />
+      <div
+        style={{
+          width: "80%",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          color: "black",
+          textAlign: "center",
+        }}
+      >
+        <label
+          title={data.label}
+          style={{
+            // width:"100%",
+            textAlign: "center",
+            fontSize: "8px",
+            color: "black",
+            fontFamily: "monospace",
+          }}
+          htmlFor=""
+        >
+          {data.label}
+        </label>
+      </div>
     </div>
   );
 });

@@ -22,6 +22,7 @@ import {
   Form,
   Sidebarnav,
   TextUpdaterNode,
+  ToolTip,
 } from "../ReactFlowComponents/UFComponents/CustomNode/CustomNode";
 // import MenuDetailsComponent from "./layout/ProcessFolwMenuDetails";
 import { useRef } from "react";
@@ -94,6 +95,7 @@ export const Dashboard = () => {
     Form: Form,
     Sidebarnav: Sidebarnav,
     newNode: TextUpdaterNode,
+    ToolTip: ToolTip,
   };
 
   const onNodeDragStop = (event, node) => console.log("drag stop", node);
@@ -232,42 +234,15 @@ export const Dashboard = () => {
     disPatch(setNode(updatedElements));
   };
 
-  // const deleteNode = useCallback(
-  //   (id) => {
-  //     setNodes((nodes) =>
-  //       nodes.filter((node) => {
-  //         if (node.id !== id) {
-  //           if (node.parentId.includes(id)) {
-  //             return {
-  //               ...node,
-  //               parentId: node.parentId.filter((parentId) => parentId !== id),
-  //             };
-  //           }
-  //           return node;
-  //         }
-  //       })
-  //     );
-  //     setEdges((edges) =>
-  //       edges.filter((edge) => {
-  //         if (edge.source !== id && edge.target !== id) {
-  //           return edge;
-  //         }
-  //       })
-  //     );
-
-  //     localStorage.setItem(
-  //       "nodes",
-  //       JSON.stringify(nodes.filter((node) => node.id !== id))
-  //     );
-
-  //     localStorage.setItem(
-  //       "edges",
-  //       JSON.stringify(edges.filter((edge) => edge.id !== id))
-  //     );
-  //     setMenu(null);
-  //   },
-  //   [nodes, localStorage]
-  // );
+  const deleteNode = (id, node) => {
+    const oldNodes = allNode.slice();
+    const index = allNode.findIndex((ele) => ele.id == id);
+    if (index >= 0) {
+      oldNodes.splice(index, 1);
+      disPatch(setNode(oldNodes));
+    }
+    setMenu(null);
+  };
 
   const isPreView = useSelector((state) => state.counter.isPreView);
   const isPropsOpen = useSelector((state) => state.UFNodes.isPropsOpen);
@@ -330,12 +305,12 @@ export const Dashboard = () => {
             nodes={allNode}
             // edges={edges}
             autoPanOnNodeDrag={false}
-            // deleteNode={deleteNode}
+            deleteNode={deleteNode}
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
             nodeTypes={NODE_TYPE}
-            // deleteKeyCode={["Backspace", "Delete"]}
+            deleteKeyCode={["Backspace", "Delete"]}
             // selectKeyCode={["ctrl"]}
             menu={menu}
             onNodeContextMenu={onNodeContextMenu}
@@ -364,7 +339,7 @@ export const Dashboard = () => {
               <ContextMenu
                 node={allNode}
                 onClick={onPaneClick}
-                // deleteNode={deleteNode}
+                deleteNode={deleteNode}
                 editNode={editNode}
                 {...menu}
                 setMenu={setMenu}
