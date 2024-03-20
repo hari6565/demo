@@ -127,7 +127,7 @@ export default function SelectSideBar({ sideState }) {
   const disPatch = useDispatch();
 
   const itemClasses = {
-    base: "py-0  bg-transparent group-[.is-splitted]:bg-transparent ",
+    base: "py-0 bg-transparent group-[.is-splitted]:bg-transparent ",
     title: "font-light text-small text-white",
     trigger: " py-0   h-9 flex items-center",
     indicator: "text-medium",
@@ -135,206 +135,203 @@ export default function SelectSideBar({ sideState }) {
   };
 
   return (
-    <ScrollShadow >
-    <div className="w-[15vw] h-[89vh] bg-slate-600 saturate-200  ">
-      {(() => {
-        switch (sideState) {
-          case "Elements":
-            return (
-              <div>
-                
-                 
-                
-                <div className="flex flex-col bg-slate-600 hover:translate-y-2 ">
-                  <Accordion
-                    size="sm"
-                    variant="splitted"
-                    className=" text-xs my-2 bg-slate-600"
-                    itemClasses={itemClasses}
-                  >
-                    <AccordionItem
-                      key="main"
+    <ScrollShadow>
+      <div className="w-[15vw] h-[89vh] bg-slate-600 saturate-200  ">
+        {(() => {
+          switch (sideState) {
+            case "Elements":
+              return (
+                <div>
+                  <div className="flex flex-col bg-slate-600 hover:translate-y-2 ">
+                    <Accordion
                       size="sm"
-                      aria-label="UI fabric"
-                      title="UI fabric"
-                      color="default"
+                      variant="splitted"
+                      className=" text-xs my-2 bg-slate-600"
+                      itemClasses={itemClasses}
                     >
-                      <UIFabric />
-                    </AccordionItem>
-                  </Accordion>
+                      <AccordionItem
+                        key="main"
+                        size="sm"
+                        aria-label="UI fabric"
+                        title="UI fabric"
+                        color="default"
+                      >
+                        <UIFabric />
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
                 </div>
-              </div>
-            );
-          // case "tree":
-          //   return (
-          //     <div className="flex flex-col p-2 gap-2">
-          //       <div className="flex justify-between">
-          //         <Button
-          //           isIconOnly
-          //           color="default"
-          //           variant="faded"
-          //           aria-label="Take a photo"
-          //         >
-          //           <LuListTree size={20} />
-          //         </Button>
-          //         <Button
-          //           isIconOnly
-          //           color="default"
-          //           variant="faded"
-          //           aria-label="Take a photo"
-          //           className="w-[120px] flex justify-between p-2"
-          //         >
-          //           <h2>Widget Tree</h2>
-          //           <CiCircleAlert />
-          //         </Button>
-          //         <Button
-          //           isIconOnly
-          //           color="default"
-          //           variant="faded"
-          //           aria-label="Take a photo"
-          //         >
-          //           <IoMdUnlock size={20} />
-          //         </Button>
-          //         <Button
-          //           isIconOnly
-          //           color="default"
-          //           variant="faded"
-          //           aria-label="Take a photo"
-          //         >
-          //           <HiOutlineMenuAlt4 size={20} />
-          //         </Button>
-          //         <Button
-          //           isIconOnly
-          //           color="default"
-          //           variant="faded"
-          //           aria-label="Take a photo"
-          //         >
-          //           <MdExpand size={20} />
-          //         </Button>
-          //       </div>
-          //       <div>
-          //         <Input
-          //           type="text"
-          //           placeholder="Search"
-          //           labelPlacement="outside"
-          //           className="w-[283px]"
-          //           startContent={<CiSearch />}
-          //         />
-          //       </div>
-          //     </div>
-          //   );
-          // case "page selector":
-          //   return (
-          //     <div className="flex flex-col">
-          //       <div className="flex gap-3 justify-between p-4">
-          //         <div className="flex gap-3">
-          //           <Button
-          //             isIconOnly
-          //             color="default"
-          //             variant="faded"
-          //             aria-label="Take a photo"
-          //           >
-          //             <FaRegNewspaper size={20} />
-          //           </Button>
-          //           <Button
-          //             isIconOnly
-          //             color="default"
-          //             variant="faded"
-          //             aria-label="Take a photo"
-          //           >
-          //             <IoDiamondOutline size={20} />
-          //           </Button>
-          //         </div>
-          //         <div className="flex gap-3">
-          //           <Button
-          //             isIconOnly
-          //             color="default"
-          //             variant="faded"
-          //             aria-label="Take a photo"
-          //           >
-          //             <ImDelicious size={20} />
-          //           </Button>
-          //           <Button
-          //             isIconOnly
-          //             color="default"
-          //             variant="faded"
-          //             aria-label="Take a photo"
-          //           >
-          //             <FaFileMedical size={20} />
-          //           </Button>
-          //           <Button
-          //             isIconOnly
-          //             color="default"
-          //             variant="faded"
-          //             aria-label="Take a photo"
-          //           >
-          //             <PiFilesLight size={20} />
-          //           </Button>
-          //         </div>
-          //       </div>
-          //       <div className="p-2">
-          //         <Input
-          //           type="text"
-          //           placeholder="Search"
-          //           labelPlacement="outside"
-          //           className="w-[283px]"
-          //           startContent={<CiSearch />}
-          //         />
-          //       </div>
-          //       <div className="p-2">
-          //         <Button
-          //           // color=""
-          //           variant="faded"
-          //           className="w-full flex justify-between text-black"
-          //         >
-          //           <div className="flex gap-2">
-          //             <GiHamburgerMenu size={20} /> <h2>HomePage</h2>
-          //           </div>
-          //           <div className="flex gap-2">
-          //             <TiTick size={20} /> <CiMenuKebab size={20} />
-          //           </div>
-          //         </Button>
-          //       </div>
-          //     </div>
-          //   );
-          // case "firestore":
-          //   return (
-          //     <div className="flex flex-col gap-4 p-2">
-          //       <div className="flex justify-between bg-slate-300 p-2 rounded-md">
-          //         <div className="flex gap-2">
-          //           <TbFolderCog size={30} />
-          //           <IoSettingsOutline size={30} />
-          //         </div>
-          //         <div className="flex gap-2">
-          //           <Button className="">FireBase</Button>
-          //           <Button>+</Button>
-          //         </div>
-          //       </div>
-          //       <div className="flex flex-col gap-2 p-5">
-          //         <Button
-          //           className="w-full flex justify-start"
-          //           onClick={() => disPatch(setTableType("normal"))}
-          //         >
-          //           Normal
-          //         </Button>
-          //         <Button
-          //           className="w-full flex justify-start"
-          //           onClick={() => disPatch(setTableType("advanced"))}
-          //         >
-          //           Advanced
-          //         </Button>
-          //       </div>
-          //     </div>
-          //   );
-          default:
-            return (
-              <div className="flex justify-center items-center h-full w-full">
-                ...on Process {sideState}
-              </div>
-            );
-        }
-      })()}
-    </div>
+              );
+            // case "tree":
+            //   return (
+            //     <div className="flex flex-col p-2 gap-2">
+            //       <div className="flex justify-between">
+            //         <Button
+            //           isIconOnly
+            //           color="default"
+            //           variant="faded"
+            //           aria-label="Take a photo"
+            //         >
+            //           <LuListTree size={20} />
+            //         </Button>
+            //         <Button
+            //           isIconOnly
+            //           color="default"
+            //           variant="faded"
+            //           aria-label="Take a photo"
+            //           className="w-[120px] flex justify-between p-2"
+            //         >
+            //           <h2>Widget Tree</h2>
+            //           <CiCircleAlert />
+            //         </Button>
+            //         <Button
+            //           isIconOnly
+            //           color="default"
+            //           variant="faded"
+            //           aria-label="Take a photo"
+            //         >
+            //           <IoMdUnlock size={20} />
+            //         </Button>
+            //         <Button
+            //           isIconOnly
+            //           color="default"
+            //           variant="faded"
+            //           aria-label="Take a photo"
+            //         >
+            //           <HiOutlineMenuAlt4 size={20} />
+            //         </Button>
+            //         <Button
+            //           isIconOnly
+            //           color="default"
+            //           variant="faded"
+            //           aria-label="Take a photo"
+            //         >
+            //           <MdExpand size={20} />
+            //         </Button>
+            //       </div>
+            //       <div>
+            //         <Input
+            //           type="text"
+            //           placeholder="Search"
+            //           labelPlacement="outside"
+            //           className="w-[283px]"
+            //           startContent={<CiSearch />}
+            //         />
+            //       </div>
+            //     </div>
+            //   );
+            // case "page selector":
+            //   return (
+            //     <div className="flex flex-col">
+            //       <div className="flex gap-3 justify-between p-4">
+            //         <div className="flex gap-3">
+            //           <Button
+            //             isIconOnly
+            //             color="default"
+            //             variant="faded"
+            //             aria-label="Take a photo"
+            //           >
+            //             <FaRegNewspaper size={20} />
+            //           </Button>
+            //           <Button
+            //             isIconOnly
+            //             color="default"
+            //             variant="faded"
+            //             aria-label="Take a photo"
+            //           >
+            //             <IoDiamondOutline size={20} />
+            //           </Button>
+            //         </div>
+            //         <div className="flex gap-3">
+            //           <Button
+            //             isIconOnly
+            //             color="default"
+            //             variant="faded"
+            //             aria-label="Take a photo"
+            //           >
+            //             <ImDelicious size={20} />
+            //           </Button>
+            //           <Button
+            //             isIconOnly
+            //             color="default"
+            //             variant="faded"
+            //             aria-label="Take a photo"
+            //           >
+            //             <FaFileMedical size={20} />
+            //           </Button>
+            //           <Button
+            //             isIconOnly
+            //             color="default"
+            //             variant="faded"
+            //             aria-label="Take a photo"
+            //           >
+            //             <PiFilesLight size={20} />
+            //           </Button>
+            //         </div>
+            //       </div>
+            //       <div className="p-2">
+            //         <Input
+            //           type="text"
+            //           placeholder="Search"
+            //           labelPlacement="outside"
+            //           className="w-[283px]"
+            //           startContent={<CiSearch />}
+            //         />
+            //       </div>
+            //       <div className="p-2">
+            //         <Button
+            //           // color=""
+            //           variant="faded"
+            //           className="w-full flex justify-between text-black"
+            //         >
+            //           <div className="flex gap-2">
+            //             <GiHamburgerMenu size={20} /> <h2>HomePage</h2>
+            //           </div>
+            //           <div className="flex gap-2">
+            //             <TiTick size={20} /> <CiMenuKebab size={20} />
+            //           </div>
+            //         </Button>
+            //       </div>
+            //     </div>
+            //   );
+            // case "firestore":
+            //   return (
+            //     <div className="flex flex-col gap-4 p-2">
+            //       <div className="flex justify-between bg-slate-300 p-2 rounded-md">
+            //         <div className="flex gap-2">
+            //           <TbFolderCog size={30} />
+            //           <IoSettingsOutline size={30} />
+            //         </div>
+            //         <div className="flex gap-2">
+            //           <Button className="">FireBase</Button>
+            //           <Button>+</Button>
+            //         </div>
+            //       </div>
+            //       <div className="flex flex-col gap-2 p-5">
+            //         <Button
+            //           className="w-full flex justify-start"
+            //           onClick={() => disPatch(setTableType("normal"))}
+            //         >
+            //           Normal
+            //         </Button>
+            //         <Button
+            //           className="w-full flex justify-start"
+            //           onClick={() => disPatch(setTableType("advanced"))}
+            //         >
+            //           Advanced
+            //         </Button>
+            //       </div>
+            //     </div>
+            //   );
+            default:
+              return (
+                <div className="flex justify-center items-center h-full w-full">
+                  ...on Process {sideState}
+                </div>
+              );
+          }
+        })()}
+      </div>
     </ScrollShadow>
   );
 }

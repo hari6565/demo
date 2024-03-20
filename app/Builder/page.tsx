@@ -18,30 +18,24 @@ const Builder = () => {
     disPatch(setStateTrack());
   }
 
-  const Nodes = useSelector((state: any) => state.UFNodes.node);
-  console.log(Nodes, "state");
+  const allNode = useSelector((state: any) => state.UFNodes.allNode);
+  console.log(allNode, "state");
   const navigate = useRouter();
 
   const [json, setJson] = useState([]);
   const [height, setHeight] = useState(null);
   const [width, setWidth] = useState(null);
-
+  const AppNVersion = useSelector((state: any) => state.UFNodes.AppNVersion);
   async function GetJson() {
     try {
       const res = await readReddis("testUI").then((res) => JSON.parse(res));
       console.log(res);
 
       if (res) {
-        let newjs = res.text1.v1.nodes.map((item: any) => {
-          const { id, type, position, width, height } = item;
-          return { id, type, position, width, height };
-        });
-        console.log(newjs);
+        setJson(res?.[AppNVersion.appName]?.[AppNVersion.Version]?.nodes);
 
-        setJson(newjs);
-
-        setHeight(res.text1.v1.height);
-        setWidth(res.text1.v1.width);
+        setHeight(res?.[AppNVersion.appName]?.[AppNVersion.Version]?.height);
+        setWidth(res?.[AppNVersion.appName]?.[AppNVersion.Version]?.width);
       }
     } catch (err) {
       console.log("error");

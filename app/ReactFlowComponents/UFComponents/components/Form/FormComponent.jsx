@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { Checkbox } from "@nextui-org/checkbox";
 
-export default function FormComponent({ height, width, stateTrack }) {
+export default function FormComponent({ height = "", width = "" }) {
   return (
     <div>
       <div

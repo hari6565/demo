@@ -22,7 +22,7 @@ const statusColorMap = {
   vacation: "warning",
 };
 
-export default function TableItems({ height, stateTrack }) {
+export default function TableItems(props) {
   const renderCell = React.useCallback((user, columnKey) => {
     const cellValue = user[columnKey];
 
@@ -84,44 +84,44 @@ export default function TableItems({ height, stateTrack }) {
 
   return (
     <React.Fragment>
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-      }}
-    >
       <div
         style={{
-          // border: !stateTrack && "2px solid green",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           height: "100%",
-          width: "100%",
         }}
       >
-        <Table style={{ height: "100%", width: "100%" }}>
-          <TableHeader columns={columns}>
-            {(column) => (
-              <TableColumn
-                key={column.uid}
-                align={column.uid === "actions" ? "center" : "start"}
-              >
-                {column.name}
-              </TableColumn>
-            )}
-          </TableHeader>
-          <TableBody items={users}>
-            {(item) => (
-              <TableRow key={item.id}>
-                {(columnKey) => (
-                  <TableCell>{renderCell(item, columnKey)}</TableCell>
-                )}
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+        <div
+          style={{
+            // border: !stateTrack && "2px solid green",
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          <Table style={{ height: "100%", width: "100%" }}>
+            <TableHeader columns={columns}>
+              {(column) => (
+                <TableColumn
+                  key={column.uid}
+                  align={column.uid === "actions" ? "center" : "start"}
+                >
+                  {column.name}
+                </TableColumn>
+              )}
+            </TableHeader>
+            <TableBody items={users}>
+              {(item) => (
+                <TableRow key={item.id}>
+                  {(columnKey) => (
+                    <TableCell>{renderCell(item, columnKey)}</TableCell>
+                  )}
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </div>
-    </div>
     </React.Fragment>
   );
 }

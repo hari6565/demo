@@ -22,6 +22,18 @@ import {
   Form,
   Sidebarnav,
   TextUpdaterNode,
+  ToolTip,
+  Accordian,
+  TAutocomplete,
+  Avatar,
+  Badge,
+  Card,
+  Checkbox,
+  CheckboxGroup,
+  Chip,
+  Circularprogress,
+  Code,
+  Divider
 } from "../ReactFlowComponents/UFComponents/CustomNode/CustomNode";
 // import MenuDetailsComponent from "./layout/ProcessFolwMenuDetails";
 import { useRef } from "react";
@@ -36,23 +48,49 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setEditComponents,
   setNode,
+  setNodeNavBar,
   setStateTrack,
 } from "../StateManage/UINodeSlice";
 import { setPreView, setPropsOpen } from "../StateManage/NextUISlice";
 
 import { readReddis, writeReddis } from "../utilsFunctions/apiCallUnit";
 
+import { applyNodeChanges } from "reactflow";
+
 export const Dashboard = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const disPatch = useDispatch();
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [newEdge, setNewEdge] = useState(null);
-
-  const edgeUpdateSuccessful = useRef(true);
-
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [showbuilder, setShowBuilder] = useState(false);
-  const [menu, setMenu] = useState(false);
+  const AppNVersion = useSelector((state) => state.UFNodes.AppNVersion);
+
+  const allNode = useSelector((state) => state.UFNodes.allNode);
+
+  async function GetJson() {
+    try {
+      const res = await readReddis("testUI").then((res) => JSON.parse(res));
+      console.log(res);
+      if (res) {
+        setEdges(res?.[AppNVersion.appName]?.[AppNVersion.Version]?.edges);
+        disPatch(
+          setNode(res?.[AppNVersion.appName]?.[AppNVersion.Version]?.nodes)
+        );
+        console.log(allNode);
+      }
+    } catch (err) {
+      console.log("error");
+      disPatch(setNode([]));
+    }
+  }
+
+  useEffect(() => {
+    GetJson();
+  }, []);
   const reactFlowWrapper = useRef(null);
+  const onNodesChange = (changes) => {
+    disPatch(setNode(applyNodeChanges(changes, allNode)));
+  };
+
+  const [menu, setMenu] = useState(false);
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
@@ -68,44 +106,22 @@ export const Dashboard = () => {
     Form: Form,
     Sidebarnav: Sidebarnav,
     newNode: TextUpdaterNode,
-  };
-
-  const onConnect = useCallback((params) => {
-    if (nodes.length) {
-      setNewEdge(params);
-      setEdges((eds) => {
-        if (eds.source !== params.target && eds.target !== params.source) {
-          return addEdge(
-            {
-              ...params,
-
-              type: nodes,
-              markerEnd: {
-                type: MarkerType.ArrowClosed,
-              },
-            },
-            eds
-          );
-        } else {
-          return addEdge(eds);
-        }
-      });
-    }
-  }, [setEdges, nodes][(setEdges, nodes)]);
-
-  const onEdgeUpdate = useCallback(
-    (oldEdge, newConnection) =>
-      setEdges((els) => updateEdge(oldEdge, newConnection, els)),
-    []
-  );
-
-  const connectionLineStyle = {
-    strokeWidth: 3,
-    stroke: "red",
+    ToolTip: ToolTip,
+    Accordian: Accordian,
+    AutoComplete : TAutocomplete,
+    Avatar : Avatar,
+    Badge : Badge ,
+    Card : Card ,
+    Checkbox : Checkbox ,
+    CheckboxGroup : CheckboxGroup,
+    Chip : Chip ,
+    Circularprogress : Circularprogress ,
+    Code : Code ,
+    Divider : Divider
+    
   };
 
   const onNodeDragStop = (event, node) => console.log("drag stop", node);
-  const onElementClick = (event, element) => console.log("click", element);
 
   const onDrop = useCallback(
     (event) => {
@@ -113,39 +129,66 @@ export const Dashboard = () => {
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData("application/reactflow");
       const name = event.dataTransfer.getData("application/name");
-      const roles = event.dataTransfer.getData("application/roles");
-      const rolesColor = event.dataTransfer.getData("application/roleColor");
+      // const roles = event.dataTransfer.getData("application/roles");
+      // const rolesColor = event.dataTransfer.getData("application/roleColor");
 
       const position = reactFlowInstance.project({
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
       });
-      // let id = nodes.length ? Number(nodes[nodes.length - 1].id) + 1 : 0;
       const nodeDetails = type;
 
-      const newNode = {
-        id: uuidv4(),
-        type: nodeDetails,
-        position,
-        parentId: [],
-        data: {
-          label: "",
-          nodeColor: rolesColor,
-          role: roles,
-          height: "",
-          width: "",
-        },
-        property: {
-          name: "",
-          description: "",
-          nodeType: nodeDetails,
-        },
-      };
+      if (nodeDetails == "NavBar") {
+        const newNode = {
+          id: uuidv4(),
+          type: nodeDetails,
+          position,
+          parentId: [],
+          data: {
+            label: "",
+            // nodeColor: rolesColor,
+            // role: roles,
+            height: "",
+            width: "",
+          },
+          property: {
+            name: "",
+            description: "",
+            nodeType: nodeDetails,
+            NavBarBrand: {
+              Value: "LOGO",
+            },
+            NavBarContent: {
+              Items: ["home", "contacts"],
+            },
+          },
+        };
+        disPatch(setNode(allNode.concat(newNode)));
+      } else {
+        const newNode = {
+          id: uuidv4(),
+          type: nodeDetails,
+          position,
+          parentId: [],
+          data: {
+            label: "",
+            // nodeColor: rolesColor,
+            // role: roles,
+            height: "",
+            width: "",
+          },
+          property: {
+            name: "",
+            description: "",
+            nodeType: nodeDetails,
+          },
+        };
+        disPatch(setNode(allNode.concat(newNode)));
+      }
 
-      setNodes((nds) => nds.concat(newNode));
       // disPatch(setNode(newNode));
     },
-    [reactFlowInstance, nodes]
+    [reactFlowInstance, allNode]
   );
 
   const onNodeContextMenu = useCallback(
@@ -168,47 +211,29 @@ export const Dashboard = () => {
   );
   const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
 
-  const AppNVersion = useSelector((state) => state.UFNodes.AppNVersion);
-
   const settoggle = async () => {
-    disPatch(setStateTrack());
-
-    window.localStorage.setItem("nodes", JSON.stringify(nodes));
-    window.localStorage.setItem("edges", JSON.stringify(edges));
+    // disPatch(setStateTrack());
+    console.log(AppNVersion);
 
     try {
       const Data = {
         [AppNVersion.appName]: {
           [AppNVersion.Version]: {
-            nodes,
+            nodes: allNode,
             edges,
             width: window.innerWidth,
             height: window.innerHeight,
           },
         },
       };
+      console.log(JSON.stringify(Data));
       const res = await writeReddis("testUI", Data);
     } catch (err) {
       alert("error");
       return;
     }
     // return;
-
-    disPatch(
-      setNode({
-        nodes: nodes,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
-    );
-
     navigate.push("/Builder");
-  };
-
-  const [locked, setlocked] = useState(false);
-
-  const onLock = () => {
-    setlocked(true);
   };
 
   const onNodeDrag = (e, node) => {
@@ -223,83 +248,27 @@ export const Dashboard = () => {
       node.position.x = window.innerWidth - node.width;
     }
 
-    const updatedElements = nodes.map((element) => {
+    const updatedElements = allNode.map((element) => {
       if (element.id === node.id) {
         return { ...element, position: node.position };
       }
       return element;
     });
-    setNodes(updatedElements);
-    // disPatch(setNode(updatedElements));
+    disPatch(setNode(updatedElements));
   };
 
-  async function GetJson() {
-    try {
-      const res = await readReddis("testUI").then((res) => JSON.parse(res));
-      console.log(res);
-      if (res) {
-        setNodes(res.text1.v1.nodes);
-        setEdges(res.text1.v1.edges);
-      }
-    } catch (err) {
-      console.log("error");
+  const deleteNode = (id, node) => {
+    const oldNodes = allNode.slice();
+    const index = allNode.findIndex((ele) => ele.id == id);
+    if (index >= 0) {
+      oldNodes.splice(index, 1);
+      disPatch(setNode(oldNodes));
     }
-  }
-
-  useEffect(() => {
-    GetJson();
-  }, []);
-
-  // useEffect(() => {
-  //   const items = JSON.parse(localStorage.getItem("nodes") || "[]");
-  //   const items2 = JSON.parse(localStorage.getItem("edges") || "[]");
-  //   if (items && items2) {
-  //     setNodes(items);
-  //     setEdges(items2);
-  //   }
-  // }, [window.localStorage]);
-
-  const deleteNode = useCallback(
-    (id) => {
-      setNodes((nodes) =>
-        nodes.filter((node) => {
-          if (node.id !== id) {
-            if (node.parentId.includes(id)) {
-              return {
-                ...node,
-                parentId: node.parentId.filter((parentId) => parentId !== id),
-              };
-            }
-            return node;
-          }
-        })
-      );
-      setEdges((edges) =>
-        edges.filter((edge) => {
-          if (edge.source !== id && edge.target !== id) {
-            return edge;
-          }
-        })
-      );
-
-      localStorage.setItem(
-        "nodes",
-        JSON.stringify(nodes.filter((node) => node.id !== id))
-      );
-
-      localStorage.setItem(
-        "edges",
-        JSON.stringify(edges.filter((edge) => edge.id !== id))
-      );
-      setMenu(null);
-    },
-    [nodes, localStorage]
-  );
-  console.log(nodes, "aaa");
+    setMenu(null);
+  };
 
   const isPreView = useSelector((state) => state.counter.isPreView);
   const isPropsOpen = useSelector((state) => state.UFNodes.isPropsOpen);
-  const disPatch = useDispatch();
 
   function editNode(id, node) {
     disPatch(
@@ -314,8 +283,11 @@ export const Dashboard = () => {
     );
     if (!isPropsOpen) disPatch(setPropsOpen());
     console.log(node);
-    // setMenu(null);
+    setMenu(null);
   }
+
+  // console.log(allNode);
+
   return (
     <div
       className={` ${
@@ -345,16 +317,16 @@ export const Dashboard = () => {
               overflowX: "hidden",
             }}
             onNodeDragStop={onNodeDragStop}
-            onConnect={onConnect}
+            // onConnect={onConnect}
             onlyRenderVisibleElements={false}
             panOnDrag={false}
             panOnScroll={true}
             zoomOnScroll={false}
             preventScrolling={false}
             zoomOnPinch={false}
-            ref={reactFlowWrapper}
-            nodes={nodes}
-            edges={edges}
+            // ref={reactFlowWrapper}
+            nodes={allNode}
+            // edges={edges}
             autoPanOnNodeDrag={false}
             deleteNode={deleteNode}
             onInit={setReactFlowInstance}
@@ -362,18 +334,18 @@ export const Dashboard = () => {
             onDragOver={onDragOver}
             nodeTypes={NODE_TYPE}
             deleteKeyCode={["Backspace", "Delete"]}
-            selectKeyCode={["ctrl"]}
+            // selectKeyCode={["ctrl"]}
             menu={menu}
             onNodeContextMenu={onNodeContextMenu}
             onPaneClick={onPaneClick}
-            snapGrid={[15, 15]}
-            snapToGrid={true}
-            nodesDraggable={true}
+            // snapGrid={[15, 15]}
+            // snapToGrid={true}
+            // nodesDraggable={true}
             onNodeDrag={onNodeDrag}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
-            onEdgeUpdate={onEdgeUpdate}
-            connectionLineStyle={connectionLineStyle}
+            // onEdgeUpdate={onEdgeUpdate}
+            // connectionLineStyle={connectionLineStyle}
           >
             <div className="flex flex-row ">
               <div
@@ -388,7 +360,7 @@ export const Dashboard = () => {
 
             {menu && (
               <ContextMenu
-                node={nodes}
+                node={allNode}
                 onClick={onPaneClick}
                 deleteNode={deleteNode}
                 editNode={editNode}
