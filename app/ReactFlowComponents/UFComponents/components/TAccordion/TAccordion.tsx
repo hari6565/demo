@@ -1,14 +1,13 @@
-
 "use client";
 import React from "react";
-import {Accordion, AccordionItem} from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
 
 const Taccordion = ({}) => {
-    const defaultContent =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-  
-    return (
-        <React.Fragment>
+  const defaultContent =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+
+  return (
+    <React.Fragment>
       <Accordion>
         <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
           {defaultContent}
@@ -20,7 +19,7 @@ const Taccordion = ({}) => {
           {defaultContent}
         </AccordionItem>
       </Accordion>
-      </React.Fragment>
-    );
-  }
-  export default Taccordion
+    </React.Fragment>
+  );
+};
+export default Taccordion;

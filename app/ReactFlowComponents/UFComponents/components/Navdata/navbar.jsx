@@ -56,16 +56,16 @@ const NavigationBar = ({ id = null, height, json = [] }) => {
             </NavbarBrand>
 
             <NavbarContent className="flex justify-center items-center">
-              {/* {data.property.NavBarContent.Items.map((item, id) => (
-              <NavbarItem className="list-none flex justify-center items-center">
-                <Link
-                  className="px-2 py-5 text-white font-semibold gap-3"
-                  href="#"
-                >
-                  <div>{item}</div>
-                </Link>
-              </NavbarItem>
-            ))} */}
+              {allNode[data].property.NavBarContent.Items.map((item, id) => (
+                <NavbarItem className="list-none flex justify-center items-center">
+                  <Link
+                    className="px-2 py-5 text-white font-semibold gap-3"
+                    href="#"
+                  >
+                    <div>{item}</div>
+                  </Link>
+                </NavbarItem>
+              ))}
               <NavbarItem className="list-none flex justify-center items-center">
                 <div className="profile_tag">
                   <div className="flex justify-center items-center">
