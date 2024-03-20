@@ -24,6 +24,16 @@ import {
   TextUpdaterNode,
   ToolTip,
   Accordian,
+  TAutocomplete,
+  Avatar,
+  Badge,
+  Card,
+  Checkbox,
+  CheckboxGroup,
+  Chip,
+  Circularprogress,
+  Code,
+  Divider
 } from "../ReactFlowComponents/UFComponents/CustomNode/CustomNode";
 // import MenuDetailsComponent from "./layout/ProcessFolwMenuDetails";
 import { useRef } from "react";
@@ -98,6 +108,17 @@ export const Dashboard = () => {
     newNode: TextUpdaterNode,
     ToolTip: ToolTip,
     Accordian: Accordian,
+    AutoComplete : TAutocomplete,
+    Avatar : Avatar,
+    Badge : Badge ,
+    Card : Card ,
+    Checkbox : Checkbox ,
+    CheckboxGroup : CheckboxGroup,
+    Chip : Chip ,
+    Circularprogress : Circularprogress ,
+    Code : Code ,
+    Divider : Divider
+    
   };
 
   const onNodeDragStop = (event, node) => console.log("drag stop", node);
