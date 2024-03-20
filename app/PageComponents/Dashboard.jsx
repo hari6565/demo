@@ -168,6 +168,8 @@ export const Dashboard = () => {
   );
   const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
 
+  const AppNVersion = useSelector((state) => state.UFNodes.AppNVersion);
+
   const settoggle = async () => {
     disPatch(setStateTrack());
 
@@ -176,12 +178,15 @@ export const Dashboard = () => {
 
     try {
       const Data = {
-        nodes,
-        edges,
-        width: window.innerWidth,
-        height: window.innerHeight,
+        [AppNVersion.appName]: {
+          [AppNVersion.Version]: {
+            nodes,
+            edges,
+            width: window.innerWidth,
+            height: window.innerHeight,
+          },
+        },
       };
-      console.log(JSON.stringify(Data));
       const res = await writeReddis("testUI", Data);
     } catch (err) {
       alert("error");
@@ -233,8 +238,8 @@ export const Dashboard = () => {
       const res = await readReddis("testUI").then((res) => JSON.parse(res));
       console.log(res);
       if (res) {
-        setNodes(res.nodes);
-        setEdges(res.edges);
+        setNodes(res.text1.v1.nodes);
+        setEdges(res.text1.v1.edges);
       }
     } catch (err) {
       console.log("error");

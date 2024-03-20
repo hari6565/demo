@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { SketchPicker } from 'react-color';
+import { SketchPicker } from "react-color";
 import { useState } from "react";
 import { Button, Input, Modal } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,8 +22,7 @@ export default function Properties() {
   const [newElementToggle, setNewElementToggle] = useState(false);
   const [newItem, setNewItem] = useState("");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [color, setColor] = useState('#000000'); 
-  const [inputText, setInputText] = useState('');
+  const [color, setColor] = useState("#db0b0b");
   const [showColorPicker, setShowColorPicker] = useState(false);
 
   console.log(selNodes);
@@ -97,24 +96,19 @@ export default function Properties() {
   };
   const handleColorPickerChange = (color) => {
     setColor(color.hex);
-    setInputText(color.hex); 
-  };
-  const handleCloseColorPicker = () => {
     setShowColorPicker(false);
   };
-  const handleTextChange = (event) => {
-    setInputText(event.target.value);
-  };
+
   const textStyle = {
     backgroundColor: color,
-    color: 'white', // Or any other color for text contrast
-    padding: '5px 10px',
-    borderRadius: '4px',
-    border: 'none',
-    marginBottom: '10px'
+    color: "white", // Or any other color for text contrast
+    padding: "5px 10px",
+    borderRadius: "4px",
+    border: "none",
+    marginBottom: "10px",
   };
   const handleOkButtonClick = () => {
-    setShowColorPicker(false); 
+    setShowColorPicker(false);
   };
 
   return (
@@ -187,18 +181,21 @@ export default function Properties() {
             </div>
           </div>
           <div>
-      <button onClick={handleButtonClick}>ChangeColor</button>
-      {showColorPicker && (
-        <div>
-          <SketchPicker color={color} onChange={handleColorPickerChange} onClose={handleCloseColorPicker} />
-          
-        </div>
-      )}
-      <p>{color}</p>
-      <input type="text" value={inputText} onChange={handleTextChange} style={textStyle} />
-     
-    </div>
-    <button className="mr-28" onClick={handleOkButtonClick}>OK</button>
+            <Button
+              style={{ backgroundColor: color }}
+              onClick={handleButtonClick}
+            >
+              {color}
+            </Button>
+            {showColorPicker && (
+              <div>
+                <SketchPicker
+                  color={color}
+                  onChange={handleColorPickerChange}
+                />
+              </div>
+            )}
+          </div>
 
           {/* <div>
           <Button onClick={() => handleSubmit()}>Submit</Button>
