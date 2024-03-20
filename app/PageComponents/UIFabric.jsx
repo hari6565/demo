@@ -41,6 +41,13 @@ const data = [
     type: "Sidebarnav",
     description: "Providing navigation or supplementory content.",
   },
+  {
+    icons: PiSidebarDuotone,
+    label: "ToolTip",
+    name: "ToolTip",
+    type: "ToolTip",
+    description: "Providing ToolTip or supplementory content.",
+  },
   // {
   //   icons: PiSidebarDuotone,
   //   label: "Sidebarnav",
@@ -119,7 +126,7 @@ const UIFabric = () => {
                 <p>{item.label}</p>
 
                 {/* <div className="text-white w-[70%] "> */}
-                  {/* {clickToEdit === index ? (
+                {/* {clickToEdit === index ? (
                     <Input
                       style={{
                         outline: "none",

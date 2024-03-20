@@ -5,7 +5,7 @@ import { getWidth } from "./utils";
 import FormComponent from "./Form/FormComponent";
 import SideNavbar from "./SIdebar/SideNavbar";
 import CustomBreadcrumbs from "./Breadcrumbs/breadCrumbs";
-
+import Ttoolltip from "./Tooltipdata/Ttooltip";
 const JsonUiLayout = ({ json, width, height, stateTrack }) => {
   const CalculatePercent = (x, y) => {
     return (x / y) * 100 + "%";
@@ -63,6 +63,14 @@ const JsonUiLayout = ({ json, width, height, stateTrack }) => {
             styles={styles}
             events={events}
             functions={functions}
+          />
+        );
+      case "ToolTip":
+        return (
+          <Ttoolltip
+            height={componentData.height}
+            width={componentData.width}
+            stateTrack={stateTrack}
           />
         );
       default:
