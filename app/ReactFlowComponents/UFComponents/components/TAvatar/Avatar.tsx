@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 
 
 
-const avatar = forwardRef((props, ref) => {
+const Tavatar = forwardRef((props, ref) => {
   const {
     src,
     icon = <AvatarIcon />,
@@ -52,4 +52,4 @@ const avatar = forwardRef((props, ref) => {
   })
   
 
-export default avatar;
+export default Tavatar;

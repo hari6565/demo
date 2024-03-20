@@ -1,9 +1,11 @@
+import React from "react";
 import {  Autocomplete,  AutocompleteSection,  AutocompleteItem} from "@nextui-org/react";
 import { animals } from "../data";
 
-const autocomplete = () => {
+const Tautocomplete = () => {
  
     return (
+        <React.Fragment>
       <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
         <Autocomplete 
           label="Select an animal" 
@@ -25,6 +27,8 @@ const autocomplete = () => {
           <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
         </Autocomplete>
       </div>
+      </React.Fragment>
+      
     );
   }
-  export default autocomplete
+  export default Tautocomplete

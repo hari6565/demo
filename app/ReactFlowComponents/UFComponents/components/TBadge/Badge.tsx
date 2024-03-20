@@ -1,6 +1,9 @@
+import React from "react";
 import {Badge,Avatar} from "@nextui-org/react";
-export default function App() {
+const Tbadge= () => {
     return (
+        <React.Fragment>
+        
       <Badge content="5" color="primary">
         <Avatar
           radius="md"
@@ -8,5 +11,7 @@ export default function App() {
           src="https://i.pravatar.cc/300?u=a042581f4e29026709d"
         />
       </Badge>
+      </React.Fragment>
     );
   }
+  export default Tbadge
