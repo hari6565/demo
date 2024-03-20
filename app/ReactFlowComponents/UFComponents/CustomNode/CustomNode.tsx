@@ -14,6 +14,13 @@ import SideNavbar from "../components/SIdebar/SideNavbar";
 import Ttooltip from "../components/Tooltipdata/Ttooltip";
 import TAccordion from "../components/TAccordion/TAccordion";
 import TAvatar from "../components/TAvatar/TAvatar";
+import Tbadge from "../components/TBadge/TBadge";
+import Tcard from "../components/Tcard/Tcard";
+import Tcheckbox from "../components/TCheckbox/TCheckbox";
+import TCheckboxGroup from "../components/TCheckboxGroup/TCheckboxGroup";
+import Tchip from "../components/Tchip/TChip";
+import Tcode from "../components/TCode/TCode";
+import Tdivider from "../components/TDivider/TDivider";
 
 export const NavBar = memo(({ id, data, isConnectable, selected }: any) => {
   return (
@@ -414,74 +421,6 @@ export const TextUpdaterNode = memo(({ data, isConnectable }: any) => {
   );
 });
 
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
-  return (
-    <div className="custom-node-img" style={{ height: "100%" }}>
-      <NodeResizer
-        // lineStyle={{ border: "2px solid #ff0071" }}
-        color="#ff0071"
-        isVisible={selected}
-        minWidth={700}
-        minHeight={70}
-      />
-      <Ttooltip id={id} />
-      <Handle
-        type="source"
-        position={Position.Right}
-        isConnectable={isConnectable}
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "green",
-        }}
-      />
-
-      <Handle
-        type="target"
-        position={Position.Left}
-        id="a"
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "red",
-        }}
-        isConnectable={isConnectable}
-      />
-      <div
-        style={{
-          width: "80%",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          color: "black",
-          textAlign: "center",
-        }}
-      >
-        <label
-          title={data.label}
-          style={{
-            // width:"100%",
-            textAlign: "center",
-            fontSize: "8px",
-            color: "black",
-            fontFamily: "monospace",
-          }}
-          htmlFor=""
-        >
-          {data.label}
-        </label>
-      </div>
-    </div>
-  );
-});
-
 export const Accordian = memo(({ id, data, isConnectable, selected }: any) => {
   return (
     <div className="custom-node-img" style={{ height: "100%" }}>
@@ -686,7 +625,7 @@ export const Avatar = memo(({ id, data, isConnectable, selected }: any) => {
     </div>
   );
 });
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
+export const Badge = memo(({ id, data, isConnectable, selected }: any) => {
   return (
     <div className="custom-node-img" style={{ height: "100%" }}>
       <NodeResizer
@@ -696,7 +635,7 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
         minWidth={700}
         minHeight={70}
       />
-      <Ttooltip id={id} />
+      <Tbadge id={id} />
       <Handle
         type="source"
         position={Position.Right}
@@ -753,7 +692,7 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
     </div>
   );
 });
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
+export const Card = memo(({ id, data, isConnectable, selected }: any) => {
   return (
     <div className="custom-node-img" style={{ height: "100%" }}>
       <NodeResizer
@@ -763,7 +702,7 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
         minWidth={700}
         minHeight={70}
       />
-      <Ttooltip id={id} />
+      <Tcard id={id} />
       <Handle
         type="source"
         position={Position.Right}
@@ -820,7 +759,7 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
     </div>
   );
 });
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
+export const Checkbox = memo(({ id, data, isConnectable, selected }: any) => {
   return (
     <div className="custom-node-img" style={{ height: "100%" }}>
       <NodeResizer
@@ -830,7 +769,7 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
         minWidth={700}
         minHeight={70}
       />
-      <Ttooltip id={id} />
+      <Tcheckbox id={id} />
       <Handle
         type="source"
         position={Position.Right}
@@ -887,7 +826,76 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
     </div>
   );
 });
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
+export const CheckboxGroup = memo(
+  ({ id, data, isConnectable, selected }: any) => {
+    return (
+      <div className="custom-node-img" style={{ height: "100%" }}>
+        <NodeResizer
+          // lineStyle={{ border: "2px solid #ff0071" }}
+          color="#ff0071"
+          isVisible={selected}
+          minWidth={700}
+          minHeight={70}
+        />
+        <TCheckboxGroup id={id} />
+        <Handle
+          type="source"
+          position={Position.Right}
+          isConnectable={isConnectable}
+          className="custom-node-handle"
+          style={{
+            // transform: "translate(0px,-1px) ",
+            position: "absolute",
+            // width: "1px",
+            // height: "40%",
+            borderRadius: "50%",
+            backgroundColor: "green",
+          }}
+        />
+
+        <Handle
+          type="target"
+          position={Position.Left}
+          id="a"
+          className="custom-node-handle"
+          style={{
+            // transform: "translate(0px,-1px) ",
+            position: "absolute",
+            // width: "1px",
+            // height: "40%",
+            borderRadius: "50%",
+            backgroundColor: "red",
+          }}
+          isConnectable={isConnectable}
+        />
+        <div
+          style={{
+            width: "80%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            color: "black",
+            textAlign: "center",
+          }}
+        >
+          <label
+            title={data.label}
+            style={{
+              // width:"100%",
+              textAlign: "center",
+              fontSize: "8px",
+              color: "black",
+              fontFamily: "monospace",
+            }}
+            htmlFor=""
+          >
+            {data.label}
+          </label>
+        </div>
+      </div>
+    );
+  }
+);
+export const Chip = memo(({ id, data, isConnectable, selected }: any) => {
   return (
     <div className="custom-node-img" style={{ height: "100%" }}>
       <NodeResizer
@@ -897,7 +905,7 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
         minWidth={700}
         minHeight={70}
       />
-      <Ttooltip id={id} />
+      <Tchip id={id} />
       <Handle
         type="source"
         position={Position.Right}
@@ -954,7 +962,76 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
     </div>
   );
 });
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
+export const Circularprogress = memo(
+  ({ id, data, isConnectable, selected }: any) => {
+    return (
+      <div className="custom-node-img" style={{ height: "100%" }}>
+        <NodeResizer
+          // lineStyle={{ border: "2px solid #ff0071" }}
+          color="#ff0071"
+          isVisible={selected}
+          minWidth={700}
+          minHeight={70}
+        />
+        <Circularprogress id={id} />
+        <Handle
+          type="source"
+          position={Position.Right}
+          isConnectable={isConnectable}
+          className="custom-node-handle"
+          style={{
+            // transform: "translate(0px,-1px) ",
+            position: "absolute",
+            // width: "1px",
+            // height: "40%",
+            borderRadius: "50%",
+            backgroundColor: "green",
+          }}
+        />
+
+        <Handle
+          type="target"
+          position={Position.Left}
+          id="a"
+          className="custom-node-handle"
+          style={{
+            // transform: "translate(0px,-1px) ",
+            position: "absolute",
+            // width: "1px",
+            // height: "40%",
+            borderRadius: "50%",
+            backgroundColor: "red",
+          }}
+          isConnectable={isConnectable}
+        />
+        <div
+          style={{
+            width: "80%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            color: "black",
+            textAlign: "center",
+          }}
+        >
+          <label
+            title={data.label}
+            style={{
+              // width:"100%",
+              textAlign: "center",
+              fontSize: "8px",
+              color: "black",
+              fontFamily: "monospace",
+            }}
+            htmlFor=""
+          >
+            {data.label}
+          </label>
+        </div>
+      </div>
+    );
+  }
+);
+export const Code = memo(({ id, data, isConnectable, selected }: any) => {
   return (
     <div className="custom-node-img" style={{ height: "100%" }}>
       <NodeResizer
@@ -964,7 +1041,7 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
         minWidth={700}
         minHeight={70}
       />
-      <Ttooltip id={id} />
+      <Tcode id={id} />
       <Handle
         type="source"
         position={Position.Right}
@@ -1021,7 +1098,7 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
     </div>
   );
 });
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
+export const Divider = memo(({ id, data, isConnectable, selected }: any) => {
   return (
     <div className="custom-node-img" style={{ height: "100%" }}>
       <NodeResizer
@@ -1031,275 +1108,7 @@ export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
         minWidth={700}
         minHeight={70}
       />
-      <Ttooltip id={id} />
-      <Handle
-        type="source"
-        position={Position.Right}
-        isConnectable={isConnectable}
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "green",
-        }}
-      />
-
-      <Handle
-        type="target"
-        position={Position.Left}
-        id="a"
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "red",
-        }}
-        isConnectable={isConnectable}
-      />
-      <div
-        style={{
-          width: "80%",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          color: "black",
-          textAlign: "center",
-        }}
-      >
-        <label
-          title={data.label}
-          style={{
-            // width:"100%",
-            textAlign: "center",
-            fontSize: "8px",
-            color: "black",
-            fontFamily: "monospace",
-          }}
-          htmlFor=""
-        >
-          {data.label}
-        </label>
-      </div>
-    </div>
-  );
-});
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
-  return (
-    <div className="custom-node-img" style={{ height: "100%" }}>
-      <NodeResizer
-        // lineStyle={{ border: "2px solid #ff0071" }}
-        color="#ff0071"
-        isVisible={selected}
-        minWidth={700}
-        minHeight={70}
-      />
-      <Ttooltip id={id} />
-      <Handle
-        type="source"
-        position={Position.Right}
-        isConnectable={isConnectable}
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "green",
-        }}
-      />
-
-      <Handle
-        type="target"
-        position={Position.Left}
-        id="a"
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "red",
-        }}
-        isConnectable={isConnectable}
-      />
-      <div
-        style={{
-          width: "80%",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          color: "black",
-          textAlign: "center",
-        }}
-      >
-        <label
-          title={data.label}
-          style={{
-            // width:"100%",
-            textAlign: "center",
-            fontSize: "8px",
-            color: "black",
-            fontFamily: "monospace",
-          }}
-          htmlFor=""
-        >
-          {data.label}
-        </label>
-      </div>
-    </div>
-  );
-});
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
-  return (
-    <div className="custom-node-img" style={{ height: "100%" }}>
-      <NodeResizer
-        // lineStyle={{ border: "2px solid #ff0071" }}
-        color="#ff0071"
-        isVisible={selected}
-        minWidth={700}
-        minHeight={70}
-      />
-      <Ttooltip id={id} />
-      <Handle
-        type="source"
-        position={Position.Right}
-        isConnectable={isConnectable}
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "green",
-        }}
-      />
-
-      <Handle
-        type="target"
-        position={Position.Left}
-        id="a"
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "red",
-        }}
-        isConnectable={isConnectable}
-      />
-      <div
-        style={{
-          width: "80%",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          color: "black",
-          textAlign: "center",
-        }}
-      >
-        <label
-          title={data.label}
-          style={{
-            // width:"100%",
-            textAlign: "center",
-            fontSize: "8px",
-            color: "black",
-            fontFamily: "monospace",
-          }}
-          htmlFor=""
-        >
-          {data.label}
-        </label>
-      </div>
-    </div>
-  );
-});
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
-  return (
-    <div className="custom-node-img" style={{ height: "100%" }}>
-      <NodeResizer
-        // lineStyle={{ border: "2px solid #ff0071" }}
-        color="#ff0071"
-        isVisible={selected}
-        minWidth={700}
-        minHeight={70}
-      />
-      <Ttooltip id={id} />
-      <Handle
-        type="source"
-        position={Position.Right}
-        isConnectable={isConnectable}
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "green",
-        }}
-      />
-
-      <Handle
-        type="target"
-        position={Position.Left}
-        id="a"
-        className="custom-node-handle"
-        style={{
-          // transform: "translate(0px,-1px) ",
-          position: "absolute",
-          // width: "1px",
-          // height: "40%",
-          borderRadius: "50%",
-          backgroundColor: "red",
-        }}
-        isConnectable={isConnectable}
-      />
-      <div
-        style={{
-          width: "80%",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          color: "black",
-          textAlign: "center",
-        }}
-      >
-        <label
-          title={data.label}
-          style={{
-            // width:"100%",
-            textAlign: "center",
-            fontSize: "8px",
-            color: "black",
-            fontFamily: "monospace",
-          }}
-          htmlFor=""
-        >
-          {data.label}
-        </label>
-      </div>
-    </div>
-  );
-});
-export const ToolTip = memo(({ id, data, isConnectable, selected }: any) => {
-  return (
-    <div className="custom-node-img" style={{ height: "100%" }}>
-      <NodeResizer
-        // lineStyle={{ border: "2px solid #ff0071" }}
-        color="#ff0071"
-        isVisible={selected}
-        minWidth={700}
-        minHeight={70}
-      />
-      <Ttooltip id={id} />
+      <Tdivider id={id} />
       <Handle
         type="source"
         position={Position.Right}
