@@ -1,9 +1,8 @@
-
-"use client"
+"use client";
 import React from "react";
-import {CircularProgress} from "@nextui-org/react";
+import { CircularProgress } from "@nextui-org/react";
 
-const TCircularprogress = ()=> {
+const TCircularprogress = (props) => {
   const [value, setValue] = React.useState(0);
 
   React.useEffect(() => {
@@ -23,5 +22,5 @@ const TCircularprogress = ()=> {
       showValueLabel={true}
     />
   );
-}
-export default TCircularprogress 
+};
+export default TCircularprogress;

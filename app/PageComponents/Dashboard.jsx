@@ -108,8 +108,8 @@ export const Dashboard = () => {
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData("application/reactflow");
       const name = event.dataTransfer.getData("application/name");
-      const roles = event.dataTransfer.getData("application/roles");
-      const rolesColor = event.dataTransfer.getData("application/roleColor");
+      // const roles = event.dataTransfer.getData("application/roles");
+      // const rolesColor = event.dataTransfer.getData("application/roleColor");
 
       const position = reactFlowInstance.project({
         x: event.clientX - reactFlowBounds.left,
@@ -125,8 +125,8 @@ export const Dashboard = () => {
           parentId: [],
           data: {
             label: "",
-            nodeColor: rolesColor,
-            role: roles,
+            // nodeColor: rolesColor,
+            // role: roles,
             height: "",
             width: "",
           },
@@ -151,8 +151,8 @@ export const Dashboard = () => {
           parentId: [],
           data: {
             label: "",
-            nodeColor: rolesColor,
-            role: roles,
+            // nodeColor: rolesColor,
+            // role: roles,
             height: "",
             width: "",
           },

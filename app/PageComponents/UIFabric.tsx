@@ -69,14 +69,14 @@ const UIFabric = () => {
   const onDragStart = (
     event,
     nodeType,
-    nodeName = "start",
-    rolesColor,
-    roles
+    nodeName = "start"
+    // rolesColor,
+    // roles
   ) => {
     event.dataTransfer.setData("application/reactflow", nodeType);
     event.dataTransfer.setData("application/name", nodeName);
-    event.dataTransfer.setData("application/roleColor", rolesColor);
-    event.dataTransfer.setData("application/roles", roles);
+    // event.dataTransfer.setData("application/roleColor", rolesColor);
+    // event.dataTransfer.setData("application/roles", roles);
     event.dataTransfer.effectAllowed = "move";
   };
   return (
