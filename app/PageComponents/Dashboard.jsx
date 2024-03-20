@@ -23,6 +23,7 @@ import {
   Sidebarnav,
   TextUpdaterNode,
   ToolTip,
+  Accordian,
 } from "../ReactFlowComponents/UFComponents/CustomNode/CustomNode";
 // import MenuDetailsComponent from "./layout/ProcessFolwMenuDetails";
 import { useRef } from "react";
@@ -96,6 +97,7 @@ export const Dashboard = () => {
     Sidebarnav: Sidebarnav,
     newNode: TextUpdaterNode,
     ToolTip: ToolTip,
+    Accordian: Accordian,
   };
 
   const onNodeDragStop = (event, node) => console.log("drag stop", node);

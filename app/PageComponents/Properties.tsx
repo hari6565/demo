@@ -34,7 +34,6 @@ export default function Properties() {
   );
 
   function handleChange(e: any) {
-    // seteditBrand(e.value);
     disPatch(
       setEditComponents({
         ...selNodes,
@@ -44,9 +43,6 @@ export default function Properties() {
   }
 
   function changePosition(fromIndex, toIndex) {
-    console.log("called");
-    console.log(fromIndex, " - ", toIndex);
-
     if (
       fromIndex < 0 ||
       fromIndex >= selNodes.property.NavBarContent.Items.length ||
@@ -54,69 +50,53 @@ export default function Properties() {
       toIndex >= selNodes.property.NavBarContent.Items.length
     ) {
       console.error("Index out of bounds");
-      return selNodes.property.NavBarContent.Items;
+      return;
     }
+    console.log(fromIndex, " - ", toIndex);
 
-    // Create a copy of the   selNodes.property.NavBarContent.Items
     const newArray = selNodes.property.NavBarContent.Items.slice();
-
-    // Remove the element from the 'fromIndex' position
     const element = newArray.splice(fromIndex, 1)[0];
-
-    // Insert the element at the 'toIndex' position
     newArray.splice(toIndex, 0, element);
     console.log(newArray);
 
-    setEditComponents({
-      ...selNodes,
-      property: { ...selNodes.property, NavBarContent: { Items: newArray } },
-    });
+    disPatch(
+      setEditComponents({
+        ...selNodes,
+        property: { ...selNodes.property, NavBarContent: { Items: newArray } },
+      })
+    );
+
+    console.log(selNodes);
   }
 
-  // function deletePosition(delIndex) {
-  //   if (delIndex < 0 || delIndex >=   selNodes.property.NavBarContent.Items.length) {
-  //     console.error("Index out of bounds");
-  //     return   selNodes.property.NavBarContent.Items;
-  //   }
+  function deletePosition(delIndex) {
+    if (
+      delIndex < 0 ||
+      delIndex >= selNodes.property.NavBarContent.Items.length
+    ) {
+      console.error("Index out of bounds");
+      return selNodes.property.NavBarContent.Items;
+    }
+    const newArray = selNodes.property.NavBarContent.Items.slice();
 
-  //   // Create a copy of the   selNodes.property.NavBarContent.Items
-  //   const newArray =   selNodes.property.NavBarContent.Items.slice();
-
-  //   newArray.splice(delIndex, 1);
-  //   console.log(newArray);
-  //   disPatch(setNode(newProps));
-  //   disPatch(setTopBarData({ ...topBarData, Items: newArray }));
-  // }
+    newArray.splice(delIndex, 1);
+    console.log(newArray);
+    disPatch(
+      setEditComponents({
+        ...selNodes,
+        property: { ...selNodes.property, NavBarContent: { Items: newArray } },
+      })
+    );
+  }
 
   async function postProps() {
     const newProps = allNode.slice();
     const replacingID = newProps.findIndex((ele: any) => ele.id == selNodes.id);
-
     console.log(replacingID);
-
     if (replacingID >= 0) newProps.splice(replacingID, 1, selNodes);
-
-    // console.log(ddddd);
-
     console.log(allNode);
     console.log(newProps);
-
     disPatch(setNode(newProps));
-
-    //     // Sample array of objects
-    // let arrayOfObjects = [
-    //   { name: "John", age: 30 },
-    //   { name: "Alice", age: 25 },
-    //   { name: "Bob", age: 35 }
-    // ];
-
-    // // Define the new object to replace at index 1
-    // let newObject = { name: "Updated Name", age: 26 };
-
-    // // Replace the object at index 1 with the new object
-    // arrayOfObjects.splice(1, 1, newObject);
-
-    // console.log(arrayOfObjects); // Output the modified array of objects
   }
 
   return (
@@ -165,6 +145,7 @@ export default function Properties() {
                   size={20}
                   onClick={() => changePosition(id, id + 1)}
                 />
+                <TiDeleteOutline size={20} onClick={() => deletePosition(id)} />
               </div>
             </div>
           ))}

@@ -48,6 +48,13 @@ const data = [
     type: "ToolTip",
     description: "Providing ToolTip or supplementory content.",
   },
+  {
+    icons: PiSidebarDuotone,
+    label: "Accordian",
+    name: "Accordian",
+    type: "Accordian",
+    description: "Providing ToolTip or supplementory content.",
+  },
   // {
   //   icons: PiSidebarDuotone,
   //   label: "Sidebarnav",
