@@ -15,8 +15,7 @@ const data = [
     icons: TbLayoutNavbar,
     name: "navbar",
     type: "NavBar",
-    description:
-      "Typically containing links to different sections or pages.",
+    description: "Typically containing links to different sections or pages.",
   },
 
   {
@@ -93,38 +92,34 @@ const UIFabric = () => {
         }}
       />
 
-      <ScrollShadow
-        size={20}
-        color="black"
-         className="flex flex-col gap-2"
-      >
-        {data
-          .filter(
-            (item) =>
-              item.label.includes(search) ||
-              item.label.toLowerCase().includes(search)
-          )
-          .map((item, index) => {
-            return (
-              <Card
-                key={index}
-                onDragStart={(event) => {
-                  onDragStart(event, item.type, item.name);
-                }}
-                draggable
-                isFooterBlurred
-                radius="lg"
-                className=" flex flex-col items-start  gap-2 bg-white border-2 border-gray-600/40 w-32 h-32"
-              >
-                <div className="flex flex-row justify-center items-center gap-2  ">
-                  {React.createElement(item.icons, {
-                    size: 30,
-                    color: "gray",
-                  })}
-                  <p>{item.label}</p>
+      {/* <ScrollShadow size={20} color="black" className="flex flex-col gap-2"> */}
+      {data
+        .filter(
+          (item) =>
+            item.label.includes(search) ||
+            item.label.toLowerCase().includes(search)
+        )
+        .map((item, index) => {
+          return (
+            <Card
+              key={index}
+              onDragStart={(event) => {
+                onDragStart(event, item.type, item.name);
+              }}
+              draggable
+              isFooterBlurred
+              radius="lg"
+              className=" flex flex-col items-start  gap-2 bg-white border-2 border-gray-600/40"
+            >
+              <div className="flex flex-row justify-center items-center gap-2  ">
+                {React.createElement(item.icons, {
+                  size: 30,
+                  color: "gray",
+                })}
+                <p>{item.label}</p>
 
-                  <div className="text-white w-[70%] ">
-                    {/* {clickToEdit === index ? (
+                <div className="text-white w-[70%] ">
+                  {/* {clickToEdit === index ? (
                     <Input
                       style={{
                         outline: "none",
@@ -154,22 +149,22 @@ const UIFabric = () => {
                       {item.label || "click to add name"}
                     </label>
                   )} */}
-                  </div>
                 </div>
-                <div className="flex justify-center items-center">
-                  <CardFooter
-                    className=" text-gray-700/80 text-sm justify-between before:bg-white/10
+              </div>
+              <div className="flex justify-center items-center">
+                <CardFooter
+                  className=" text-gray-700/80 text-sm justify-between before:bg-white/10
 border-gray-600/30 border-1 overflow-hidden  
 rounded-lg bottom-1
 shadow-small  gap-2 "
-                  >
-                    <p>{item.description}</p>
-                  </CardFooter>
-                </div>
-              </Card>
-            );
-          })}
-      </ScrollShadow>
+                >
+                  <p className="text-xs">{item.description}</p>
+                </CardFooter>
+              </div>
+            </Card>
+          );
+        })}
+      {/* </ScrollShadow> */}
     </div>
   );
 };

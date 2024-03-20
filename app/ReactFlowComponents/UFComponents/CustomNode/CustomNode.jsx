@@ -22,7 +22,7 @@ export const NavBar = memo(({ id, data, isConnectable, selected }) => {
         minWidth={700}
         minHeight={70}
       />
-      <NavigationBar />
+      <NavigationBar id={id} />
       <Handle
         type="source"
         position={Position.Right}

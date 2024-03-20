@@ -11,7 +11,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }) => {
     return (x / y) * 100 + "%";
   };
 
-  const RenderComp = ({ componentData }) => {
+  const RenderComp = ({ componentData, id }) => {
     const {
       Component: ComponentName,
       props = [],
@@ -26,6 +26,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }) => {
       case "NavBar":
         return (
           <NavigationBar
+            id={id}
             height={componentData.height}
             stateTrack={stateTrack}
           />
@@ -88,7 +89,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }) => {
               "left%",
               item.type
             )}
-            <RenderComp componentData={item} />
+            <RenderComp componentData={item} id={item.id} />
           </div>
         );
       })}

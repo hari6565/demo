@@ -1,33 +1,35 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UINodeState {
-  node: any;
+  allNode: any[];
   stateTrack: boolean;
-  editComponents: [];
+  editComponents: {};
   topBarData: {};
   AppNVersion: {};
+  NodeNavBar: {};
 }
 
 const initialState: UINodeState = {
-  node: "",
+  allNode: [],
   stateTrack: false,
-  editComponents: [],
+  editComponents: {},
   topBarData: { Brand: "..Logo", Items: ["home", "contact", "settings"] },
   AppNVersion: { appName: "text1", Version: "v1" },
+  NodeNavBar: {},
 };
 
 const UINodeSlice = createSlice({
   name: "UF",
   initialState,
   reducers: {
-    setNode: (state, action: PayloadAction<any>) => {
-      state.node = action.payload;
+    setNode: (state, action: PayloadAction<any[]>) => {
+      state.allNode = action.payload;
     },
     setStateTrack: (state) => {
       state.stateTrack = !state.stateTrack;
     },
 
-    setEditComponents: (state, action: PayloadAction<[]>) => {
+    setEditComponents: (state, action: PayloadAction<{}>) => {
       state.editComponents = action.payload;
     },
     setTopBarData: (state, action: PayloadAction<{}>) => {
@@ -42,6 +44,9 @@ const UINodeSlice = createSlice({
     setAppAndVersion: (state, action: PayloadAction<{}>) => {
       state.AppNVersion = { ...state.AppNVersion, ...action.payload };
     },
+    setNodeNavBar: (state, action: PayloadAction<{}>) => {
+      state.NodeNavBar = action.payload;
+    },
   },
 });
 
@@ -51,6 +56,7 @@ export const {
   setEditComponents,
   setTopBarData,
   setAppAndVersion,
+  setNodeNavBar,
 } = UINodeSlice.actions;
 
 export default UINodeSlice.reducer;
