@@ -127,8 +127,8 @@ export default function SelectSideBar({ sideState }) {
   const disPatch = useDispatch();
 
   const itemClasses = {
-    base: "py-0   ",
-    title: "font-light text-small",
+    base: "py-0 bg-transparent group-[.is-splitted]:bg-transparent ",
+    title: "font-light text-small text-white",
     trigger: " py-0   h-9 flex items-center",
     indicator: "text-medium",
     content: "text-small px-2",
@@ -146,7 +146,7 @@ export default function SelectSideBar({ sideState }) {
                     <Accordion
                       size="sm"
                       variant="splitted"
-                      className=" text-xs my-2"
+                      className=" text-xs my-2 bg-slate-600"
                       itemClasses={itemClasses}
                     >
                       <AccordionItem
