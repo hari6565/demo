@@ -21,6 +21,8 @@ import TCheckboxGroup from "../components/TCheckboxGroup/TCheckboxGroup";
 import Tchip from "../components/Tchip/TChip";
 import Tcode from "../components/TCode/TCode";
 import Tdivider from "../components/TDivider/TDivider";
+import Tautocomplete from "../components/TAutocomplete/TAutocomplete";
+import TCircularprogress from "../components/TCircularprogress/TCircularprogress";
 
 export const NavBar = memo(({ id, data, isConnectable, selected }: any) => {
   return (
@@ -500,7 +502,7 @@ export const TAutocomplete = memo(
           minWidth={700}
           minHeight={70}
         />
-        <TAccordion id={id} />
+        <Tautocomplete id={id} />
         <Handle
           type="source"
           position={Position.Right}
@@ -973,7 +975,7 @@ export const Circularprogress = memo(
           minWidth={700}
           minHeight={70}
         />
-        <Circularprogress id={id} />
+        <TCircularprogress id={id} />
         <Handle
           type="source"
           position={Position.Right}

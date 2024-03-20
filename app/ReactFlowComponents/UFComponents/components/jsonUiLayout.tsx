@@ -100,7 +100,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }: any) => {
           // stateTrack={stateTrack}
           />
         );
-      case "TAvatar":
+      case "Avatar":
         return (
           <Tavatar
             height={componentData.height}
@@ -108,7 +108,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }: any) => {
             stateTrack={stateTrack}
           />
         );
-      case "TBadge":
+      case "Badge":
         return (
           <Tbadge
             height={componentData.height}
@@ -116,7 +116,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }: any) => {
             stateTrack={stateTrack}
           />
         );
-      case "Tcard":
+      case "Card":
         return (
           <Tcard
             height={componentData.height}
@@ -124,7 +124,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }: any) => {
             stateTrack={stateTrack}
           />
         );
-      case "TCheckbox":
+      case "Checkbox":
         return (
           <Tcheckbox
             height={componentData.height}
@@ -132,7 +132,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }: any) => {
             stateTrack={stateTrack}
           />
         );
-      case "TCheckboxGroup":
+      case "CheckboxGroup":
         return (
           <TCheckboxGroup
             height={componentData.height}
@@ -140,7 +140,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }: any) => {
             stateTrack={stateTrack}
           />
         );
-      case "Tchip":
+      case "Chip":
         return (
           <Tchip
             height={componentData.height}
@@ -148,7 +148,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }: any) => {
             stateTrack={stateTrack}
           />
         );
-      case "TCircularprogress":
+      case "Circularprogress":
         return (
           <TCircularprogress
             height={componentData.height}
@@ -156,7 +156,7 @@ const JsonUiLayout = ({ json, width, height, stateTrack }: any) => {
             stateTrack={stateTrack}
           />
         );
-      case "TCode":
+      case "Code":
         return (
           <Tcode
             height={componentData.height}
@@ -164,17 +164,9 @@ const JsonUiLayout = ({ json, width, height, stateTrack }: any) => {
             stateTrack={stateTrack}
           />
         );
-      case "TDivider":
+      case "Divider":
         return (
           <Tdivider
-            height={componentData.height}
-            width={componentData.width}
-            stateTrack={stateTrack}
-          />
-        );
-      case "ToolTip":
-        return (
-          <Ttoolltip
             height={componentData.height}
             width={componentData.width}
             stateTrack={stateTrack}
