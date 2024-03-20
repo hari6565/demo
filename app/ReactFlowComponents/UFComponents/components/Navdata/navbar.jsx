@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setNode } from "@/app/StateManage/UINodeSlice";
 import { readReddis } from "@/app/utilsFunctions/apiCallUnit";
 
-const NavigationBar = ({ id = null, height, json = [] }) => {
+const NavigationBar = ({ id = null, height = "", json = [] }) => {
   const disPatch = useDispatch();
   const allNode = useSelector((state) => state.UFNodes.allNode);
   console.log(allNode);
